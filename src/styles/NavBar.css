@@ -1,0 +1,89 @@
+.NavBarContent {
+  display: flex;
+  background-color: rgb(65, 211, 65);
+  justify-content: space-between;
+  border-width: 2px;
+  border-radius: 10px;
+  margin-right: 10px;
+  color: white;
+}
+
+.NavBarTitle {
+  color:rgba(8, 8, 8, 0.801) !important;
+  padding-top: 12px !important;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.SearchButton{
+    background-color: white!important;
+    display: flex !important;
+    border-color: rgb(65, 211, 65) !important;
+    border-radius: 10px !important;
+    height: 42px !important;
+    align-items:center !important;
+}
+
+
+
+.nav-link {
+  color: white !important;
+}
+
+.navBarLogo {
+  height: 80px;
+  width: 80px;
+  border-radius: 10px;
+}
+.CatalogImage {
+  width: 32px;
+  height: 32px;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.ShoppingCartImage{
+    width: 32px;
+    height: 32px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: white;
+
+}
+
+.SearchImage{
+    width: 32px;
+    height: 32px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+.Search {
+  display: flex;
+  width: 50em;
+}
+
+.SearchLine {
+  width: 2000px;
+  height: 43px;
+  border-radius: 10px !important;
+  border-color: rgb(65, 211, 65) !important;
+}
+
+.navBarContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: ;
+  background-color: rgba(220, 220, 220, 0.245) !important;
+}
+
+#navbarScroll {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 1em;
+}
