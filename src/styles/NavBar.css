@@ -1,17 +1,19 @@
 .NavBarContent {
-  display: flex;
+  display: flex !important;
   background-color: rgb(65, 211, 65);
-  justify-content: space-between;
+  justify-content: flex-start !important;
+  align-items: center !important; 
   border-width: 2px;
   border-radius: 10px;
-  margin-right: 10px;
   color: white;
 }
+
+
 
 .NavBarTitle {
   color:rgba(8, 8, 8, 0.801) !important;
   padding-top: 12px !important;
-  margin-left: 1em;
+  margin-left: 2em;
   margin-right: 1em;
 }
 
@@ -76,10 +78,11 @@
 }
 
 .navBarContainer {
-  display: flex;
-  align-items: flex-start;
-  justify-content: ;
-  background-color: rgba(220, 220, 220, 0.245) !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-evenly !important ;
+  background-color: rgba(220, 220, 220, 0.245);
+
 }
 
 #navbarScroll {
@@ -87,3 +90,4 @@
   justify-content: space-around;
   margin-left: 1em;
 }
+

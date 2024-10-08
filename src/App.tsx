@@ -3,15 +3,17 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import NavBar from "./components/NavBar";
+import Shop from "./pages/Shop";
+import AppRouter from "./components/AppRouter";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return(
-   <NavBar>
-
-   </NavBar>
-  )
+  return (
+    <BrowserRouter> 
+      <NavBar></NavBar>
+      <AppRouter></AppRouter>
+    </BrowserRouter>
+  );
 }
 
 export default App;

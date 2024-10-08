@@ -1,10 +1,10 @@
 @font-face {
   font-family: Montserrat;
-  src: url('C:\Users\egorb\OneDrive\Рабочий стол\Studying\node_js_projects\musicShop\public\fonts\Montserrat-VariableFont_wght.ttf')
+  src: url('../public/fonts/Montserrat-VariableFont_wght.ttf')
 }
 @font-face {
   font-family: Montserrat-bold;
-  src: url('C:\Users\egorb\OneDrive\Рабочий стол\Studying\node_js_projects\musicShop\public\fonts\static\Montserrat-SemiBold.ttf')
+  src: url('../public/fonts/static/Montserrat-SemiBold.ttf')
 }
 
 :root {
@@ -20,6 +20,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 
 h1{
   font-family: Montserrat-bold;
