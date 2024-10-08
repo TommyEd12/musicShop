@@ -1,6 +1,7 @@
-.ShopContainer{
-    margin: 100px !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    margin-left: 200px !important;
-}
+.ShopContainer {
+    position: relative;
+    max-width: 100rem;
+    margin: 100px auto;
+    display: flex; /* Используйте flexbox для центрирования */
+    justify-content: center;
+  }

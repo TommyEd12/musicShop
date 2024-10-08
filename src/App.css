@@ -1,5 +1,12 @@
 #root {
-  max-width: 1280px;
+  max-width: 1920px;
+  position: absolute;
+  box-sizing: content-box;
 }
 
+.AppContainer{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
 

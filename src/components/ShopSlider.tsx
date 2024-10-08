@@ -5,42 +5,25 @@ import fender from "../assets/fender.jpg";
 import gibson from "../assets/gibson.jpg";
 import ibanez from "../assets/ibanez.jpg";
 
-
 const ShopSlider = () => {
   return (
-    <Carousel data-bs-theme="dark">
+    <Carousel className="Shopslider" data-bs-theme="light">
       <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={fender}
-          alt="First slide"
-        />
-        <Carousel.Caption className = "Caption">
-          <h5 id = "CaptionText">Встречайте гитары fender</h5>
+        <img className="d-block" src={fender} alt="First slide" />
+        <Carousel.Caption className="Caption">
+          <h5 id="CaptionText">Встречайте гитары fender</h5>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={gibson}
-          alt="Second slide"
-        />
-        <Carousel.Caption>
-          <h5 id = "CaptionText">Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <img className="d-block" src={gibson} alt="Second slide" />
+        <Carousel.Caption className="Caption">
+          <h5 id="CaptionText">Second slide label</h5>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={ibanez}
-          alt="Third slide"
-        />
-        <Carousel.Caption>
-          <h5>Third slide label</h5>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+        <img className="d-block" src={ibanez} alt="Third slide" />
+        <Carousel.Caption className="Caption">
+          <h5 id="CaptionText">Third slide label</h5>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

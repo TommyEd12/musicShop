@@ -1,24 +1,32 @@
-.Caption {
-  display: flex !important;
+.ShopSlider {
+  display: flex;
+  box-sizing: border-box; /* Измените на border-box для лучшего управления размером */
+  align-self: center;
+  margin: 0 auto;
+  position: relative; /* Измените на relative для лучшего позиционирования */
+}
 
-  padding: 0px;
-  width: 860px;
-  height: 40px;
-  border: 1px solid;
-  border-color: rgb(65, 211, 65) !important;
-  border-radius: 10px !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: rgb(65, 211, 65);
-  background: rgb(65, 211, 65);
+.Caption {
+  display: flex;
+  padding: 10px; /* Добавьте немного отступов */
+  max-width: 80%; /* Сделайте ширину адаптивной */
+  height: auto; /* Автоматическая высота */
+  border: 2px solid rgb(65, 211, 65);
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
   background: radial-gradient(
     circle,
-    rgba(65, 211, 65, 0.8100490196078431) 0%,
+    rgba(65, 211, 65, 0.8) 0%,
     rgba(253, 253, 253, 1) 90%
   );
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Добавьте тень для глубины */
 }
+
 #CaptionText {
-  color: rgb(238, 238, 238) !important;
-  font-family: Montserrat-bold !important;
+  color: rgb(238, 238, 238);
+  margin: 0; /* Уберите лишние отступы */
+  font-family: 'Montserrat', sans-serif; /* Убедитесь, что шрифт загружен */
   font-weight: bold;
 }
