@@ -2,35 +2,38 @@
   display: flex !important;
   background-color: rgb(65, 211, 65);
   justify-content: flex-start !important;
-  align-items: center !important; 
+  align-items: center !important;
   border-width: 2px;
   border-radius: 10px;
   color: white;
 }
 
-
-
 .NavBarTitle {
-  color:rgba(8, 8, 8, 0.801) !important;
+  color: rgba(8, 8, 8, 0.801) !important;
   padding-top: 12px !important;
   margin-left: 2em;
   margin-right: 1em;
 }
 
-.SearchButton{
-    background-color: white!important;
-    display: flex !important;
-    border-color: rgb(65, 211, 65) !important;
-    border-radius: 10px !important;
-    height: 42px !important;
-    align-items:center !important;
+.SearchButton {
+  background-color: white !important;
+  display: flex !important;
+  border-color: rgb(65, 211, 65) !important;
+  border-radius: 10px !important;
+  height: 3.45rem !important;
+  width: 5rem !important;
+  align-items: center !important;
 }
-
-
 
 .nav-link {
   color: white !important;
+  inline-size: min-content !important;
+  overflow: hidden !important;
+  text-align: justify !important;
+  line-height: 1rem;
+  padding: 0.75rem !important;
 }
+
 
 .navBarLogo {
   height: 80px;
@@ -38,56 +41,80 @@
   border-radius: 10px;
 }
 .CatalogImage {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   margin: 5px;
   padding: 5px;
   border-radius: 10px;
   background-color: white;
 }
 
-.ShoppingCartImage{
-    width: 32px;
-    height: 32px;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 10px;
-    background-color: white;
-
+.ShoppingCartImage {
+  width: 2rem;
+  height: 2rem;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: white;
+}
+.UserImage {
+  width: 2rem;
+  height: 2rem;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: white;
+}
+.HomeImage {
+  width: 2rem;
+  height: 2rem;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: white;
 }
 
-.SearchImage{
-    width: 32px;
-    height: 32px;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 10px;
-    background-color: transparent;
+.SearchImage {
+  width: 2rem;
+  height: 2rem;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: transparent;
 }
 
 .Search {
   display: flex;
-  width: 50em;
+  align-items: center;
+  width: 100%;
 }
 
 .SearchLine {
-  width: 2000px;
-  height: 43px;
+  width: 100% !important;
+  height: 3.45rem;
+  margin-left: 1rem;
   border-radius: 10px !important;
   border-color: rgb(65, 211, 65) !important;
 }
 
+.NavContent {
+  display: flex !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  align-items: center !important;
+  justify-content: space-evenly !important;
+}
+
 .navBarContainer {
   display: flex !important;
-  align-items: flex-start !important;
-  justify-content: space-evenly !important ;
-  background-color: rgba(220, 220, 220, 0.245);
-
+  background-color: rgba(189, 189, 189, 0.245);
+  justify-content: space-around !important;
+  font-size: 0.85rem;
 }
 
 #navbarScroll {
   display: flex;
   justify-content: space-around;
-  margin-left: 1em;
+  margin-left: 1rem;
+  inline-size: min-content !important;
 }
-

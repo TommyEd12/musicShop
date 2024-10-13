@@ -1,16 +1,26 @@
+
+
 .ShopSlider {
   display: flex;
-  box-sizing: border-box; /* Измените на border-box для лучшего управления размером */
-  align-self: center;
-  margin: 0 auto;
-  position: relative; /* Измените на relative для лучшего позиционирования */
+  box-sizing: border-box; 
+  width: 100%; /* Занимает всю ширину родительского контейнера */
+  height: 100%; /* Занимает всю высоту родительского контейнера */
+  justify-content: flex-start !important;
+  align-items: center;
+
+}
+
+.Slide {
+  display: flex;
+  flex: 0 0 100%; /* Каждый слайд занимает 100% ширины */
+  height: 100%; /* Каждый слайд занимает 100% высоты */
 }
 
 .Caption {
   display: flex;
-  padding: 10px; /* Добавьте немного отступов */
-  max-width: 80%; /* Сделайте ширину адаптивной */
-  height: auto; /* Автоматическая высота */
+  padding: 10px; 
+  max-width: 80%;
+  height: auto; 
   border: 2px solid rgb(65, 211, 65);
   transition: background-color 0.3s ease;
   border-radius: 10px;
@@ -21,12 +31,12 @@
     rgba(65, 211, 65, 0.8) 0%,
     rgba(253, 253, 253, 1) 90%
   );
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Добавьте тень для глубины */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); 
 }
 
 #CaptionText {
   color: rgb(238, 238, 238);
-  margin: 0; /* Уберите лишние отступы */
-  font-family: 'Montserrat', sans-serif; /* Убедитесь, что шрифт загружен */
+  margin: 0; 
+  font-family: 'Montserrat', sans-serif; 
   font-weight: bold;
 }

@@ -1,12 +1,8 @@
 #root {
-  max-width: 1920px;
-  position: absolute;
-  box-sizing: content-box;
-}
-
-.AppContainer{
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 

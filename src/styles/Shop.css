@@ -1,7 +1,7 @@
 .ShopContainer {
-    position: relative;
-    max-width: 100rem;
-    margin: 100px auto;
-    display: flex; /* Используйте flexbox для центрирования */
-    justify-content: center;
-  }
+  position: relative;
+  width: 100% !important; /* Занимает всю ширину окна */
+  height: 100% !important; /* Занимает всю высоту окна */
+  overflow: hidden; /* Скрывает переполнение */
+  margin: 7rem 0;
+}
