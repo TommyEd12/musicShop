@@ -7,7 +7,7 @@ import ibanez from "../assets/ibanez.jpg";
 
 const ShopSlider = () => {
   return (
-    <Carousel className="Shopslider" data-bs-theme="light">
+    <Carousel className="ShopSlider" data-bs-theme="light">
       <Carousel.Item className="Slide">
         <img className="d-block w-100" src={fender} alt="First slide" />
         <Carousel.Caption className="Caption">

@@ -1,0 +1,23 @@
+.TypeBar {
+  display: flex !important;
+  justify-content: stretch;
+  align-items: flex-start !important;
+  width: 100%;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+  font-size: 1rem;
+  flex-wrap: wrap !important;
+  flex: 0 0 0 !important;
+}
+
+.ProductType {
+  width: auto !important;
+  margin: 0.2rem;
+  padding: 0.5rem !important;
+  border-bottom-right-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  border: 1px solid rgba(8, 8, 8, 0.801) !important;
+  border-radius: 10px !important;
+}

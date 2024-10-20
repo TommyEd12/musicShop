@@ -15,8 +15,13 @@ import "../styles/NavBar.css";
 
 const NavBar = () => {
   return (
-    <Navbar expand="lg" fixed="top" className="navBarContainer">
-      <Container  className="NavContent">
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      fixed="top"
+      className="bg-body-tertiary navBarContainer"
+    >
+      <Container className="NavContent">
         <img className="navBarLogo" src={storeLogo}></img>
         <Navbar.Brand href="#" className="NavBarTitle">
           <h1>MUS&CO</h1>
@@ -28,14 +33,22 @@ const NavBar = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Главная страница</Nav.Link>
+            <Nav.Link eventKey="1" href="#action1">
+              Главная страница
+            </Nav.Link>
             <img className="HomeImage" src={HomeImage}></img>
-            <Nav.Link href="#action2">Каталог</Nav.Link>
+            <Nav.Link eventKey="2" href="#action2">
+              Каталог
+            </Nav.Link>
             <img className="CatalogImage" src={CatalogImage}></img>
-            <Nav.Link href="#action3">Личный кабинет</Nav.Link>
+            <Nav.Link eventKey="3" href="#action3">
+              Личный кабинет
+            </Nav.Link>
             <img className="UserImage" src={UserImage}></img>
-            <Nav.Link href="#">Корзина</Nav.Link>
-            <img className="ShoppingCartImage" src={ShoppingCart}></img>
+            <Nav.Link eventKey="4" href="#">
+              Корзина
+            </Nav.Link>
+            <img className="ShoppingCartImage " src={ShoppingCart}></img>
           </Nav>
           <Form className="Search">
             <Form.Control

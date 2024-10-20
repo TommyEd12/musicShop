@@ -3,8 +3,8 @@
 .ShopSlider {
   display: flex;
   box-sizing: border-box; 
-  width: 100%; /* Занимает всю ширину родительского контейнера */
-  height: 100%; /* Занимает всю высоту родительского контейнера */
+  width: 100% !important; /* Занимает всю ширину родительского контейнера */
+  height: 100% !important; /* Занимает всю высоту родительского контейнера */
   justify-content: flex-start !important;
   align-items: center;
 

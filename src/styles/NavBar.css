@@ -21,8 +21,10 @@
   border-color: rgb(65, 211, 65) !important;
   border-radius: 10px !important;
   height: 3.45rem !important;
-  width: 5rem !important;
+  width: 20% !important;
+  margin-left: 9px;
   align-items: center !important;
+  justify-content: center;
 }
 
 .nav-link {
@@ -36,9 +38,11 @@
 
 
 .navBarLogo {
+  position: relative;
   height: 80px;
   width: 80px;
   border-radius: 10px;
+  background-size: contain !important; 
 }
 .CatalogImage {
   width: 2rem;
@@ -75,12 +79,13 @@
 }
 
 .SearchImage {
-  width: 2rem;
-  height: 2rem;
-  margin: 5px;
-  padding: 5px;
+  width: 75%;
+  height: 75%;
+  margin: 0.05rem;
+  padding: 0.05rem;
   border-radius: 10px;
   background-color: transparent;
+  overflow: hidden;
 }
 
 .Search {
@@ -103,6 +108,7 @@
   margin-right: 0 !important;
   align-items: center !important;
   justify-content: space-evenly !important;
+  overflow: auto;
 }
 
 .navBarContainer {
@@ -110,11 +116,102 @@
   background-color: rgba(189, 189, 189, 0.245);
   justify-content: space-around !important;
   font-size: 0.85rem;
+  overflow: hidden;
 }
 
-#navbarScroll {
-  display: flex;
-  justify-content: space-around;
-  margin-left: 1rem;
-  inline-size: min-content !important;
+
+
+@media only screen and (max-width: 640px) {
+  .navBarContainer{
+    max-width: 640px;
+    font-size: 0.7rem;
+  }
+  .NavBarContent{
+    font-size: 0.75rem !important;
+  }
+  
+}
+@media only screen and (max-width: 1200px) {
+  .navBarContainer{
+    max-width: 1200px;
+    font-size: 1rem;
+  }
+  .NavBarContent{
+    font-size: 0.75rem !important;
+    width: 75% !important;
+  }
+  .NavBarTitle{
+    font-size: 0.4rem !important;
+  }
+  .SearchButton{
+    width: 40% !important;
+  }
+  
+}
+@media only screen and (max-width: 992px) {
+  .navBarContainer{
+    max-width: 992px;
+    font-size: 0.7rem;
+  }
+  .NavBarContent{
+    display: flex;
+    justify-content: center !important;
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    width: 100% !important;
+  }
+  #navbarScroll{
+    margin: 1rem 0 !important;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+  }
+  .SearchLine{
+    margin: 0;
+  }
+  .NavContent{
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+  .NavBarTitle{
+    display: flex !important;
+    justify-self: flex-end !important;
+  }
+  .navbar-toggler{
+    display: flex !important;
+    justify-self: flex-end !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .navBarContainer{
+    max-width: 1024px;
+    font-size: 1rem;
+  }
+  .NavBarContent{
+    font-size: 1rem;
+  }
+  
+}
+
+
+@media only screen and (max-width: 1280px) {
+  .navBarContainer{
+    max-width: 1280px;
+    font-size: 1rem !important;
+  }
+  .NavBarContent{
+    font-size: 1rem !important;
+  }
+  
+}
+@media only screen and (max-width: 1536px) {
+  .navBarContainer{
+    max-width: 1536px;
+    font-size: 1.15rem;
+  }
+  .NavBarContent{
+    font-size: 1.15rem;
+  }
+  
 }

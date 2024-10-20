@@ -10,12 +10,10 @@ import { Container } from "react-bootstrap";
 
 function App() {
   return (
-
-      <BrowserRouter> 
-        <NavBar></NavBar>
-        <AppRouter></AppRouter>
-      </BrowserRouter>
-
+    <BrowserRouter>
+      <NavBar></NavBar>
+      <AppRouter></AppRouter>
+    </BrowserRouter>
   );
 }
 
