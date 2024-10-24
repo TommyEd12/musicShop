@@ -3,6 +3,7 @@
   background-color: rgb(65, 211, 65);
   justify-content: flex-start !important;
   align-items: center !important;
+  height: 3.45rem;
   border-width: 2px;
   border-radius: 10px;
   color: white;
@@ -11,30 +12,11 @@
 .NavBarTitle {
   color: rgba(8, 8, 8, 0.801) !important;
   padding-top: 12px !important;
-  margin-left: 2em;
-  margin-right: 1em;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
-.SearchButton {
-  background-color: white !important;
-  display: flex !important;
-  border-color: rgb(65, 211, 65) !important;
-  border-radius: 10px !important;
-  height: 3.45rem !important;
-  width: 20% !important;
-  margin-left: 9px;
-  align-items: center !important;
-  justify-content: center;
-}
 
-.nav-link {
-  color: white !important;
-  inline-size: min-content !important;
-  overflow: hidden !important;
-  text-align: justify !important;
-  line-height: 1rem;
-  padding: 0.75rem !important;
-}
 
 
 .navBarLogo {
@@ -97,7 +79,8 @@
 .SearchLine {
   width: 100% !important;
   height: 3.45rem;
-  margin-left: 1rem;
+  margin-right:0rem !important;
+  margin-left: 1rem !important;
   border-radius: 10px !important;
   border-color: rgb(65, 211, 65) !important;
 }
@@ -113,7 +96,7 @@
 
 .navBarContainer {
   display: flex !important;
-  background-color: rgba(189, 189, 189, 0.245);
+  background-color: rgba(189, 189, 189, 0.245) !important;
   justify-content: space-around !important;
   font-size: 0.85rem;
   overflow: hidden;
@@ -136,10 +119,7 @@
     max-width: 1200px;
     font-size: 1rem;
   }
-  .NavBarContent{
-    font-size: 0.75rem !important;
-    width: 75% !important;
-  }
+
   .NavBarTitle{
     font-size: 0.4rem !important;
   }
@@ -148,40 +128,7 @@
   }
   
 }
-@media only screen and (max-width: 992px) {
-  .navBarContainer{
-    max-width: 992px;
-    font-size: 0.7rem;
-  }
-  .NavBarContent{
-    display: flex;
-    justify-content: center !important;
-    font-size: 1rem !important;
-    margin-bottom: 0.5rem !important;
-    width: 100% !important;
-  }
-  #navbarScroll{
-    margin: 1rem 0 !important;
-    align-items: flex-start;
-    justify-content: flex-start;
 
-  }
-  .SearchLine{
-    margin: 0;
-  }
-  .NavContent{
-    display: flex !important;
-    justify-content: space-between !important;
-  }
-  .NavBarTitle{
-    display: flex !important;
-    justify-self: flex-end !important;
-  }
-  .navbar-toggler{
-    display: flex !important;
-    justify-self: flex-end !important;
-  }
-}
 
 @media only screen and (max-width: 1024px) {
   .navBarContainer{
@@ -214,4 +161,39 @@
     font-size: 1.15rem;
   }
   
+}
+@media only screen and (max-width: 992px) {
+  .navBarContainer{
+    max-width: 992px;
+    font-size: 0.7rem;
+  }
+  .NavBarContent{
+    display: flex;
+    justify-content: center !important;
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    width: 100% !important;
+  }
+  #navbarScroll{
+    margin: 1rem 0 !important;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+  }
+  .SearchLine{
+    margin: 0 !important;
+    margin-left: 0 ;
+  }
+  .NavContent{
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+  .NavBarTitle{
+    display: flex !important;
+    justify-self: flex-end !important;
+  }
+  .navbar-toggler{
+    display: flex !important;
+    justify-self: flex-end !important;
+  }
 }

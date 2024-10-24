@@ -6,5 +6,34 @@
   overflow: hidden; /* Скрывает переполнение */
   margin: 7rem 0;
   justify-content: flex-start;
-  align-items:baseline;
+  align-items: baseline;
+}
+
+.TextDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 1rem 0;
+  background-color: rgba(189, 189, 189, 0.245);
+  border-radius: 10px;
+}
+
+.Greetings {
+  color: white;
+  background-color: rgb(65, 211, 65);
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin: 0.5rem 0;
+}
+
+.CardsContainer {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+  flex-wrap: wrap;
 }

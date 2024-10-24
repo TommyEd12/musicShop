@@ -7,26 +7,40 @@ import ibanez from "../assets/ibanez.jpg";
 
 const ShopSlider = () => {
   return (
-    <Carousel className="ShopSlider" data-bs-theme="light">
-      <Carousel.Item className="Slide">
-        <img className="d-block w-100" src={fender} alt="First slide" />
-        <Carousel.Caption className="Caption">
-          <h5 id="CaptionText">Встречайте гитары fender</h5>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item className="Slide">
-        <img className="d-block w-100" src={gibson} alt="Second slide" />
-        <Carousel.Caption className="Caption">
-          <h5 id="CaptionText">Second slide label</h5>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item className="Slide">
-        <img className="d-block w-100" src={ibanez} alt="Third slide" />
-        <Carousel.Caption className="Caption">
-          <h5 id="CaptionText">Third slide label</h5>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+    <div className="SliderContainer">
+      <Carousel className="ShopSlider" data-bs-theme="light">
+        <Carousel.Item className="Slide">
+          <img
+            className="d-block w-100 fit slideImg"
+            src={fender}
+            alt="First slide"
+          />
+          <Carousel.Caption className="Caption">
+            <h5 id="CaptionText">Встречайте гитары fender</h5>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item className="Slide">
+          <img
+            className="d-block w-100 fit slideImg"
+            src={gibson}
+            alt="Second slide"
+          />
+          <Carousel.Caption className="Caption">
+            <h5 id="CaptionText">Second slide label</h5>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item className="Slide">
+          <img
+            className="d-block w-100 fit slideImg"
+            src={ibanez}
+            alt="Third slide"
+          />
+          <Carousel.Caption className="Caption">
+            <h5 id="CaptionText">Third slide label</h5>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+    </div>
   );
 };
 

@@ -33,35 +33,23 @@ const NavBar = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link eventKey="1" href="#action1">
-              Главная страница
-            </Nav.Link>
             <img className="HomeImage" src={HomeImage}></img>
-            <Nav.Link eventKey="2" href="#action2">
-              Каталог
-            </Nav.Link>
+
             <img className="CatalogImage" src={CatalogImage}></img>
-            <Nav.Link eventKey="3" href="#action3">
-              Личный кабинет
-            </Nav.Link>
+
             <img className="UserImage" src={UserImage}></img>
-            <Nav.Link eventKey="4" href="#">
-              Корзина
-            </Nav.Link>
+
             <img className="ShoppingCartImage " src={ShoppingCart}></img>
           </Nav>
           <Form className="Search">
             <Form.Control
               type="search"
               placeholder="Поиск"
-              className="me-2 SearchLine"
+              className="SearchLine"
               aria-label="Search"
               src={SearchImage}
             />
 
-            <Button className="SearchButton">
-              <img src={SearchImage} className="SearchImage"></img>
-            </Button>
           </Form>
         </Navbar.Collapse>
       </Container>
