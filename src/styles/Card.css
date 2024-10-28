@@ -1,0 +1,62 @@
+@font-face {
+    font-family: Montserrat;
+    src: url('../public/fonts/Montserrat-VariableFont_wght.ttf')
+  }
+.ProductCard{
+    aspect-ratio: 1/1;
+    width: 31%;
+}
+
+.card-img-top{
+    aspect-ratio : 1 / 1;
+    border: 2px solid rgba(189, 189, 189, 0.245);
+    width: 100%;
+
+}
+
+.Price{
+    color: rgb(65, 211, 65);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.CardFooter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.CardFooter button{
+    background-color: rgb(65, 211, 65);
+    border: 1px solid rgba(189, 189, 189, 0.245);
+
+}
+
+.CardFooter h6{
+    margin: 0;
+    color: rgba(61, 61, 61, 0.811) ;
+}
+.card-body{
+    font-family: Montserrat;
+}
+
+.AddToCart{
+    text-wrap: nowrap;
+}
+
+@media only screen and (max-width: 1024px) {
+    .card-body{
+        font-size: 0.8rem;
+    }
+    .AddToCart{
+        font-size: 0.7rem !important;
+    }
+    .CardFooter h6{
+        font-size: 0.7rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .ProductCard{
+        width: 47%;
+    }
+}

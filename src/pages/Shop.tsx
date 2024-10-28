@@ -13,6 +13,9 @@ const Shop = () => {
         <h2 className="Greetings">Добро пожаловать в MUS&CO!</h2>
       </div>
       <ShopSlider></ShopSlider>
+      <div className="Block">
+        <h2 className="NewItems">Новинки и акции!</h2>
+      </div>
       <div className="CardsContainer">
         <CardItem></CardItem>
         <CardItem></CardItem>

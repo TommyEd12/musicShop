@@ -1,3 +1,7 @@
+@font-face {
+  font-family: Montserrat;
+  src: url('../public/fonts/Montserrat-VariableFont_wght.ttf')
+}
 .TypeBar {
   display: flex !important;
   justify-content: stretch !important;
@@ -11,6 +15,7 @@
 }
 
 .ProductType {
+  font-family:Montserrat;
   width: auto !important;
   margin: 0.2rem;
   padding: 0.5rem !important;
@@ -20,4 +25,26 @@
   border-top-left-radius: 0px !important;
   border: 1px solid rgba(8, 8, 8, 0.801) !important;
   border-radius: 10px !important;
+}
+@media only screen and (max-width: 2000px) {
+  .ProductType{
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .ProductType{
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .ProductType{
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 764px) {
+  .ProductType{
+    font-size: 0.68rem;
+  }
 }
