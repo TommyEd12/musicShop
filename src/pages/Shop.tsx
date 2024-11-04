@@ -4,6 +4,7 @@ import "../styles/Shop.css";
 import ShopSlider from "../components/ShopSlider";
 import TypeBar from "../components/TypeBar";
 import CardItem from "../components/Card";
+import BrandBar from "../components/BrandBar/BrandBar";
 
 const Shop = () => {
   return (
@@ -24,7 +25,13 @@ const Shop = () => {
         <CardItem></CardItem>
         <CardItem></CardItem>
       </div>
+      <div className="Block">
+        <h2 className="NewItems">Наши бренды</h2>
+      </div>
+      
+      <BrandBar></BrandBar>
     </Container>
+    
   );
 };
 

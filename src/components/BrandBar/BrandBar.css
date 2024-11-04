@@ -1,0 +1,56 @@
+.BrandBarContainer {
+  border-top: 8px solid;
+  border-bottom: 8px solid;
+  border-color: rgb(65, 211, 65);
+  border-radius: 10px;
+  margin-top: 1rem;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap !important;
+  position: relative;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.BrandBarContainer:hover .BrandBarSlide {
+  animation-play-state: paused !important;
+}
+
+.BrandBarSlide {
+  display: inline-block;
+  width: 100%;
+  animation: 30s slide infinite linear;
+
+}
+
+.BrandBarContainer:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width:250px;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+  content: "";
+  z-index: 2;
+}
+.BrandBarContainer:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width:250px;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+  content: "";
+  z-index: 2;
+}
+
+.BrandLogo {
+  width: 20%;
+  padding: 0 1rem;
+}

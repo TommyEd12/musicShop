@@ -1,9 +1,9 @@
 .ShopContainer {
   display: flex;
   flex-direction: column;
-  width: 100% !important; /* Занимает всю ширину окна */
-  height: 100% !important; /* Занимает всю высоту окна */
-  overflow: hidden; /* Скрывает переполнение */
+  width: 100% !important; 
+  height: 100% !important;
+  overflow: hidden;
   margin: 7rem 0;
   justify-content: flex-start;
   align-items: baseline;
