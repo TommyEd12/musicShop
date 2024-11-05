@@ -1,7 +1,7 @@
 .ShopContainer {
   display: flex;
   flex-direction: column;
-  width: 100% !important; 
+  width: 100% !important;
   height: 100% !important;
   overflow: hidden;
   margin: 7rem 0;
@@ -27,17 +27,67 @@
   border-radius: 10px;
   margin: 0.5rem 0;
 }
-.Block{
+.Block {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
-
 }
 
-.Block h2{
+.AboutUsBlock {
+  display: flex;
+  justify-content: space-between;
+  border-top: 8px solid;
+  border-bottom: 8px solid;
+  padding-right: 0px !important;
+  border-color: rgb(65, 211, 65);
+  border-bottom-color: rgba(89, 89, 89, 0.785);
+  border-radius: 6px;
+  border-right: 0px;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.AboutUs {
+  margin: 1.5rem 0;
+  width: 45%;
+  font-size: 1.5rem;
+}
+
+.AboutUs strong {
+  color: rgb(65, 211, 65);
+}
+.MusImage {
+  width: 50%;
+  margin: 1.5rem 0;
+  border-radius: 7px;
+}
+.NoteImage {
+  width: 4rem;
+  height: 4rem;
+  margin: 5px;
+  padding-bottom: 10px;
+}
+
+.FireImage {
+  width: 4rem;
+  height: 4rem;
+  margin: 5px;
+  padding-bottom: 10px;
+}
+
+.GuitarImage {
+  width: 4rem;
+  height: 4rem;
+  margin: 5px;
+  padding-bottom: 10px;
+}
+
+.Block h2 {
   font-size: 2.3rem;
+  color: rgba(36, 36, 36, 0.903);
 }
 
 .CardsContainer {
@@ -55,24 +105,36 @@
 }
 
 @media only screen and (max-width: 2000px) {
-  h2{
+  h2 {
     font-size: 1.7rem !important;
+  }
+  .AboutUs {
+    font-size: 1.5rem !important;
   }
 }
 
 @media only screen and (max-width: 1400px) {
-  h2{
+  h2 {
     font-size: 1.5rem !important;
+  }
+  .AboutUs {
+    font-size: 1.3rem !important;
   }
 }
 @media only screen and (max-width: 1024px) {
-  h2{
+  h2 {
     font-size: 1.3rem !important;
+  }
+  .AboutUs {
+    font-size: 1.1rem !important;
   }
 }
 
 @media only screen and (max-width: 640px) {
-  h2{
+  h2 {
     font-size: 1rem !important;
+  }
+  .AboutUs {
+    font-size: 0.85rem !important;
   }
 }

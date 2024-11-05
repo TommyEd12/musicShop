@@ -5,6 +5,10 @@ import ShopSlider from "../components/ShopSlider";
 import TypeBar from "../components/TypeBar";
 import CardItem from "../components/Card";
 import BrandBar from "../components/BrandBar/BrandBar";
+import FireImage from "../assets/fire.png";
+import GuitarImage from "../assets/guitar.svg";
+import MusImage from "../assets/mus1.svg";
+import NoteImage from "../assets/note.svg";
 
 const Shop = () => {
   return (
@@ -16,6 +20,7 @@ const Shop = () => {
       <ShopSlider></ShopSlider>
       <div className="Block">
         <h2 className="NewItems">Новинки и акции!</h2>
+        <img className="FireImage" src={FireImage}></img>
       </div>
       <div className="CardsContainer">
         <CardItem></CardItem>
@@ -27,11 +32,33 @@ const Shop = () => {
       </div>
       <div className="Block">
         <h2 className="NewItems">Наши бренды</h2>
+        <img className="GuitarImage" src={GuitarImage}></img>
       </div>
-      
+
       <BrandBar></BrandBar>
+      <br></br>
+      <div className="Block">
+        <h2 className="NewItems">О нашей компании</h2>
+        <img className="NoteImage" src={NoteImage}></img>
+      </div>
+      <Container className="AboutUsBlock">
+        <div className="AboutUs">
+          <p>
+            Мы - небольшая команда <strong> MUS&CO </strong>, основанная в 2020
+            году и расположенная в городе <strong>Пермь</strong> по адресу Революции 22.
+          </p>
+          <p>
+            В магазине представлены товары мировых брендов для новичков и
+            профессионалов.
+          </p>
+          <p>
+            Среди них - всемирно известные бренды музыкальных инструментов:
+            Cort, LAG, Sigma, Ditson, Flight, JET, Casio, NUX и др.
+          </p>
+        </div>
+        <img className="MusImage" src={MusImage}></img>
+      </Container>
     </Container>
-    
   );
 };
 
