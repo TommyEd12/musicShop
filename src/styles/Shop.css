@@ -32,7 +32,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -43,11 +43,12 @@
   border-bottom: 8px solid;
   padding-right: 0px !important;
   border-color: rgb(65, 211, 65);
-  border-bottom-color: rgba(89, 89, 89, 0.785);
+  border-bottom-color: rgba(142, 142, 142, 0.785);
   border-radius: 6px;
   border-right: 0px;
   margin-top: 1rem;
   width: 100%;
+  height: 100%;
 }
 
 .AboutUs {
@@ -59,8 +60,25 @@
 .AboutUs strong {
   color: rgb(65, 211, 65);
 }
+
+.ReviewBlock {
+  width: 100%;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ReviewsTitle {
+  margin: 1.5rem 0;
+  font-size: 1.5rem;
+}
+
+.ReviewsTitle strong {
+  color: rgb(65, 211, 65);
+}
 .MusImage {
   width: 50%;
+  height: 100%;
   margin: 1.5rem 0;
   border-radius: 7px;
 }
@@ -84,13 +102,31 @@
   margin: 5px;
   padding-bottom: 10px;
 }
+.Widgets {
+  width: 100%;
+  margin-top: 1rem;
+  border-top: 8px solid;
+  border-bottom: 8px solid;
+  border-radius: 10px;
+  border-top-color: rgb(65, 211, 65);
+  border-bottom-color: rgba(142,142,142, 0.785);
+}
+.RewiewsWrapper{
+  margin: 1rem 0;
+}
+
+.Reviews {
+  margin-top: 1rem;
+}
 
 .Block h2 {
   font-size: 2.3rem;
+  margin: 0;
   color: rgba(36, 36, 36, 0.903);
 }
 
 .CardsContainer {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   margin-top: 1rem;
   border-top: 8px solid;
   border-bottom: 8px solid;

@@ -4,13 +4,11 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import storeLogo from "../assets/storeLogo.jpg";
+import storeLogo from "../assets/logo3.png";
 import CatalogImage from "../assets/CatalogImage.svg";
 import ShoppingCart from "../assets/shopping-cart.svg";
 import SearchImage from "../assets/search.svg";
 import UserImage from "../assets/user.svg";
-import HomeImage from "../assets/home.svg";
 import "../styles/NavBar.css";
 
 const NavBar = () => {
@@ -33,14 +31,15 @@ const NavBar = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <img className="HomeImage" src={HomeImage}></img>
-
+            <h5>Контакты</h5>
+            <h5>О нас</h5>
             <img className="CatalogImage" src={CatalogImage}></img>
 
             <img className="UserImage" src={UserImage}></img>
 
             <img className="ShoppingCartImage " src={ShoppingCart}></img>
           </Nav>
+
           <Form className="Search">
             <Form.Control
               type="search"
@@ -49,7 +48,6 @@ const NavBar = () => {
               aria-label="Search"
               src={SearchImage}
             />
-
           </Form>
         </Navbar.Collapse>
       </Container>

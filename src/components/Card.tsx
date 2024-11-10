@@ -16,7 +16,7 @@ export default function CardItem() {
           bulk of the card's content.
         </Card.Text>
         <div className="CardFooter">
-          <Button className="AddToCart">В корзину</Button>
+          <Button className="AddToCart">В корзину</Button>  
           <h6>В наличии: 1шт</h6>
         </div>
       </Card.Body>

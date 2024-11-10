@@ -8,7 +8,8 @@ import BrandBar from "../components/BrandBar/BrandBar";
 import FireImage from "../assets/fire.png";
 import GuitarImage from "../assets/guitar.svg";
 import MusImage from "../assets/mus1.svg";
-import NoteImage from "../assets/note.svg";
+import NoteImage from "../assets/note1.svg";
+import Reviews from "../components/ReviewsWidget/Reviews";
 
 const Shop = () => {
   return (
@@ -45,7 +46,8 @@ const Shop = () => {
         <div className="AboutUs">
           <p>
             Мы - небольшая команда <strong> MUS&CO </strong>, основанная в 2020
-            году и расположенная в городе <strong>Пермь</strong> по адресу Революции 22.
+            году и расположенная в городе <strong>Пермь</strong> по адресу
+            Революции 22.
           </p>
           <p>
             В магазине представлены товары мировых брендов для новичков и
@@ -58,6 +60,16 @@ const Shop = () => {
         </div>
         <img className="MusImage" src={MusImage}></img>
       </Container>
+      <div className="ReviewBlock">
+        <h2 className="ReviewsTitle">
+          <strong>Вы</strong> о нас
+        </h2>
+      </div>
+      <div className="Widgets">
+        <div className="RewiewsWrapper">
+          <Reviews></Reviews>
+        </div>
+      </div>
     </Container>
   );
 };
