@@ -69,8 +69,8 @@
   align-items: center;
 }
 .ReviewsTitle {
-  margin: 1.5rem 0;
-  font-size: 1.5rem;
+  margin: 2rem 0;
+
 }
 
 .ReviewsTitle strong {
@@ -89,6 +89,14 @@
   padding-bottom: 10px;
 }
 
+.smile{
+  width: 4rem;
+  height: 4rem;
+  margin: 5px;
+  padding-bottom: 10px;
+
+}
+
 .FireImage {
   width: 4rem;
   height: 4rem;
@@ -103,8 +111,10 @@
   padding-bottom: 10px;
 }
 .Widgets {
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
   width: 100%;
-  margin-top: 1rem;
   border-top: 8px solid;
   border-bottom: 8px solid;
   border-radius: 10px;
@@ -112,6 +122,7 @@
   border-bottom-color: rgba(142,142,142, 0.785);
 }
 .RewiewsWrapper{
+  width: 50%;
   margin: 1rem 0;
 }
 

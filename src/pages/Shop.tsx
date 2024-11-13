@@ -10,6 +10,9 @@ import GuitarImage from "../assets/guitar.svg";
 import MusImage from "../assets/mus1.svg";
 import NoteImage from "../assets/note1.svg";
 import Reviews from "../components/ReviewsWidget/Reviews";
+import Smile from "../assets/emoji-hug.svg"
+import ImageSlider from "../components/ImageSlider/ImageSlider";
+import Footer from "../components/Footer/Footer";
 
 const Shop = () => {
   return (
@@ -62,15 +65,20 @@ const Shop = () => {
       </Container>
       <div className="ReviewBlock">
         <h2 className="ReviewsTitle">
-          <strong>Вы</strong> о нас
+           О нас <strong>вашими словами</strong>
         </h2>
+        <img className="smile" src={Smile}></img>
       </div>
       <div className="Widgets">
         <div className="RewiewsWrapper">
           <Reviews></Reviews>
+         
         </div>
+        <ImageSlider></ImageSlider>
+
       </div>
     </Container>
+    
   );
 };
 

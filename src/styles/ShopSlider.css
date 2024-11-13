@@ -8,10 +8,11 @@
   overflow: hidden;
 }
 .SliderContainer {
-  width: 100%;
   height: 450px;
+  width: 100%;;
   margin: auto;
   background-color: rgba(197, 197, 197, 0.378);
+  border: 1px solid rgba(197, 197, 197, 0.378);
 }
 .slideImg {
   height: 100% !important;
@@ -22,7 +23,7 @@
   width: 100%;
   height: 100%;
   justify-content: center;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+
 }
 .carousel-inner {
   height: 100% !important;

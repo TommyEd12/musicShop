@@ -1,0 +1,71 @@
+.ImageSlider {
+  display: flex;
+  box-sizing: border-box;
+  width: 100% !important;
+  height: 100%;
+  border-radius: 10px;
+  justify-content: center !important;
+  align-items: center;
+}
+.ImageSliderContainer {
+  margin-top: 1rem;
+  width: 45%;
+  height: 450px !important;
+  border: 2px solid;
+  border-radius: 10px;
+}
+.slideImg {
+  border-radius: 10px;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.ImageSlide {
+  display: flex;
+  width: 100% !important;
+  height: 100% !important;
+  justify-content: center;
+
+}
+.carousel-inner {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+@media only screen and (max-width: 2500px) {
+
+  .ImageSliderContainer {
+    height: 620px !important;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+
+  .ImageSliderContainer {
+    height: 530px !important;
+  }
+}
+
+@media only screen and (max-width: 1201px) {
+
+  .ImageSliderContainer {
+    height: 450px !important;
+  }
+}
+@media only screen and (max-width: 986px) {
+
+  .ImageSliderContainer {
+    height: 330px !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+
+  .ImageSliderContainer {
+    height: 270px !important;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .ImageSliderContainer {
+    height: 250px !important;
+  }
+}
