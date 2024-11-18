@@ -1,0 +1,19 @@
+.FilterList{
+    width: 10%;
+    margin-top: 1rem;
+}
+
+.BrandItem{
+    font-size: 1.3rem;
+    margin: auto !important;
+    padding: 0 !important;
+    padding-bottom: 8px !important;
+    border:0px !important;
+}
+.BrandBox{
+    gap: 0.5rem;
+    display: flex !important;
+    padding: 0.5rem 0 !important;
+    align-items: center !important;
+}
+

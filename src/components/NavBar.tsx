@@ -21,7 +21,7 @@ const NavBar = () => {
     >
       <Container className="NavContent">
         <img className="navBarLogo" src={storeLogo}></img>
-        <Navbar.Brand href="#" className="NavBarTitle">
+        <Navbar.Brand href="/#" className="NavBarTitle">
           <h1>MUS&CO</h1>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -31,9 +31,9 @@ const NavBar = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <h5>Контакты</h5>
-            <h5>О нас</h5>
-            <img className="CatalogImage" src={CatalogImage}></img>
+            <a href="/#bottom"><h5>Контакты</h5></a>
+            <a href= "/#AboutUs"><h5>О нас</h5></a>
+            <a href="/Catalog"><img className="CatalogImage" src={CatalogImage}></img></a>
 
             <img className="UserImage" src={UserImage}></img>
 

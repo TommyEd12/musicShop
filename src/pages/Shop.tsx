@@ -41,7 +41,7 @@ const Shop = () => {
 
       <BrandBar></BrandBar>
       <br></br>
-      <div className="Block">
+      <div id="AboutUs"className="Block">
         <h2 className="NewItems">О нашей компании</h2>
         <img className="NoteImage" src={NoteImage}></img>
       </div>
@@ -49,7 +49,7 @@ const Shop = () => {
         <div className="AboutUs">
           <p>
             Мы - небольшая команда <strong> MUS&CO </strong>, основанная в 2020
-            году и расположенная в городе <strong>Пермь</strong> по адресу
+            году и расположенная в городе <strong>Пермь</strong>, по адресу
             Революции 22.
           </p>
           <p>

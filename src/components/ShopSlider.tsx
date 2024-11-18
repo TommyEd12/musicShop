@@ -26,7 +26,7 @@ const ShopSlider = () => {
             alt="Second slide"
           />
           <Carousel.Caption className="Caption">
-            <h5 id="CaptionText">Second slide label</h5>
+            <h5 id="CaptionText">Гитары Les paul Supreme</h5>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item className="Slide">
@@ -36,7 +36,7 @@ const ShopSlider = () => {
             alt="Third slide"
           />
           <Carousel.Caption className="Caption">
-            <h5 id="CaptionText">Third slide label</h5>
+            <h5 id="CaptionText">Бас гитары Ibanez</h5>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

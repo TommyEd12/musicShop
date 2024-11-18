@@ -12,6 +12,7 @@
   width: 100%;;
   margin: auto;
   background-color: rgba(197, 197, 197, 0.378);
+  border-radius: 10px;
   border: 1px solid rgba(197, 197, 197, 0.378);
 }
 .slideImg {

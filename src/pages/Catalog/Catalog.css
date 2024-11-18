@@ -1,0 +1,59 @@
+.CatalogContainer {
+  margin-top: 7rem;
+}
+.Goods {
+  gap:2rem;
+  border-top: 2px solid rgba(53, 53, 53, 0.538);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.CategoryWrapper {
+  display: flex;
+  align-items: end;
+  width: 100%;
+  height: 200px;
+  background-image: url(../../assets/background.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.CategoryWrapper h3 {
+  margin-left: 1rem;
+  z-index: 10;
+  color: white;
+  font-size: 4rem;
+}
+.CardsWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 90%;
+    margin-bottom: 2rem;
+}
+.DropDownWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-bottom: 1rem;
+    
+}
+.GoodsPagination{
+    justify-self: center;
+    margin-left: 7.5rem;
+    margin-bottom: 2rem;
+}
+.page-item .page-link{
+    border: 1px solid black !important;
+}
+
+
+
+
+.CardsWrapper .card{
+    margin-top: 1rem;
+    
+}
