@@ -206,8 +206,10 @@ h5{
   }
   .SearchLine{
     margin: 0 !important;
-    margin-left: 0 ;
-
+    margin-left: 0;
+  }
+  .Search{
+    padding: 0 1rem;
   }
   .NavContent{
     display: flex !important;

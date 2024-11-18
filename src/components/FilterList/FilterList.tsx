@@ -9,7 +9,7 @@ export default function FilterList() {
       {brands.map((brand) => {
         return (
           <div className="BrandBox">
-            <input type="checkbox"></input>
+            <input type="checkbox" className="Checkbox"></input>
             <ListGroup.Item className="BrandItem" action href="#link1">
               {brand}
             </ListGroup.Item>

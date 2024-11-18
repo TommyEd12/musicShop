@@ -1,8 +1,12 @@
+@font-face {
+  font-family: Montserrat;
+  src: url("../public/fonts/Montserrat-VariableFont_wght.ttf");
+}
 .CatalogContainer {
   margin-top: 7rem;
 }
 .Goods {
-  gap:2rem;
+  gap: 2rem;
   border-top: 2px solid rgba(53, 53, 53, 0.538);
   display: flex;
   justify-content: space-between;
@@ -26,34 +30,47 @@
   color: white;
   font-size: 4rem;
 }
-.CardsWrapper{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 90%;
-    margin-bottom: 2rem;
+.CardsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%;
+  margin-bottom: 2rem;
 }
-.DropDownWrapper{
-    width: 100%;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    margin-bottom: 1rem;
-    
+.DropDownWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-bottom: 1rem;
 }
-.GoodsPagination{
-    justify-self: center;
-    margin-left: 7.5rem;
-    margin-bottom: 2rem;
+.Dropdown button {
+  color: black !important;
+  background-color: rgb(255, 255, 255) !important;
 }
-.page-item .page-link{
-    border: 1px solid black !important;
+.GoodsPagination {
+  font-family: Montserrat;
+  font-size: 1.5rem;
+  width: 300px;
+  height: 40px;
+  margin-left: 10rem;
+  justify-self: center;
+}
+.page-item .page-link {
+  font-size: 1.5rem;
+  width: 100%;
+  height: 100%;
+  border: 0px;
+  font-size: 1rem;
+}
+.page-item a{
+  font-size: 1.4rem !important;
+}
+.page-item:active{
+  border: 1px solid black !important;
+  background-color: white !important;
 }
 
-
-
-
-.CardsWrapper .card{
-    margin-top: 1rem;
-    
+.CardsWrapper .card {
+  margin-top: 1rem;
 }
