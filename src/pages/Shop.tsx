@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Carousel, Container } from "react-bootstrap";
 import "../styles/Shop.css";
 import ShopSlider from "../components/ShopSlider";
@@ -10,11 +10,30 @@ import GuitarImage from "../assets/guitar.svg";
 import MusImage from "../assets/mus1.svg";
 import NoteImage from "../assets/note1.svg";
 import Reviews from "../components/ReviewsWidget/Reviews";
-import Smile from "../assets/emoji-hug.svg"
+import Smile from "../assets/emoji-hug.svg";
 import ImageSlider from "../components/ImageSlider/ImageSlider";
-import Footer from "../components/Footer/Footer";
+import { Context } from "../main";
+import { fetchProducts } from "../http/productAPI";
+import ProductStore from "../store/productStore";
+import { observer } from "mobx-react-lite";
 
-const Shop = () => {
+const Shop = observer(() => {
+  const context = useContext(Context);
+  if (!context) {
+    return <div>Loading...</div>;
+  }
+  const product = context.product;
+  try {
+    useEffect(() => {
+      const fetchData = async () =>{await fetchProducts().then((data) => product.setProducts(data))};
+      fetchData()
+    }, [product]);
+  } catch (error) {
+    console.log("Something went wrong");
+  }
+  const stringifiedObj = JSON.parse(JSON.stringify(product)) as ProductStore
+  console.log(product._products)
+
   return (
     <Container className="ShopContainer">
       <TypeBar></TypeBar>
@@ -27,12 +46,14 @@ const Shop = () => {
         <img className="FireImage" src={FireImage}></img>
       </div>
       <div className="CardsContainer">
-        <CardItem></CardItem>
-        <CardItem></CardItem>
-        <CardItem></CardItem>
-        <CardItem></CardItem>
-        <CardItem></CardItem>
-        <CardItem></CardItem>
+        {stringifiedObj._products ? (
+          stringifiedObj._products.map((product) => (
+             <CardItem product={product}></CardItem>
+
+          ))
+        ) : (
+          <div>Загрузка</div>
+        )}
       </div>
       <div className="Block">
         <h2 className="NewItems">Наши бренды</h2>
@@ -41,7 +62,7 @@ const Shop = () => {
 
       <BrandBar></BrandBar>
       <br></br>
-      <div id="AboutUs"className="Block">
+      <div id="AboutUs" className="Block">
         <h2 className="NewItems">О нашей компании</h2>
         <img className="NoteImage" src={NoteImage}></img>
       </div>
@@ -65,21 +86,18 @@ const Shop = () => {
       </Container>
       <div className="ReviewBlock">
         <h2 className="ReviewsTitle">
-           О нас <strong>вашими словами</strong>
+          О нас <strong>вашими словами</strong>
         </h2>
         <img className="smile" src={Smile}></img>
       </div>
       <div className="Widgets">
         <div className="RewiewsWrapper">
           <Reviews></Reviews>
-         
         </div>
         <ImageSlider></ImageSlider>
-
       </div>
     </Container>
-    
   );
-};
+});
 
 export default Shop;

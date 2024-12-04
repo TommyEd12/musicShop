@@ -6,10 +6,10 @@ const $host = axios.create({
 
 })
 
-const $authHost = axios.create({
-    baseURL: process.env.PORT
+// const $authHost = axios.create({
+//     baseURL: process.env.PORT
 
-})
+// })
 
 // const authInterceptor = config => {
 //     config.headers.authorization= `Bearer ${localStorage.getItem('token')}`
@@ -20,5 +20,5 @@ const $authHost = axios.create({
 
 export {
     $host,
-    $authHost
+    // $authHost
 }

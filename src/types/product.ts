@@ -1,14 +1,14 @@
 export interface Product
 {
-    "id": number,
-    "name": string,
-    "price": number,
-    "discountPrice": number,
-    "count": number,
-    "description": string,
-    "categoryId": number,
-    "brandId": number,
-    "images": string[],
+    id: number;
+    name: string;
+    price: number;
+    discountPrice: number;
+    count: number;
+    description: string;
+    categoryId: number;
+    brandId: number;
+    images: string[];
 }
 // id: integer().primaryKey().generatedAlwaysAsIdentity(),
 // name: varchar({ length: 255 }).notNull(),
