@@ -4,20 +4,16 @@ import App from "./App.tsx";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProductStore from "./store/productStore.ts";
+import UserStore from "./store/userStore.ts";
 
 interface StoreContextType {
   product: ProductStore;
+  user: UserStore;
 }
-export const Context = createContext<StoreContextType | null>(null);
+export const Context = createContext<StoreContextType | undefined>(undefined);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Context.Provider
-      value={{
-        product: new ProductStore(),
-      }}
-    >
-      <App />
-    </Context.Provider>
+    <App />
   </StrictMode>
 );

@@ -76,3 +76,5 @@ export default class ProductStore {
     return this._limit;
   }
 }
+
+export const products = new ProductStore()

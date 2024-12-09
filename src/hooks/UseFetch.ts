@@ -1,10 +1,10 @@
-/* import { useState } from "react"
+import { useState } from "react"
 
 export const useFetch = <T> (url : string) => {
 
     const [data, setData]= useState <T>()
     const [loading, setLoading]= useState(false)
-    const [error, setError]= useState()
+    const [error, setError]= useState(false)
 
     const fetchData = async () => {
         try {
@@ -22,4 +22,4 @@ export const useFetch = <T> (url : string) => {
         }
     }
     return {data, loading, error, fetchData}
-} */
+} 

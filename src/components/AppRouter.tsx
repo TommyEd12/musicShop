@@ -9,8 +9,10 @@ import {
 import { publicRoutes, authRoutes } from "../routes";
 import { observer } from "mobx-react-lite";
 import { IRoute } from "../routes";
+import { useAppContext } from "../hooks/UseAppContext";
 
 const AppRouter = observer(() => {
+
   return (
     <Routes>
       {authRoutes.map((currentRoute: IRoute) => (

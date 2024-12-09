@@ -16,6 +16,11 @@ export const fetchBrands = async () => {
   return data;
 };
 
+export const search = async (text: string)=>{
+  const {data} = await $host.get("api/product/search", {params:{search: text}})
+  return data
+}
+
 export const fetchProducts = async () => {
   const { data } = await $host.get("api/product");
   return data;

@@ -1,8 +1,15 @@
 #root {
+  
+  display: flex !important;
+  flex-direction: column !important;
   max-width: 1536;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  
+}
+html{
+  position: relative !important;
+  min-height: 100% !important;
 
 }
-

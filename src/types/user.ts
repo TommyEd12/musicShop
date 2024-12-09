@@ -1,10 +1,6 @@
-enum role{
-    Admin="admin",
-    User = "user"
-}
+
 export interface User{
-    id: number
-    email: string
-    password: string
-    role: role
+    email: string;
+    password: string;
+    role: "user" | "admin"
 }

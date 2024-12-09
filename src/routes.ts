@@ -1,11 +1,12 @@
 import Admin from "./pages/Admin";
 import { Routes } from "./utils/consts";
 import Shop from "./pages/Shop";
-import Auth from "./pages/Auth";
+import Auth from "./pages/Auth/Auth";
 import ProductPage from "./pages/ProductPage";
 import Basket from "./pages/Basket";
 import AboutUs from "./pages/AboutUs";
 import Catalog from "./pages/Catalog/Catalog";
+import ProfilePage from "./pages/profile/profile";
 
 export interface IRoute {
   path: string;
@@ -48,4 +49,8 @@ export const publicRoutes: IRoute[] = [
     path: Routes.REGISTRATION_ROUTE,
     Element: Auth,
   },
+  {
+    path: Routes.PERSONAL_ROUTE,
+    Element: ProfilePage
+  }
 ];

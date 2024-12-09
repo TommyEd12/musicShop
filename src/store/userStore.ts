@@ -19,6 +19,7 @@ export default class UserStore {
 
     setUser(user: User){
         this._user = user
+        console.log(JSON.stringify(this._user))
     }
 
     get isAuth() {
@@ -32,3 +33,5 @@ export default class UserStore {
 
 
 }
+
+export const user = new UserStore()

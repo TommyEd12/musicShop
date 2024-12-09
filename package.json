@@ -22,6 +22,7 @@
     "elysia": "^1.1.25",
     "embla-carousel-react": "^8.3.0",
     "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
     "mobx": "^6.13.5",
     "mobx-react": "^9.1.1",
     "mobx-react-lite": "^4.0.7",

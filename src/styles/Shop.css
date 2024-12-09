@@ -55,7 +55,6 @@
   border-bottom-color: rgba(142, 142, 142, 0.785);
   border-radius: 6px;
   border-right: 0px;
-  margin-top: 1rem;
   width: 100%;
   height: 100%;
 }
@@ -73,6 +72,7 @@
 
 .ReviewBlock {
   width: 100%;
+  margin: 1rem 0 !important;
   white-space: nowrap;
   display: flex;
   justify-content: center;
@@ -123,6 +123,7 @@
   display: flex;
   justify-content: space-between;
   white-space: nowrap;
+  margin-bottom: 10rem;
   width: 100%;
   border-top: 8px solid;
   border-bottom: 8px solid;
@@ -144,10 +145,15 @@
   margin: 0;
   color: rgba(36, 36, 36, 0.903);
 }
+.ReviewBlock h2 {
+  
+  font-size: 2.3rem;
+  margin: 0;
+  color: rgba(36, 36, 36, 0.903);
+}
 
 .CardsContainer {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  margin-top: 1rem;
   border-top: 8px solid;
   border-bottom: 8px solid;
   border-color: rgb(65, 211, 65);

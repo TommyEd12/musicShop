@@ -14,15 +14,12 @@ import Smile from "../assets/emoji-hug.svg";
 import ImageSlider from "../components/ImageSlider/ImageSlider";
 import { Context } from "../main";
 import { fetchProducts } from "../http/productAPI";
-import ProductStore from "../store/productStore";
+import ProductStore, { products } from "../store/productStore";
 import { observer } from "mobx-react-lite";
 
 const Shop = observer(() => {
-  const context = useContext(Context);
-  if (!context) {
-    return <div>Loading...</div>;
-  }
-  const product = context.product;
+  const product = products
+  
   try {
     useEffect(() => {
       const fetchData = async () =>{await fetchProducts().then((data) => product.setProducts(data))};
@@ -61,7 +58,6 @@ const Shop = observer(() => {
       </div>
 
       <BrandBar></BrandBar>
-      <br></br>
       <div id="AboutUs" className="Block">
         <h2 className="NewItems">О нашей компании</h2>
         <img className="NoteImage" src={NoteImage}></img>
@@ -96,6 +92,7 @@ const Shop = observer(() => {
         </div>
         <ImageSlider></ImageSlider>
       </div>
+      <br></br>
     </Container>
   );
 });

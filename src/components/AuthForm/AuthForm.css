@@ -1,0 +1,33 @@
+@font-face {
+    font-family: Montserrat;
+    src: url('../public/fonts/Montserrat-VariableFont_wght.ttf')
+  }
+  @font-face {
+    font-family: Montserrat-bold;
+    src: url('../public/fonts/static/Montserrat-SemiBold.ttf')
+  }
+
+.AuthWrapper input{
+    background-color: white !important;
+    margin: 0.5rem 0.1rem;
+    border-radius: 8px;
+    color: black;
+    width: 100%;
+}
+
+.AuthWrapper{
+    font-family: Montserrat;
+}
+
+.AuthWrapper h2{
+    font-family: Montserrat-bold;
+    justify-self: center;
+}
+.AuthWrapper button{
+    background-color: rgb(65, 211, 65);
+    border-color: rgb(65, 211, 65) !important;
+    border-bottom-width: 0;
+    border-right-width: 0;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+}
