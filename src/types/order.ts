@@ -1,5 +1,7 @@
-export interface order{
-    id: number;
-    userId: number;
-    status: "Created" | "inProgress" | "Finished"
+export interface Order {
+  id: number;
+  userId: number;
+  status: "Created" | "inProgress" | "Finished";
+  address: string;
+  postIndex: number;
 }

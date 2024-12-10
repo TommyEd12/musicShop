@@ -7,6 +7,7 @@ export enum Routes {
     PRODUCT_ROUTE = '/product',
     PERSONAL_ROUTE = '/personal',
     ABOUT_US_ROUTE = '/info',
-    CATALOG_ROUTE = '/catalog'
+    CATALOG_ROUTE = '/catalog',
+    ORDER_CREATING='/order'
 }
 

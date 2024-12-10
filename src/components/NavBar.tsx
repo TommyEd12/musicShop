@@ -64,7 +64,7 @@ const NavBar = () => {
               <img className="UserImage" src={UserImage}></img>
             </a>
 
-            <img className="ShoppingCartImage " src={ShoppingCart}></img>
+            <img className="ShoppingCartImage " onClick={() => navigation(Routes.BASKET_ROUTE)} src={ShoppingCart}></img>
           </Nav>
         </Navbar.Collapse>
       </Container>

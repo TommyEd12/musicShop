@@ -1,29 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "../styles/Card.css";
 import clevanImage from "../assets/clv.jpg";
 import { Product } from "../types/product";
+import { observer } from "mobx-react-lite";
+import { products } from "../store/productStore";
 
 interface Props {
-  product: Product
+  product: Product;
 }
 
-export default function CardItem({product}: Props) {
+export const CardItem = observer(({ product }: Props) => {
+  const [showNotification, setShowNotification] = useState(false);
+
+  const handleAddToCart = () => {
+    products.setSelectedProducts(product);
+    setShowNotification(true);
+    setTimeout(() => setShowNotification(false), 3000); 
+  };
+
   return (
-    <Card className="ProductCard">
-      <Card.Img variant="top" src={product.images[1]} />
-      <Card.Body>
-        <div className="Price">{product.price}</div>
-        <Card.Title>{product.name}</Card.Title>
-        <Card.Text>
-           {product.description}
-        </Card.Text>
-        <div className="CardFooter">
-          <Button className="AddToCart">В корзину</Button>  
-          <h6>В наличии: {product.count}</h6>
-        </div>
-      </Card.Body>
-    </Card>
+    <>
+      <Card className="ProductCard">
+        <Card.Img variant="top" src={product.images[1]} />
+        <Card.Body>
+          <div className="Price">{product.price}</div>
+          <Card.Title>{product.name}</Card.Title>
+          <Card.Text>{product.description}</Card.Text>
+          <div className="CardFooter">
+            <Button className="AddToCart" onClick={handleAddToCart}>
+              В корзину
+            </Button>
+            <h6>В наличии: {product.count}</h6>
+          </div>
+        </Card.Body>
+      </Card>
+      {showNotification && ( 
+        <div className="notification">Товар добавлен в корзину!</div>
+      )}
+    </>
   );
-}
+});
+
+export default CardItem;
+

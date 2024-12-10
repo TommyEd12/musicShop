@@ -5,10 +5,11 @@ import "./profile.css";
 import { Context } from "../../main";
 import { observer } from "mobx-react-lite";
 import { useAppContext } from "../../hooks/UseAppContext";
-import { user } from "../../store/userStore";
-import { logout, profile } from "../../http/userAPI";
+import { fetchUserByEmail, logout, profile } from "../../http/userAPI";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Routes } from "../../utils/consts";
+import { User } from "../../types/user";
+import { user } from "../../store/userStore";
 
 interface OrderItem {
   name: string;
@@ -24,7 +25,7 @@ interface Order {
 
 const ProfilePage: React.FC = observer(() => {
   const navigation = useNavigate();
-  console.log(user);
+  const [isRedirecting, setIsRedirecting] = useState(false);
   const [email, setEmail] = useState("");
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +42,6 @@ const ProfilePage: React.FC = observer(() => {
         } else {
           const data = response.data;
           setEmail(data);
-          console.log(data);
         }
       } catch (error) {
         console.error("Произошла непредвиденная ошибка:", error);
@@ -50,6 +50,20 @@ const ProfilePage: React.FC = observer(() => {
     };
     fetchData();
   }, [navigation]);
+  useEffect(() => {
+    const checkRole = async () => {
+      if (email) {
+        const response = await fetchUserByEmail(email);
+        const curUser = response.data[0];
+        if (curUser.role === "admin") {
+          setIsRedirecting(true);
+          user.setUser(curUser);
+          navigation(Routes.ADMIN_ROUTE);
+        }
+      }
+    };
+    checkRole();
+  }, [email]);
 
   const [orders, setOrders] = useState<Order[]>([
     {

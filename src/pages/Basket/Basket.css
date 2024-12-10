@@ -1,0 +1,18 @@
+.fs-5{
+    margin-top: 1rem
+}
+
+.btn{
+    background-color: rgb(65, 211, 65);
+    border-color: rgb(65, 211, 65);
+}
+.btn:hover{
+    background-color: rgb(65, 211, 65);
+    border-color: rgb(65, 211, 65);
+}
+.empty-cart {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 2em;
+    color: #888; /* Серый цвет */
+  }

@@ -13,6 +13,26 @@
     width: 100%;
 
 }
+.notification {
+    font-size: 1.5rem;
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top:auto;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    margin-bottom: 10rem;
+    background-color: rgb(65, 211, 65); 
+    color: white; 
+    border-radius: 10px;
+    width: auto;
+    padding: 5px;
+    height: 40px;
+    z-index: 1000;
+}
+  
 
 .Price{
     color: rgb(65, 211, 65);

@@ -7,6 +7,7 @@ export default class ProductStore {
   _categories: Category[];
   _brands: Brand[];
   _products: Product[];
+  _selectedProducts: Product[];
   _selectedCategory: Category;
   _selectedBrand: Brand;
   _page: number;
@@ -14,6 +15,7 @@ export default class ProductStore {
   _limit: number;
   constructor() {
     this._categories = [];
+    this._selectedProducts = [];
     this._brands = [];
     this._products = [];
     this._selectedCategory = { id: 0, name: "" };
@@ -24,7 +26,7 @@ export default class ProductStore {
     makeAutoObservable(this);
   }
 
-  setTypes(categories : Category[]) {
+  setTypes(categories: Category[]) {
     this._categories = categories;
   }
 
@@ -33,7 +35,17 @@ export default class ProductStore {
   }
   setProducts(products: Product[]) {
     this._products = products;
-    console.log(this._products)
+    console.log(this._products);
+  }
+  setSelectedProducts(selectedProduct: Product) {
+    this._selectedProducts.push(selectedProduct);
+    console.log(this._selectedProducts);
+  }
+  setSelectedGoods(selectedProducts: Product[]) {
+    this._selectedProducts = selectedProducts
+  }
+  deleteSelectedProduct(id:number){
+    this.setSelectedGoods((this._selectedProducts.filter((item) => item.id !== id)));
   }
 
   setSelectedCategory(category: Category) {
@@ -57,11 +69,14 @@ export default class ProductStore {
   get brands() {
     return this._brands;
   }
-  get devices() {
+  get categories() {
     return this._categories;
   }
   get selectedType() {
     return this._selectedCategory;
+  }
+  get selectedProducts() {
+    return this._selectedProducts;
   }
   get selectedBrand() {
     return this._selectedBrand;
@@ -77,4 +92,4 @@ export default class ProductStore {
   }
 }
 
-export const products = new ProductStore()
+export const products = new ProductStore();
