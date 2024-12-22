@@ -26,7 +26,12 @@ export const fetchProducts = async () => {
   return data;
 };
 
-export const fetchOneDevice = async (id: number) => {
-  const { data } = await $host.get("api/device/" + id);
+export const fetchOneProduct = async (id: number) => {
+  const { data } = await $host.get("api/product/" + id);
   return data;
 };
+
+export const addProduct = async (product: Product) =>{
+ const {data} = await $host.post("api/product/", product)
+ return data
+}

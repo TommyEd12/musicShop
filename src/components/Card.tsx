@@ -6,6 +6,8 @@ import clevanImage from "../assets/clv.jpg";
 import { Product } from "../types/product";
 import { observer } from "mobx-react-lite";
 import { products } from "../store/productStore";
+import { useNavigate } from "react-router-dom";
+import { Routes } from "../utils/consts";
 
 interface Props {
   product: Product;
@@ -13,6 +15,7 @@ interface Props {
 
 export const CardItem = observer(({ product }: Props) => {
   const [showNotification, setShowNotification] = useState(false);
+  const navigation = useNavigate()
 
   const handleAddToCart = () => {
     products.setSelectedProducts(product);
@@ -23,10 +26,10 @@ export const CardItem = observer(({ product }: Props) => {
   return (
     <>
       <Card className="ProductCard">
-        <Card.Img variant="top" src={product.images[1]} />
+        <Card.Img onClick={() => {navigation(Routes.PRODUCT_ROUTE + "/" + product.id)}} variant="top" src={product.images[0]} />
         <Card.Body>
           <div className="Price">{product.price}</div>
-          <Card.Title>{product.name}</Card.Title>
+          <Card.Title onClick={() => {navigation(Routes.PRODUCT_ROUTE + "/" + product.id)}}>{product.name}</Card.Title>
           <Card.Text>{product.description}</Card.Text>
           <div className="CardFooter">
             <Button className="AddToCart" onClick={handleAddToCart}>

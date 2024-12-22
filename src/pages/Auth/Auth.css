@@ -1,0 +1,11 @@
+.authCardWrapper{
+    width: 100% !important;
+    height: 100vh!important;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    background-color: rgb(236, 236, 236) !important;
+}
+.authCard{
+    margin-bottom: 5rem;
+}

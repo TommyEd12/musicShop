@@ -10,12 +10,41 @@
 .AuthWrapper input{
     background-color: white !important;
     margin: 0.5rem 0.1rem;
+    border: 1px solid black;
     border-radius: 8px;
     color: black;
     width: 100%;
 }
+.AuthLine{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    white-space: nowrap;
+}
+.ResetBtn{
+    margin-top: 0.5rem !important;
+}
+.FormAndButton Button{
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+.AuthLine h3{
+    margin-top: 5px;
+    font-family: Montserrat;
+    font-size: 1.1rem;
+    color: rgba(57, 57, 57, 0.596);
+}
+.AuthTitle{
+   color: rgba(0, 0, 0, 0.804);
+}
+
+.AuthWrapper input:required{
+    background-color: white !important; 
+}
 
 .AuthWrapper{
+    align-self: center;
     font-family: Montserrat;
 }
 
@@ -30,4 +59,12 @@
     border-right-width: 0;
     margin: 0.5rem 0;
     border-radius: 8px;
+}
+.SwitchButton{
+    background-color: white !important;
+    justify-self: center;
+    border: 0px;
+    color: rgba(57, 57, 57, 0.596);
+    font-weight:500;
+    font-size: 1.1rem;
 }

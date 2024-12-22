@@ -19,7 +19,9 @@ export const logout = async () => {
   return data;
 };
 export const fetchUserByEmail = async (email: string) => {
-  const { data } = await $host.get("api/user/getUserByEmail", {params:{email}});
+  const { data } = await $host.get("api/user/getUserByEmail", {
+    params: { email },
+  });
   return data;
 };
 
@@ -32,6 +34,31 @@ export const profile = async () => {
   } catch (error) {
     console.error("Ошибка при получении профиля:", error);
     throw error;
+  }
+};
+
+export const sendOtp = async (email: string) => {
+  try {
+    await $host.post("api/user/OTP", { email });
+  } catch (error) {
+    console.error("Ошибка при отправке письма", error);
+  }
+};
+
+export const resetPassword = async (
+  email: string,
+  newPassword: string,
+  otp: string
+) => {
+  try {
+    const { data } = await $host.post("api/user/resetPassword", {
+      email,
+      newPassword,
+      otp,
+    });
+    return data;
+  } catch (error) {
+    console.error("Ошибка при смене пароля : введен неверный код", error);
   }
 };
 

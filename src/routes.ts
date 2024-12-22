@@ -1,4 +1,4 @@
-import Admin from "./pages/Admin";
+import Admin from "./pages/Admin/Admin";
 import { Routes } from "./utils/consts";
 import Shop from "./pages/Shop";
 import Auth from "./pages/Auth/Auth";
@@ -47,7 +47,7 @@ export const publicRoutes: IRoute[] = [
     Element: Auth,
   },
   {
-    path: Routes.PRODUCT_ROUTE + "./id",
+    path: Routes.PRODUCT_ROUTE + "/:id",
     Element: ProductPage,
   },
   {

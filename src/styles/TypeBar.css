@@ -16,6 +16,8 @@
 
 .ProductType {
   font-family:Montserrat;
+  color: black;
+  background-color: rgba(0, 0, 0, 0.026) !important;
   width: auto !important;
   margin: 0.2rem;
   padding: 0.5rem !important;
