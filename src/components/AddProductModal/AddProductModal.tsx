@@ -1,93 +1,112 @@
-import React, { useState, useRef } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
+import React, { useState, useRef, useCallback } from "react";
+import { Modal, Button, Form, Image } from "react-bootstrap";
 import { Product } from "../../types/product";
 import { Brand } from "../../types/brand";
 import { Category } from "../../types/category";
-import { addProduct } from "../../http/productAPI";
 import { observer } from "mobx-react-lite";
+import { addProduct, changeProduct } from "../../http/productAPI";
 
-interface AddProductModalProps {
+interface ChangeProductModalProps {
   show: boolean;
   onHide: () => void;
   onAddProduct: (product: Product) => void;
   brands: Brand[];
   categories: Category[];
+  initialProduct?: Product; // Optional, for editing
 }
 
-const AddProductModal: React.FC<AddProductModalProps> = observer(
-  ({ show, onHide, onAddProduct, brands, categories }) => {
-    const [newProduct, setNewProduct] = useState<Product>({
-      id: "",
-      name: "",
-      price: 0,
-      discountPrice: 0,
-      count: 0,
-      description: "",
-      categoryId: 0,
-      brandId: 0,
-      images: [],
-    });
+const ChangeProductModal: React.FC<ChangeProductModalProps> = observer(
+  ({ show, onHide, onAddProduct, brands, categories, initialProduct }) => {
+    const [newProduct, setNewProduct] = useState<Product>(
+      initialProduct || {
+        id: "",
+        name: "",
+        price: 0,
+        discountPrice: 0,
+        count: 0,
+        description: "",
+        categoryId: 0,
+        brandId: 0,
+        images: [],
+      }
+    );
     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const [previewImages, setPreviewImages] = useState<string[]>([]); // Store image previews
 
-    const handleChange = (
-      e: React.ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-      >
-    ) => {
-      const { name, value } = e.target;
-      setNewProduct((prev) => ({
-        ...prev,
-        [name]: Number.isNaN(Number(value)) ? value : Number(value),
-      }));
-    };
+    const handleChange = useCallback(
+      (
+        e: React.ChangeEvent<
+          HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >
+      ) => {
+        const { name, value } = e.target;
+        setNewProduct((prev) => ({
+          ...prev,
+          [name]:
+            name === "images"
+              ? [value]
+              : Number.isNaN(Number(value))
+              ? value
+              : Number(value),
+        }));
+      },
+      []
+    );
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.files) {
-        setSelectedFiles([...e.target.files]); // Сохраняем выбранные файлы в состоянии
+        const files = Array.from(e.target.files);
+        setSelectedFiles(files);
+
+        const previewUrls = files.map((file) => URL.createObjectURL(file));
+        setPreviewImages(previewUrls);
       }
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-
-      // Convert files to data URLs
-      const filePromises = selectedFiles.map((file) => {
-        return new Promise<string>((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result as string);
-          reader.onerror = reject;
-          reader.readAsDataURL(file);
+    const handleSubmit = useCallback(
+      async (e: React.FormEvent) => {
+        e.preventDefault();
+        // Convert files to base64 Data URLs
+        const imagePromises = selectedFiles.map((file) => {
+          return new Promise<string>((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result as string);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+          });
         });
-      });
 
-      Promise.all(filePromises).then((images) => {
-        const productToSubmit = {
-          ...newProduct,
-          images, // Добавляем массив base64 encoded images
-        };
-        onAddProduct(productToSubmit);
-        addProduct(productToSubmit); // Add to backend
-        setNewProduct({
-          id: "",
-          name: "",
-          price: 0,
-          discountPrice: 0,
-          count: 0,
-          description: "",
-          categoryId: 0,
-          brandId: 0,
-          images: [],
-        });
-        setSelectedFiles([]);
-        if (fileInputRef.current) fileInputRef.current.value = ""; // Clear file selection
-      });
-    };
+        try {
+          const images = await Promise.all(imagePromises);
+          const productToSubmit = { ...newProduct, images };
+          onAddProduct(productToSubmit);
+          if (!initialProduct) {
+            await addProduct(productToSubmit);
+          }
+          else{
+            await changeProduct(initialProduct.id, productToSubmit)
+          }
+        } catch (error) {
+          console.error("Error during image processing:", error);
+          alert("Failed to process images.");
+          return;
+        } finally {
+          setSelectedFiles([]);
+          setPreviewImages([]);
+          if (fileInputRef.current) fileInputRef.current.value = ""; // Clear file input
+        }
+        onHide();
+      },
+      [newProduct, selectedFiles, onAddProduct, onHide]
+    );
 
     return (
-      <Modal show={show} onHide={onHide}>
+      <Modal show={show} onHide={onHide} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Добавить новый товар</Modal.Title>
+          <Modal.Title>
+            {initialProduct ? "Изменить товар" : "Добавить новый товар"}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
@@ -141,6 +160,7 @@ const AddProductModal: React.FC<AddProductModalProps> = observer(
                 required
               />
             </Form.Group>
+
             <Form.Group className="mb-3">
               <Form.Label>Изображения</Form.Label>
               <Form.Control
@@ -149,9 +169,20 @@ const AddProductModal: React.FC<AddProductModalProps> = observer(
                 accept="image/*"
                 onChange={handleFileChange}
                 ref={fileInputRef}
-                required
               />
             </Form.Group>
+            {previewImages.length > 0 && (
+              <div className="mb-3">
+                {previewImages.map((url, index) => (
+                  <Image
+                    key={index}
+                    src={url}
+                    style={{ width: "100px", height: "100px", margin: "5px" }}
+                  />
+                ))}
+              </div>
+            )}
+
             <Form.Group className="mb-3">
               <Form.Label>Категория</Form.Label>
               <Form.Select
@@ -185,7 +216,7 @@ const AddProductModal: React.FC<AddProductModalProps> = observer(
               </Form.Select>
             </Form.Group>
             <Button variant="primary" type="submit">
-              Добавить
+              {initialProduct ? "Изменить" : "Добавить"}
             </Button>
           </Form>
         </Modal.Body>
@@ -194,4 +225,4 @@ const AddProductModal: React.FC<AddProductModalProps> = observer(
   }
 );
 
-export default AddProductModal;
+export default ChangeProductModal;

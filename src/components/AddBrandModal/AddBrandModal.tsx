@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { Brand } from "../../types/brand";
+import { addBrand } from "../../http/productAPI";
 
 interface AddBrandModalProps {
   show: boolean;
@@ -24,9 +25,10 @@ const AddBrandModal: React.FC<AddBrandModalProps> = ({
     setNewBrand((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     onAddBrand(newBrand);
+    await addBrand(newBrand);
     setNewBrand({ id: "", name: "", image: "" });
   };
 
@@ -48,9 +50,10 @@ const AddBrandModal: React.FC<AddBrandModalProps> = ({
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>URL изображения бренда</Form.Label>
+            <Form.Label>изображение бренда</Form.Label>
             <Form.Control
-              type="text"
+              type="file"
+              accept="image/*"
               name="image"
               value={newBrand.image}
               onChange={handleChange}

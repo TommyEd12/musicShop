@@ -22,7 +22,7 @@ const AdminPage: React.FC = observer(() => {
   try {
     useEffect(() => {
       const fetchData = async () => {
-        await fetchProducts().then((data) => product.setProducts((data)));
+        await fetchProducts().then((data) => product.setProducts(data));
         await fetchBrands().then((data) => product.setBrands(data));
         await fetchCategories().then((data) => product.setTypes(data));
       };
@@ -31,15 +31,16 @@ const AdminPage: React.FC = observer(() => {
   } catch (error) {
     console.log("Something went wrong");
   }
-  console.log(allBrands)
+  console.log(allBrands);
   const [newProducts, setNewProducts] = useState<Product[]>(allProducts);
   const [brands, setBrands] = useState<Brand[]>(allBrands);
   const [categories, setCategories] = useState<Category[]>(allCategories);
   const [showAddProductModal, setShowAddProductModal] = useState(false);
   const [showAddBrandModal, setShowAddBrandModal] = useState(false);
   const [showAddCategoryModal, setShowAddCategoryModal] = useState(false);
+  const [showChangeProductModal, setShowChangeProductModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  
   const handleAddProduct = (newProduct: Product) => {
     setNewProducts([...newProducts, newProduct]);
     setShowAddProductModal(false);
@@ -53,6 +54,19 @@ const AdminPage: React.FC = observer(() => {
   const handleAddCategory = (newCategory: Category) => {
     setCategories([...categories, newCategory]);
     setShowAddCategoryModal(false);
+  };
+  const handleChangeProduct = (updatedProduct: Product) => {
+    const updatedProducts = newProducts.map((product) =>
+      product.id === updatedProduct.id ? updatedProduct : product
+    );
+
+    setNewProducts(updatedProducts);
+    setShowChangeProductModal(false);
+    setSelectedProduct(null);
+  };
+  const handleOpenChangeProductModal = (productToChange: Product) => {
+    setSelectedProduct(productToChange);
+    setShowAddProductModal(true);
   };
 
   return (
@@ -109,6 +123,14 @@ const AdminPage: React.FC = observer(() => {
                 {brands.find((b) => b.id === product.brandId)?.name ||
                   "Неизвестно"}
               </td>
+              <td>
+                <Button
+                  variant="warning"
+                  onClick={() => handleOpenChangeProductModal(product)}
+                >
+                  Изменить
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -117,6 +139,7 @@ const AdminPage: React.FC = observer(() => {
         show={showAddProductModal}
         onHide={() => setShowAddProductModal(false)}
         onAddProduct={handleAddProduct}
+        initialProduct={selectedProduct ?? ({} as Product)}
         brands={brands}
         categories={categories}
       />
