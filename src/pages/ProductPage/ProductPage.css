@@ -1,0 +1,81 @@
+.ItemImage {
+  width: 100% !important;
+  height: 100% !important;
+}
+.ContainerWrapper {
+  background-color: rgba(236, 236, 236);
+  height: 100%;
+}
+
+.ItemCont {
+  display: flex !important;
+  border-radius: 10px;
+  background-color: white;
+  width: 100%;
+  height: 850px;
+  margin-bottom: 13rem !important;
+  margin-top: 7rem !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+.notification {
+  font-size: 1.5rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: auto;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  margin-bottom: 10rem;
+  background-color: rgb(65, 211, 65);
+  color: white;
+  border-radius: 10px;
+  width: auto;
+  padding: 5px;
+  height: 40px;
+  z-index: 1000;
+}
+
+.ProductInfo h1 {
+  font-size: 2.5rem;
+}
+.ProductInfo h2 {
+    color: rgb(65, 211, 65);
+    font-weight: 400 !important;
+    margin: 0;
+    margin-left: 1rem;
+  }
+  .ProductInfo h3 {
+    color: black;
+    text-decoration:line-through;
+    font-weight: 400 !important;
+    margin: 0;
+  }
+.ProductInfo button {
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
+.ProductInfo div {
+    display: flex;
+    font-size: 1.5rem;
+    gap: 1rem;
+    width: 100%;
+    border-radius: 10px;
+    background-color: rgb(247, 246, 246);
+    align-items: center;
+    justify-content:start;
+}
+.CurrentImage {
+  height: 600px;
+  width: 100%;
+}
+.BrandColumn {
+  background-color: white;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.BrandColumn img {
+  width: 100%;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { Modal, Button, Form, Image } from "react-bootstrap";
 import { Product } from "../../types/product";
 import { Brand } from "../../types/brand";
@@ -17,22 +17,39 @@ interface ChangeProductModalProps {
 
 const ChangeProductModal: React.FC<ChangeProductModalProps> = observer(
   ({ show, onHide, onAddProduct, brands, categories, initialProduct }) => {
-    const [newProduct, setNewProduct] = useState<Product>(
-      initialProduct || {
-        id: "",
-        name: "",
-        price: 0,
-        discountPrice: 0,
-        count: 0,
-        description: "",
-        categoryId: 0,
-        brandId: 0,
-        images: [],
+    const [newProduct, setNewProduct] = useState<Product>({
+      id: "",
+      name: "",
+      price: 0,
+      discountPrice: 0,
+      count: 0,
+      description: "",
+      categoryId: 0,
+      brandId: 0,
+      images: [],
+    });
+
+    useEffect(() => {
+      if (initialProduct) {
+        setNewProduct(initialProduct);
+      } else {
+        setNewProduct({
+          id: "",
+          name: "",
+          price: 0,
+          discountPrice: 0,
+          count: 0,
+          description: "",
+          categoryId: 0,
+          brandId: 0,
+          images: [],
+        });
       }
-    );
+    }, [initialProduct]);
+
     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
     const fileInputRef = useRef<HTMLInputElement>(null);
-    const [previewImages, setPreviewImages] = useState<string[]>([]); // Store image previews
+    const [previewImages, setPreviewImages] = useState<string[]>([]);
 
     const handleChange = useCallback(
       (
@@ -43,31 +60,28 @@ const ChangeProductModal: React.FC<ChangeProductModalProps> = observer(
         const { name, value } = e.target;
         setNewProduct((prev) => ({
           ...prev,
-          [name]:
-            name === "images"
-              ? [value]
-              : Number.isNaN(Number(value))
-              ? value
-              : Number(value),
+          [name]: Number.isNaN(Number(value)) ? value : Number(value),
         }));
       },
       []
     );
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (e.target.files) {
-        const files = Array.from(e.target.files);
-        setSelectedFiles(files);
-
-        const previewUrls = files.map((file) => URL.createObjectURL(file));
-        setPreviewImages(previewUrls);
-      }
-    };
+    const handleFileChange = useCallback(
+      (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+          const files = Array.from(e.target.files);
+          setSelectedFiles(files);
+          const previewUrls = files.map((file) => URL.createObjectURL(file));
+          setPreviewImages(previewUrls);
+        }
+      },
+      []
+    );
 
     const handleSubmit = useCallback(
       async (e: React.FormEvent) => {
         e.preventDefault();
-        // Convert files to base64 Data URLs
+
         const imagePromises = selectedFiles.map((file) => {
           return new Promise<string>((resolve, reject) => {
             const reader = new FileReader();
@@ -94,7 +108,7 @@ const ChangeProductModal: React.FC<ChangeProductModalProps> = observer(
         } finally {
           setSelectedFiles([]);
           setPreviewImages([]);
-          if (fileInputRef.current) fileInputRef.current.value = ""; // Clear file input
+          if (fileInputRef.current) fileInputRef.current.value = "";
         }
         onHide();
       },
@@ -160,7 +174,6 @@ const ChangeProductModal: React.FC<ChangeProductModalProps> = observer(
                 required
               />
             </Form.Group>
-
             <Form.Group className="mb-3">
               <Form.Label>Изображения</Form.Label>
               <Form.Control
@@ -182,7 +195,6 @@ const ChangeProductModal: React.FC<ChangeProductModalProps> = observer(
                 ))}
               </div>
             )}
-
             <Form.Group className="mb-3">
               <Form.Label>Категория</Form.Label>
               <Form.Select

@@ -19,18 +19,50 @@ const AddBrandModal: React.FC<AddBrandModalProps> = ({
     name: "",
     image: "",
   });
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setNewBrand((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    onAddBrand(newBrand);
-    await addBrand(newBrand);
-    setNewBrand({ id: "", name: "", image: "" });
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setSelectedFile(e.target.files[0]);
+      //  console.log(e.target.files[0])
+    } else{
+     setSelectedFile(null)
+    }
   };
+
+
+ const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+     if (!selectedFile) {
+          alert('Выберите изображение!');
+           return;
+         }
+        try{
+             const imagePromise = new Promise<string>((resolve, reject) => {
+                const reader = new FileReader();
+                   reader.onload = () => resolve(reader.result as string);
+                   reader.onerror = reject;
+                  reader.readAsDataURL(selectedFile);
+            });
+          const image = await imagePromise;
+           const brandToSubmit = { ...newBrand, image };
+
+          onAddBrand(brandToSubmit);
+          await addBrand(brandToSubmit);
+            setNewBrand({ id: "", name: "", image: "" });
+           setSelectedFile(null); // Reset file
+        }
+        catch (error) {
+          console.error("Error processing image", error);
+          alert("Произошла ошибка при загрузке изображения.");
+        }
+ };
 
   return (
     <Modal show={show} onHide={onHide}>
@@ -54,9 +86,7 @@ const AddBrandModal: React.FC<AddBrandModalProps> = ({
             <Form.Control
               type="file"
               accept="image/*"
-              name="image"
-              value={newBrand.image}
-              onChange={handleChange}
+              onChange={handleFileChange}
               required
             />
           </Form.Group>

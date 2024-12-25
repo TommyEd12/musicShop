@@ -21,6 +21,14 @@ export const fetchBrands = async () => {
   const { data } = await $host.get("api/brand");
   return data;
 };
+export const fetchOneBrand = async (id: number) => {
+  const { data } = await $host.get("api/brand/" + id);
+  return data;
+};
+export const fetchOneCategory = async (id: number) => {
+  const { data } = await $host.get("api/category/" + id);
+  return data;
+};
 export const addBrand = async (brand: Brand) => {
   const { data } = await $host.post("api/brand", brand);
   return data;

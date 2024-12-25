@@ -137,9 +137,12 @@ const AdminPage: React.FC = observer(() => {
       </Table>
       <AddProductModal
         show={showAddProductModal}
-        onHide={() => setShowAddProductModal(false)}
+        onHide={() => {
+          setShowAddProductModal(false);
+          if (selectedProduct) setSelectedProduct(null);
+        }}
         onAddProduct={handleAddProduct}
-        initialProduct={selectedProduct ?? ({} as Product)}
+        initialProduct={selectedProduct ?? undefined}
         brands={brands}
         categories={categories}
       />

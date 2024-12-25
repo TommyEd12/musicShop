@@ -2,7 +2,7 @@ import Admin from "./pages/Admin/Admin";
 import { Routes } from "./utils/consts";
 import Shop from "./pages/Shop";
 import Auth from "./pages/Auth/Auth";
-import ProductPage from "./pages/ProductPage";
+import ProductPage from "./pages/ProductPage/ProductPage";
 import Basket from "./pages/Basket/Basket";
 import AboutUs from "./pages/AboutUs";
 import Catalog from "./pages/Catalog/Catalog";
