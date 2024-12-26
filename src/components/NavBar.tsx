@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -13,10 +13,19 @@ import "../styles/NavBar.css";
 import { useNavigate } from "react-router-dom";
 import { Routes } from "../utils/consts";
 import { debounce } from "../utils/debounce";
+import ProductStore, { products } from "../store/productStore";
+import { Product } from "../types/product";
+import { observer } from "mobx-react-lite";
 
-const NavBar = () => {
+const NavBar = observer(() => {
   const navigation = useNavigate();
-  const searchHandler = debounce(e => {console.log(e.target.value)}, 2000)
+  const [count, setCount] = useState<number>(products._selectedProducts.length);
+  const searchHandler = debounce((e) => {
+    console.log(e.target.value);
+  }, 2000);
+  useEffect(() => {
+    setCount(products._selectedProducts.length);
+  }, [products._selectedProducts]);
 
   return (
     <Navbar
@@ -27,8 +36,8 @@ const NavBar = () => {
     >
       <Container className="NavContent">
         <img className="navBarLogo" src={storeLogo}></img>
-        <Navbar.Brand  className="NavBarTitle">
-          <h1 onClick={() =>navigation(Routes.SHOP_ROUTE)}>MUS&CO</h1>
+        <Navbar.Brand className="NavBarTitle">
+          <h1 onClick={() => navigation(Routes.SHOP_ROUTE)}>MUS&CO</h1>
           <a href="/Catalog">
             <img className="CatalogImage" src={CatalogImage}></img>
           </a>
@@ -38,8 +47,8 @@ const NavBar = () => {
         <Navbar.Collapse id="navbarScroll">
           <Form className="Search">
             <Form.Control
-              onChange={(e)=>{
-                searchHandler(e)
+              onChange={(e) => {
+                searchHandler(e);
               }}
               type="search"
               placeholder="Поиск"
@@ -63,13 +72,19 @@ const NavBar = () => {
             <a onClick={() => navigation(Routes.PERSONAL_ROUTE)}>
               <img className="UserImage" src={UserImage}></img>
             </a>
-
-            <img className="ShoppingCartImage " onClick={() => navigation(Routes.BASKET_ROUTE)} src={ShoppingCart}></img>
+            <div className="IconCart">
+              <img
+                className="ShoppingCartImage "
+                onClick={() => navigation(Routes.BASKET_ROUTE)}
+                src={ShoppingCart}
+              ></img>
+              <span>{count > 0 ?count: ""}</span>
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
-};
+});
 
 export default NavBar;

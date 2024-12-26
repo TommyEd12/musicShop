@@ -1,13 +1,30 @@
-import React from "react";
-import Card from "../../components/Card";
+import React, { useEffect } from "react";
+import Card, { CardItem } from "../../components/Card";
 import { Container, Pagination } from "react-bootstrap";
 import TypeBar from "../../components/TypeBar";
 import "./Catalog.css";
 import FilterList from "../../components/FilterList/FilterList";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
+import ProductStore, { products } from "../../store/productStore";
+import { fetchProducts } from "../../http/productAPI";
+import { observer } from "mobx-react-lite";
 
-export default function Catalog() {
+const Catalog = observer(() => {
+  const product = products;
+
+  try {
+    useEffect(() => {
+      const fetchData = async () => {
+        await fetchProducts().then((data) => product.setProducts(data));
+      };
+      fetchData();
+    }, [product]);
+  } catch (error) {
+    console.log("Something went wrong");
+  }
+  const stringifiedObj = JSON.parse(JSON.stringify(product)) as ProductStore;
+  console.log(stringifiedObj);
   return (
     <Container className="CatalogContainer">
       <TypeBar></TypeBar>
@@ -27,12 +44,13 @@ export default function Catalog() {
       <div className="Goods">
         <FilterList></FilterList>
         <div className="CardsWrapper">
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
+          {stringifiedObj._products ? (
+            stringifiedObj._products.map((product, key) => (
+              <CardItem key={product.id} product={product}></CardItem>
+            ))
+          ) : (
+            <div>Загрузка</div>
+          )}
         </div>
       </div>
       <Pagination className="GoodsPagination">
@@ -45,4 +63,5 @@ export default function Catalog() {
       </Pagination>
     </Container>
   );
-}
+});
+export default Catalog;

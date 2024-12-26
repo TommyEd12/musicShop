@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Button, ListGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Product } from "../../types/product";
-import ProductStore, { products } from "../../store/productStore"; // предполагаю, что products - это ProductStore
+import ProductStore, { products } from "../../store/productStore"; 
 import "./Basket.css";
 import { useNavigate } from "react-router-dom";
 import { Routes } from "../../utils/consts";
 
 const ShoppingCartPage: React.FC = () => {
   const [cartItems, setCartItems] = useState<Product[]>([]);
-  const [showNotification, setShowNotification] = useState<string | null>(null); //Для уведомлений
+  const [showNotification, setShowNotification] = useState<string | null>(null); 
   const navigation = useNavigate();
 
   const removeFromCart = (id: number) => {
@@ -80,7 +80,7 @@ const ShoppingCartPage: React.FC = () => {
                         />
                       </Col>
                       <Col xs={5} md={4}>
-                        <h5>{item.name}</h5>
+                        <h5>{item.name.slice(0, 22)}...</h5>
                       </Col>
                       <Col xs={4} md={2}>
                         <div className="d-flex align-items-center">

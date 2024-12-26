@@ -3,8 +3,14 @@
     src: url('../public/fonts/Montserrat-VariableFont_wght.ttf')
   }
 .ProductCard{
+    cursor: pointer;
     aspect-ratio: 1/1;
     width: 31%;
+}
+.ProductCard:hover{
+    transform: translateY(-20px);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, rgba(189, 189, 189, 0.245));
+
 }
 
 .card-img-top{
@@ -36,7 +42,6 @@
 
 .Price{
     color: rgb(65, 211, 65);
-    margin-bottom: 0.5rem;
     font-size: 1.2rem;
 }
 
@@ -50,12 +55,24 @@
     border: 1px solid rgba(189, 189, 189, 0.245);
 
 }
-
+.Prices{
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+.Prices .Pr{
+    font-size: 0.9rem;
+    text-decoration: line-through;
+    margin-left: 1rem;
+}
 .CardFooter h6{
     margin: 0;
     color: rgba(61, 61, 61, 0.811) ;
 }
 .card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     font-family: Montserrat;
 }
 

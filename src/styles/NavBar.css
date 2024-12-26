@@ -13,9 +13,9 @@ a {
 }
 
 a:hover {
-  color:inherit; 
-  text-decoration:none; 
-  cursor:pointer;  
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .NavBarTitle {
@@ -26,26 +26,28 @@ a:hover {
   margin-left: 1rem;
   margin-right: 0 !important;
   white-space: nowrap !important;
-  
 }
 .NavBarTitle h1 {
   cursor: pointer !important;
-  
 }
 
-h5{
+h5 {
   align-self: center;
   white-space: nowrap;
   margin-bottom: 0.2rem !important;
   margin-right: 1rem;
 }
 
-.navbar-toggler{
+.navbar-toggler {
   margin-right: 1rem !important;
+  background-color: white !important;
 }
-
-
-
+.navbar-toggler-icon {
+  background-image: url(../assets/chevron-down-icon.svg) !important;
+ 
+  height: 20px;
+  width: 20px;
+}
 
 .navBarLogo {
   position: relative;
@@ -54,7 +56,7 @@ h5{
   padding: 0.3rem;
   border-radius: 10px;
   margin-left: 1rem;
-  background-size: contain !important; 
+  background-size: contain !important;
 }
 .CatalogImage {
   width: 2rem;
@@ -85,7 +87,6 @@ h5{
   background-color: white;
 }
 
-
 .SearchImage {
   width: 75%;
   height: 75%;
@@ -99,19 +100,30 @@ h5{
 .Search {
   display: flex;
   align-items: center;
-  width: 72% ;
+  width: 72%;
   margin-right: 1rem;
 }
 
 .SearchLine {
-  width: 100% ;
+  width: 100%;
   height: 3.45rem;
-  margin-right:0rem !important;
+  margin-right: 0rem !important;
   margin-left: 1rem !important;
   border-radius: 10px !important;
-  border-color:  rgb(65, 211, 65)!important;
+  border-color: rgb(65, 211, 65) !important;
 }
-
+.IconCart {
+  position: relative;
+}
+.IconCart span {
+  position: absolute;
+  bottom: 65%;
+  left: 30px;
+  padding: 2px 3px;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+}
 .NavContent {
   display: flex !important;
   background-color: rgb(65, 211, 65);
@@ -119,7 +131,7 @@ h5{
   color: white;
   margin-left: 0 !important;
   margin-right: 0 !important;
-  padding: 0  !important;
+  padding: 0 !important;
   align-items: center !important;
   justify-content: space-evenly !important;
   overflow: auto;
@@ -134,104 +146,92 @@ h5{
   overflow: hidden;
 }
 
-
-
 @media only screen and (max-width: 640px) {
-  .navBarContainer{
+  .navBarContainer {
     max-width: 640px;
     font-size: 0.7rem;
   }
-  .NavBarContent{
+  .NavBarContent {
     font-size: 0.75rem !important;
   }
-  
 }
 @media only screen and (max-width: 1200px) {
-  .navBarContainer{
+  .navBarContainer {
     max-width: 1200px;
     font-size: 1rem;
   }
 
-
-  .SearchButton{
+  .SearchButton {
     width: 40% !important;
   }
-  
 }
 
-
 @media only screen and (max-width: 1024px) {
-  .navBarContainer{
+  .navBarContainer {
     max-width: 1024px;
     font-size: 1rem;
   }
-  .NavBarContent{
+  .NavBarContent {
     font-size: 1rem;
   }
-  .NavContent{
-    height:70% !important;
+  .NavContent {
+    height: 70% !important;
   }
-  
 }
 
-
 @media only screen and (max-width: 1280px) {
-  .navBarContainer{
+  .navBarContainer {
     max-width: 1280px;
     font-size: 1rem !important;
   }
-  .NavBarContent{
+  .NavBarContent {
     font-size: 1rem !important;
   }
-  
 }
 @media only screen and (max-width: 1536px) {
-  .navBarContainer{
+  .navBarContainer {
     max-width: 1536px;
     font-size: 1.15rem;
   }
-  .NavBarContent{
+  .NavBarContent {
     font-size: 1.15rem;
   }
-  
 }
 @media only screen and (max-width: 992px) {
-  .navBarContainer{
+  .navBarContainer {
     max-width: 992px;
     font-size: 0.7rem;
   }
-  .NavBarContent{
+  .NavBarContent {
     display: flex;
     justify-content: center !important;
     font-size: 1rem !important;
     margin-bottom: 0.5rem !important;
     width: 100% !important;
   }
-  #navbarScroll{
+  #navbarScroll {
     margin: 1rem 0 !important;
     align-items: flex-start;
     justify-content: flex-start;
-
   }
-  .SearchLine{
+  .SearchLine {
     margin: 0 !important;
     margin-left: 0;
   }
-  .Search{
+  .Search {
     width: 100%;
     padding: 0 1rem;
   }
-  .NavContent{
+  .NavContent {
     display: flex !important;
     justify-content: space-between !important;
   }
   .NavBarTitle {
-  
     display: flex !important;
     justify-self: flex-end !important;
   }
- 
-  .navbar-toggler{
+
+  .navbar-toggler {
     display: flex !important;
     justify-self: flex-end !important;
   }

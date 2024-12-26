@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, makeObservable } from "mobx";
 import { Product } from "../types/product";
 import { Category } from "../types/category";
 import { Brand } from "../types/brand";
@@ -14,8 +14,10 @@ export default class ProductStore {
   _totalCount: number;
   _limit: number;
   constructor() {
+    
     this._categories = [];
     this._selectedProducts = [];
+    makeObservable(this._selectedProducts)
     this._brands = [];
     this._products = [];
     this._selectedCategory = { id: 0, name: "" };

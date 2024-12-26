@@ -8,6 +8,7 @@
 .Goods {
   gap: 2rem;
   border-top: 2px solid rgba(53, 53, 53, 0.538);
+  margin-bottom: 20rem;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
