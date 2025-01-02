@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Button, ListGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Product } from "../../types/product";
-import ProductStore, { products } from "../../store/productStore"; 
+import ProductStore, { products } from "../../store/productStore";
 import "./Basket.css";
 import { useNavigate } from "react-router-dom";
 import { Routes } from "../../utils/consts";
 
 const ShoppingCartPage: React.FC = () => {
   const [cartItems, setCartItems] = useState<Product[]>([]);
-  const [showNotification, setShowNotification] = useState<string | null>(null); 
+  const [showNotification, setShowNotification] = useState<string | null>(null);
   const navigation = useNavigate();
 
   const removeFromCart = (id: number) => {
@@ -30,20 +30,6 @@ const ShoppingCartPage: React.FC = () => {
         ? { ...item, count: Math.max(1, item.count + change) }
         : item
     );
-
-    // Проверка на превышение количества
-    // const exceedsLimit = updatedCartItems.some(
-    //   (item) => item.count > item.availableCount
-    // );
-
-    // if (exceedsLimit) {
-    //   setShowNotification(
-    //     `Вы пытаетесь добавить больше товаров, чем есть в наличии`
-    //   );
-    //   setTimeout(() => setShowNotification(null), 3000); // Скрыть уведомление через 3 секунды
-    //   return; // Прерываем обновление
-    // }
-
     setCartItems(updatedCartItems);
     products.setSelectedGoods(updatedCartItems);
   };
@@ -60,7 +46,6 @@ const ShoppingCartPage: React.FC = () => {
         {showNotification && (
           <div className="notification">{showNotification}</div>
         )}{" "}
-        {}
         {cartItems.length === 0 ? (
           <div className="empty-cart">
             Здесь пока пусто, выберите товары из нашего каталога
@@ -70,20 +55,22 @@ const ShoppingCartPage: React.FC = () => {
             <Col md={8}>
               <ListGroup>
                 {cartItems.map((item) => (
-                  <ListGroup.Item key={item.id} className="mb-3">
+                  <ListGroup.Item key={item.id} className="mb-3 itemCont">
                     <Row className="align-items-center">
-                      <Col xs={3} md={2}>
+                      <Col xs={2} md={2}>
                         <img
                           src={item.images[0]}
                           alt={item.name}
                           className="img-fluid rounded"
                         />
                       </Col>
-                      <Col xs={5} md={4}>
-                        <h5>{item.name.slice(0, 22)}...</h5>
+                      <Col xs={3} md={3}>
+                        <h5 className="ItemTitle">
+                          {item.name.slice(0, 12)}...
+                        </h5>
                       </Col>
-                      <Col xs={4} md={2}>
-                        <div className="d-flex align-items-center">
+                      <Col xs={3} md={2}>
+                        <div className="d-flex align-items-center quantityDiv">
                           <Button
                             variant="outline-secondary"
                             size="sm"
@@ -101,14 +88,15 @@ const ShoppingCartPage: React.FC = () => {
                           </Button>
                         </div>
                       </Col>
-                      <Col xs={6} md={2} className="text-end">
-                        <p className="mb-0">
-                          {(item.price * item.count).toLocaleString()} ₽
+                      <Col xs={2} md={2} className="text-end">
+                        <p className="mb-0 ItemPrice">
+                          {item.price * item.count} ₽
                         </p>
                       </Col>
-                      <Col xs={6} md={2} className="text-end">
+                      <Col xs={2} md={3} className="text-end">
                         <Button
                           variant="outline-danger"
+                          className="removeButton"
                           size="sm"
                           onClick={() => {
                             removeFromCart(item.id),
@@ -137,7 +125,7 @@ const ShoppingCartPage: React.FC = () => {
                   >
                     Оформить заказ
                   </Button>
-                  <Card.Text className="fs-5">
+                  <Card.Text className="fs-5 cardText">
                     После офомления и оплаты заказа с вами свяжется наш
                     менеджер, для уточнения адреса доставки и расчета стоимости
                   </Card.Text>

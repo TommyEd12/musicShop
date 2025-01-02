@@ -2,20 +2,85 @@ import React, { useState, useEffect } from "react";
 import { Container, Form, Button, Alert, ListGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Order } from "../../types/order";
-import { products } from "../../store/productStore"; // Импортируем productStore
+import { products } from "../../store/productStore";
 import { useNavigate } from "react-router-dom";
-import { publicRoutes } from "../../routes";
 import { Routes } from "../../utils/consts";
+import {
+  createOrder,
+  createOrderProduct,
+  fetchOrders,
+  fetchOrdersByUserId,
+} from "../../http/orderAPI";
+import { jwtDecode } from "jwt-decode";
+import { fetchUserByEmail, profile } from "../../http/userAPI";
 
 const OrderCreationPage: React.FC = () => {
   const [address, setAddress] = useState("");
   const navigation = useNavigate();
+  const [email, setEmail] = useState("");
+  const [userId, setUserId] = useState(0);
   const [postIndex, setPostIndex] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-  const cartItems = products._selectedProducts; // Получаем товары из productStore
+  const [orderId, setOrderId] = useState(0);
+  const cartItems = products._selectedProducts;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await profile();
+        if (!response || !response.data) {
+          const errorData = await response;
+          const errorMessage =
+            errorData?.message || response?.statusText || "Unknown error";
+          console.error(
+            `Ошибка при загрузке данных профиля: ${errorMessage}`,
+            errorData
+          );
+          navigation(Routes.LOGIN_ROUTE);
+          return;
+        }
+        setEmail(response.data);
+      } catch (error) {
+        console.error(
+          "Произошла непредвиденная ошибка при загрузке профиля:",
+          error
+        );
+        navigation(Routes.LOGIN_ROUTE);
+        return;
+      }
+    };
+
+    const fetchUserData = async () => {
+      if (!email) {
+        console.warn("Email не получен");
+        return;
+      }
+      try {
+        const data = await fetchUserByEmail(email);
+        setUserId(data.data[0].id);
+      } catch (error) {
+        console.error(
+          "Произошла непредвиденная ошибка при загрузке данных пользователя:",
+          error
+        );
+      }
+    };
+    const fetchOrderId = async () => {
+      const orderIdData = await fetchOrders();
+      console.log(orderIdData);
+      setOrderId(orderIdData.length + 1);
+    };
+
+    const combinedFetch = async () => {
+      await fetchData();
+      await fetchUserData();
+      await fetchOrderId();
+    };
+    combinedFetch();
+  }, [navigation, email]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
     setSuccess(false);
@@ -30,23 +95,40 @@ const OrderCreationPage: React.FC = () => {
       return;
     }
 
-    const newOrder: Omit<Order, "id" | "userId"> = {
-      status: "Created",
-      address,
-      postIndex: parseInt(postIndex, 10),
-      items: cartItems.map((item) => ({
-        productId: item.id,
-        quantity: item.count,
-        name: item.name,
-        price: item.price,
-      })), // Добавляем массив товаров в заказ
-    };
+    if (!userId) {
+      setError("Пользователь не авторизован");
+      return;
+    }
 
-    console.log("Создан новый заказ:", newOrder);
-    setSuccess(true);
+    try {
+      // Create order
+      const orderData = await createOrder(
+        userId,
+        "Created",
+        address,
+        parseInt(postIndex)
+      );
 
-    setAddress("");
-    setPostIndex("");
+      console.log(orderId);
+
+      for (const item of cartItems) {
+        await createOrderProduct({
+          id: "",
+          orderId: orderId,
+          productId: item.id,
+          quantity: item.count,
+        });
+      }
+
+      setSuccess(true);
+      setAddress("");
+      setPostIndex("");
+      products.setSelectedGoods([]);
+    } catch (error) {
+      setError(
+        "Произошла ошибка при создании заказа. Пожалуйста, попробуйте еще раз."
+      );
+    }
   };
 
   const totalSum = cartItems.reduce(
@@ -102,7 +184,12 @@ const OrderCreationPage: React.FC = () => {
           <p>В корзине нет товаров.</p>
         )}
 
-        <Button variant="primary" type="submit">
+        <Button
+          variant="primary"
+          type="submit"
+          className="mt-3"
+          disabled={cartItems.length === 0}
+        >
           Создать заказ
         </Button>
       </Form>

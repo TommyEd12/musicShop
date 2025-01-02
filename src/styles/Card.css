@@ -1,99 +1,97 @@
 @font-face {
-    font-family: Montserrat;
-    src: url('../public/fonts/Montserrat-VariableFont_wght.ttf')
-  }
-.ProductCard{
-    cursor: pointer;
-    aspect-ratio: 1/1;
-    width: 31%;
+  font-family: Montserrat;
+  src: url("../public/fonts/Montserrat-VariableFont_wght.ttf");
 }
-.ProductCard:hover{
-    transform: translateY(-20px);
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, rgba(189, 189, 189, 0.245));
-
+.ProductCard {
+  cursor: pointer;
+  aspect-ratio: 1/1;
+  width: 31%;
+}
+.ProductCard:hover {
+  transform: translateY(-20px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, rgba(189, 189, 189, 0.245));
+}
+.ItemImage {
+  margin: auto;
 }
 
-.card-img-top{
-    aspect-ratio : 1 / 1;
-    border: 2px solid rgba(189, 189, 189, 0.245);
-    width: 100%;
-
+.card-img-top {
+  aspect-ratio: 1 / 1;
+  border: 2px solid rgba(189, 189, 189, 0.245);
+  width: 100%;
 }
 .notification {
-    font-size: 1.5rem;
-    position: fixed; 
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top:auto;
-    display: flex;
-    justify-self: center;
-    align-items: center;
-    margin-bottom: 10rem;
-    background-color: rgb(65, 211, 65); 
-    color: white; 
-    border-radius: 10px;
-    width: auto;
-    padding: 5px;
-    height: 40px;
-    z-index: 1000;
-}
-  
-
-.Price{
-    color: rgb(65, 211, 65);
-    font-size: 1.2rem;
+  font-size: 1.5rem;
+  position: fixed !important;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  right: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  background-color: rgb(65, 211, 65);
+  color: white;
+  height: auto;
+  padding: 0.5rem;
+  z-index: 1000;
+  text-align: center;
 }
 
-.CardFooter{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.CardFooter button{
-    background-color: rgb(65, 211, 65);
-    border: 1px solid rgba(189, 189, 189, 0.245);
-
-}
-.Prices{
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-}
-.Prices .Pr{
-    font-size: 0.9rem;
-    text-decoration: line-through;
-    margin-left: 1rem;
-}
-.CardFooter h6{
-    margin: 0;
-    color: rgba(61, 61, 61, 0.811) ;
-}
-.card-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-family: Montserrat;
+.Price {
+  color: rgb(65, 211, 65);
+  font-size: 1.2rem;
 }
 
-.AddToCart{
-    text-wrap: nowrap;
+.CardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.CardFooter button {
+  background-color: rgb(65, 211, 65);
+  border: 1px solid rgba(189, 189, 189, 0.245);
+}
+.Prices {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.Prices .Pr {
+  font-size: 0.9rem;
+  text-decoration: line-through;
+  margin-left: 1rem;
+}
+.CardFooter h6 {
+  margin: 0;
+  color: rgba(61, 61, 61, 0.811);
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: Montserrat;
+}
+
+.AddToCart {
+  text-wrap: nowrap;
 }
 
 @media only screen and (max-width: 1024px) {
-    .card-body{
-        font-size: 0.8rem;
-    }
-    .AddToCart{
-        font-size: 0.7rem !important;
-    }
-    .CardFooter h6{
-        font-size: 0.7rem;
-    }
+  .card-body {
+    font-size: 0.8rem;
+  }
+  .AddToCart {
+    font-size: 0.7rem !important;
+  }
+  .CardFooter h6 {
+    font-size: 0.7rem;
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    .ProductCard{
-        width: 47%;
-    }
+  .ProductCard {
+    width: 47%;
+  }
 }

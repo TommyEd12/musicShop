@@ -14,10 +14,9 @@ export default class ProductStore {
   _totalCount: number;
   _limit: number;
   constructor() {
-    
     this._categories = [];
     this._selectedProducts = [];
-    makeObservable(this._selectedProducts)
+    makeObservable(this._selectedProducts);
     this._brands = [];
     this._products = [];
     this._selectedCategory = { id: 0, name: "" };
@@ -44,10 +43,12 @@ export default class ProductStore {
     console.log(this._selectedProducts);
   }
   setSelectedGoods(selectedProducts: Product[]) {
-    this._selectedProducts = selectedProducts
+    this._selectedProducts = selectedProducts;
   }
-  deleteSelectedProduct(id:number){
-    this.setSelectedGoods((this._selectedProducts.filter((item) => item.id !== id)));
+  deleteSelectedProduct(id: number) {
+    this.setSelectedGoods(
+      this._selectedProducts.filter((item) => item.id !== id)
+    );
   }
 
   setSelectedCategory(category: Category) {
@@ -91,6 +92,10 @@ export default class ProductStore {
   }
   get limit() {
     return this._limit;
+  }
+  resetFilters() {
+    this._selectedCategory = { id: 0, name: "" };
+    this._selectedBrand = { id: 0, name: "", image: "" };
   }
 }
 

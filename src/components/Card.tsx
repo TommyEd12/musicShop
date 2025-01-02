@@ -39,10 +39,11 @@ export const CardItem = observer(({ product }: Props) => {
           }}
           variant="top"
           src={product.images[0]}
+          className="ItemPicture"
         />
         <Card.Body>
           <div className="Prices">
-            <div className="Price">{product.discountPrice}</div>
+            <div className="Price">{product.discountPrice} ₽</div>
             <div className="Pr">{product.price}</div>
           </div>
           <Card.Title

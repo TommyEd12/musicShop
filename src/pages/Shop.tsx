@@ -18,18 +18,20 @@ import ProductStore, { products } from "../store/productStore";
 import { observer } from "mobx-react-lite";
 
 const Shop = observer(() => {
-  const product = products
-  
+  const product = products;
+
   try {
     useEffect(() => {
-      const fetchData = async () =>{await fetchProducts().then((data) => product.setProducts(data))};
-      fetchData()
+      const fetchData = async () => {
+        await fetchProducts().then((data) => product.setProducts(data));
+      };
+      fetchData();
     }, [product]);
   } catch (error) {
     console.log("Something went wrong");
   }
-  const stringifiedObj = JSON.parse(JSON.stringify(product)) as ProductStore
-  console.log(product._products)
+  const stringifiedObj = JSON.parse(JSON.stringify(product)) as ProductStore;
+  console.log(product._products);
 
   return (
     <Container className="ShopContainer">
@@ -44,10 +46,9 @@ const Shop = observer(() => {
       </div>
       <div className="CardsContainer">
         {stringifiedObj._products ? (
-          stringifiedObj._products.map((product) => (
-             <CardItem product={product}></CardItem>
-
-          ))
+          stringifiedObj._products
+            .slice(-6)
+            .map((product) => <CardItem product={product}></CardItem>)
         ) : (
           <div>Загрузка</div>
         )}

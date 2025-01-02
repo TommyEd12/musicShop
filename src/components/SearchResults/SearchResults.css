@@ -1,0 +1,22 @@
+.ResultList{
+    z-index: 100;
+    width: 100%;
+    position: absolute;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    overflow: visible;
+    top:2.8rem !important;
+    background-color: white !important;
+    gap: 0.5rem;
+
+}
+
+.ResultList .prod{
+    font-size: 1.2rem;
+    border: 10px;
+}
+@media only screen and (max-width: 992px){
+    .ResultList .prod{
+        font-size: 0.8rem;
+    }
+}

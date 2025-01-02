@@ -1,85 +1,50 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import "../styles/TypeBar.css";
+import { observer } from "mobx-react-lite";
+import { products } from "../store/productStore";
+import { fetchCategories } from "../http/productAPI";
+import { Category } from "../types/category";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Routes } from "../utils/consts";
 
+const TypeBar = observer(() => {
+  const product = products;
+  const navigate = useNavigate();
+  const location = useLocation();
 
-const types = [
-  "Струны",
-  "Электрогитары",
-  "Барабанные палочки",
-  "Акустики",
-  "Классики",
-  "Укулеле",
-  "Калимбы",
-  "Ударные",
-  "Клавишные",
-  "Варганы",
-  "Усилители",
-  "Наушники",
-  "Микрофоны",
-  "Бас",
-  "Усилители",
-  "Медиаторы",
-];
+  try {
+    useEffect(() => {
+      const fetchData = async () => {
+        await fetchCategories().then((data) => product.setTypes(data));
+      };
+      fetchData();
+    }, [product]);
+  } catch (error) {
+    console.log("Something went wrong");
+  }
+  const handleSettingCategory = (category: Category): void => {
+    product.setSelectedCategory(category);
+    if (location.pathname !== Routes.CATALOG_ROUTE) {
+      navigate(Routes.CATALOG_ROUTE);
+    }
+  };
 
-const TypeBar = () => {
+  const types = product._categories;
+
   return (
     <ListGroup horizontal className="TypeBar">
-      {types.map(type => {
-        return(
-          <ListGroup.Item className="ProductType" action href="#link1">{type}</ListGroup.Item>
-        )
-      })}
-      {/* <ListGroup.Item className="ProductType" action href="#link1">
-        Струны
-      </ListGroup.Item>
-      <ListGroup.Item className="ProductType" action href="#link1">
-        Электрогитары
-      </ListGroup.Item>
-      <ListGroup.Item className="ProductType" action href="#link1">
-        Барабанные палочки
-      </ListGroup.Item>
-      <ListGroup.Item className="ProductType" action href="#link1">
-        Акустики
-      </ListGroup.Item>
-      <ListGroup.Item className="ProductType" action href="#link1">
-        Классики
-      </ListGroup.Item>
-      <ListGroup.Item className="ProductType" action href="#link1">
-        Укулеле
-      </ListGroup.Item>
-      <ListGroup.Item className="ProductType" action href="#link1">
-        Калимбы
-      </ListGroup.Item>
-      <ListGroup.Item className="ProductType" action href="#link1">
-        Ударные
-      </ListGroup.Item>
-      <ListGroup.Item className="ProductType" action href="#link1">
-        Клавишные
-      </ListGroup.Item>
-      <ListGroup.Item className="ProductType" action href="#link1">
-        Варганы
-      </ListGroup.Item>
-      <ListGroup.Item className="ProductType" action href="#link1">
-        Усилители
-      </ListGroup.Item>
-      <ListGroup.Item className="ProductType" action href="#link1">
-        Наушники
-      </ListGroup.Item>
-      <ListGroup.Item className="ProductType" action href="#link1">
-        Микрофоны
-      </ListGroup.Item>
-      <ListGroup.Item className="ProductType" action href="#link1">
-        Бас гитары
-      </ListGroup.Item>
-      <ListGroup.Item className="ProductType" action href="#link1">
-        Усилители для баса
-      </ListGroup.Item>
-      <ListGroup.Item className="ProductType" action href="#link1">
-        Медиаторы
-      </ListGroup.Item> */}
+      {types.map((type) => (
+        <ListGroup.Item
+          key={type.id}
+          className="ProductType"
+          onClick={() => handleSettingCategory(type)}
+        >
+          {type.name}
+        </ListGroup.Item>
+      ))}
     </ListGroup>
   );
-};
+});
 
 export default TypeBar;

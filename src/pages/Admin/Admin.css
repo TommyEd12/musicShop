@@ -1,0 +1,11 @@
+.buttonRow{
+    display: flex !important;
+    justify-content: space-between !important;
+}
+.buttonCol{
+    text-align: center;
+}
+.buttonCol Button{
+    background-color: white;
+    color: black;
+}

@@ -22,6 +22,7 @@ export const fetchUserByEmail = async (email: string) => {
   const { data } = await $host.get("api/user/getUserByEmail", {
     params: { email },
   });
+  console.log(data)
   return data;
 };
 

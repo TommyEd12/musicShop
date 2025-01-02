@@ -4,10 +4,25 @@
 .basketWrapper {
   display: flex;
   align-items: flex-start;
-  position: absolute;
   width: 100%;
-  height: 100%;
+  height: 90% !important;
   background-color: rgb(236, 236, 236);
+}
+.ItemPrice{
+  white-space: nowrap;
+}
+.cardText{
+  
+  text-wrap-style:pretty !important;
+}
+
+.itemCont{
+  white-space: nowrap !important;
+  height: 200px;
+  border-radius: 20px;
+  display: flex !important;
+  justify-content: space-between !important;
+
 }
 
 .btn {
@@ -24,4 +39,39 @@
   font-size: 1.2em;
   margin-top: 2em;
   color: #888; /* Серый цвет */
+}
+.quantityDiv{
+  font-size: 1rem;
+}
+
+
+@media only screen and (max-width: 991px) {
+  .ItemTitle{
+    font-size: 1rem;
+  }
+  .ItemPrice{
+    font-size: 0.8rem !important;
+  }
+  .removeButton{
+    font-size: 0.6rem;
+  }
+  
+}
+@media only screen and (max-width: 768px) {
+  .ItemPrice{
+    font-size: 0.8rem !important;
+  }
+  .removeButton{
+    font-size: 0.5rem;
+  }
+  .ItemTitle{
+    font-size: 0.8rem;
+  }
+ 
+}
+@media only screen and (max-width: 992px) {
+  
+}
+@media only screen and (max-width: 640px) {
+  
 }

@@ -16,16 +16,42 @@ import { debounce } from "../utils/debounce";
 import ProductStore, { products } from "../store/productStore";
 import { Product } from "../types/product";
 import { observer } from "mobx-react-lite";
+import SearchResults from "./SearchResults/SearchResults";
+import { search } from "../http/productAPI";
 
 const NavBar = observer(() => {
   const navigation = useNavigate();
   const [count, setCount] = useState<number>(products._selectedProducts.length);
-  const searchHandler = debounce((e) => {
-    console.log(e.target.value);
-  }, 2000);
+  const [searchResults, setSearchResults] = useState<Product[]>([]);
+  const [showResults, setShowResults] = useState(false);
+
+  const searchHandler = debounce(
+    async (e: React.ChangeEvent<HTMLInputElement>) => {
+      const searchText = e.target.value;
+      if (searchText.length >= 3) {
+        try {
+          const results = await search(searchText);
+          setSearchResults(results);
+          setShowResults(true);
+        } catch (error) {
+          console.error("Error searching products:", error);
+          setSearchResults([]);
+        }
+      } else {
+        setSearchResults([]);
+        setShowResults(false);
+      }
+    },
+    300
+  );
+
   useEffect(() => {
     setCount(products._selectedProducts.length);
   }, [products._selectedProducts]);
+
+  const handleSearchBlur = () => {
+    setTimeout(() => setShowResults(false), 200);
+  };
 
   return (
     <Navbar
@@ -35,27 +61,31 @@ const NavBar = observer(() => {
       className="bg-body-tertiary navBarContainer"
     >
       <Container className="NavContent">
-        <img className="navBarLogo" src={storeLogo}></img>
+        <img className="navBarLogo" src={storeLogo} alt="Store Logo" />
         <Navbar.Brand className="NavBarTitle">
           <h1 onClick={() => navigation(Routes.SHOP_ROUTE)}>MUS&CO</h1>
           <a href="/Catalog">
-            <img className="CatalogImage" src={CatalogImage}></img>
+            <img className="CatalogImage" src={CatalogImage} alt="Catalog" />
           </a>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Form className="Search">
+          <Form className="Search position-relative">
             <Form.Control
-              onChange={(e) => {
-                searchHandler(e);
-              }}
+              onChange={searchHandler}
+              onBlur={handleSearchBlur}
               type="search"
               placeholder="Поиск"
               className="SearchLine"
               aria-label="Search"
-              src={SearchImage}
             />
+            {showResults && searchResults.length > 0 && (
+              <SearchResults
+                results={searchResults}
+                onSelect={() => setShowResults(false)}
+              />
+            )}
           </Form>
 
           <Nav
@@ -70,15 +100,16 @@ const NavBar = observer(() => {
               <h5>О нас</h5>
             </a>
             <a onClick={() => navigation(Routes.PERSONAL_ROUTE)}>
-              <img className="UserImage" src={UserImage}></img>
+              <img className="UserImage" src={UserImage} alt="User" />
             </a>
             <div className="IconCart">
               <img
-                className="ShoppingCartImage "
+                className="ShoppingCartImage"
                 onClick={() => navigation(Routes.BASKET_ROUTE)}
                 src={ShoppingCart}
-              ></img>
-              <span>{count > 0 ?count: ""}</span>
+                alt="Shopping Cart"
+              />
+              {count > 0 ? <span>{count}</span> : ""}
             </div>
           </Nav>
         </Navbar.Collapse>

@@ -21,7 +21,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+h5{
+  font-family: Montserrat;
+}
 p{
+  font-family: Montserrat;
+}
+span{
+  font-family: Montserrat;
+}
+div{
   font-family: Montserrat;
 }
 
