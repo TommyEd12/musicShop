@@ -9,3 +9,14 @@
     background-color: white;
     color: black;
 }
+.deleteButton{
+    background-color: white !important;
+    border-color: red !important;
+    width: 100%;
+    color: black !important;
+}
+.btns{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}

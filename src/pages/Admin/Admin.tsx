@@ -7,6 +7,7 @@ import AddSliderContent from "../../components/AddSliderContentModal/AddSliderCo
 import ProductStore, { products } from "../../store/productStore";
 import { observer } from "mobx-react-lite";
 import {
+  deleteProduct,
   fetchBrands,
   fetchCategories,
   fetchProducts,
@@ -19,13 +20,19 @@ import {
   deleteSliderContent,
   fetchSliderContent,
 } from "../../http/sliderContent";
-import "./Admin.css"
+import "./Admin.css";
+import { useNavigate } from "react-router-dom";
+import { profile } from "../../http/userAPI";
+import { Routes } from "../../utils/consts";
 
 const AdminPage: React.FC = observer(() => {
   const product = products;
   const allProducts = product._products;
   const allBrands = product._brands;
   const allCategories = product._categories;
+  const navigation = useNavigate();
+  const [email, setEmail] = useState("");
+
   try {
     useEffect(() => {
       const fetchData = async () => {
@@ -39,6 +46,29 @@ const AdminPage: React.FC = observer(() => {
   } catch (error) {
     console.log("Something went wrong");
   }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await profile();
+        if (!response) {
+          const errorData = await response;
+          const errorMessage = errorData?.message || response.statusText;
+          console.error(
+            `Ошибка при загрузке данных: ${errorMessage}`,
+            errorData
+          );
+          navigation(Routes.LOGIN_ROUTE);
+        } else {
+          const data = response.data;
+          setEmail(data);
+        }
+      } catch (error) {
+        console.error("Произошла непредвиденная ошибка:", error);
+        navigation(Routes.LOGIN_ROUTE);
+      }
+    };
+    fetchData();
+  }, [navigation]);
   const [newProducts, setNewProducts] = useState<Product[]>(allProducts);
   const [brands, setBrands] = useState<Brand[]>(allBrands);
   const [categories, setCategories] = useState<Category[]>(allCategories);
@@ -101,6 +131,10 @@ const AdminPage: React.FC = observer(() => {
   const handleDeleteSliderContent = async (id: number) => {
     setSliderContents(sliderContents.filter((item) => item.id !== id));
     await deleteSliderContent(id);
+  };
+  const handleDeleteProduct = async (id: number) => {
+    setNewProducts(newProducts.filter((item) => item.id !== id));
+    await deleteProduct(id);
   };
 
   return (
@@ -168,12 +202,20 @@ const AdminPage: React.FC = observer(() => {
                 {brands.find((b) => b.id === product.brandId)?.name ||
                   "Неизвестно"}
               </td>
-              <td>
+              <td className="btns">
                 <Button
+                  size="sm"
                   variant="warning"
                   onClick={() => handleOpenChangeProductModal(product)}
                 >
                   Изменить
+                </Button>
+                <Button
+                  className="deleteButton"
+                  size="sm"
+                  onClick={() => handleDeleteProduct(product.id as number)}
+                >
+                  Удалить
                 </Button>
               </td>
             </tr>
@@ -200,7 +242,7 @@ const AdminPage: React.FC = observer(() => {
               <td>{content.image}</td>
               <td>
                 <Button
-                  variant="danger"
+                  className="deleteButton"
                   size="sm"
                   onClick={() =>
                     handleDeleteSliderContent(content.id as number)

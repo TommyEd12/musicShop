@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Carousel, Container } from "react-bootstrap";
 import "../styles/Shop.css";
 import ShopSlider from "../components/ShopSlider";
@@ -16,14 +16,18 @@ import { Context } from "../main";
 import { fetchProducts } from "../http/productAPI";
 import ProductStore, { products } from "../store/productStore";
 import { observer } from "mobx-react-lite";
+import { SliderContent } from "../types/sliderContent";
+import { fetchSliderContent } from "../http/sliderContent";
 
 const Shop = observer(() => {
   const product = products;
+ 
 
   try {
     useEffect(() => {
       const fetchData = async () => {
         await fetchProducts().then((data) => product.setProducts(data));
+       
       };
       fetchData();
     }, [product]);

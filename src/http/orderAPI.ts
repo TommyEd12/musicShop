@@ -20,6 +20,12 @@ export const fetchOrdersByUserId = async (id: number) => {
   const { data } = await $host.get("api/order/" + id);
   return data;
 };
+export const fetchOrderProducts = async (
+  id: number
+): Promise<orderProduct[]> => {
+  const { data } = await $host.get("api/orderProducts/" + id);
+  return data;
+};
 export const createOrderProduct = async (orderProduct: orderProduct) => {
   const { data } = await $host.post("api/orderProducts/", orderProduct);
   return data;

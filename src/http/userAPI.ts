@@ -1,3 +1,4 @@
+import { User } from "../types/user";
 import { $host } from "./index";
 import { jwtDecode } from "jwt-decode";
 
@@ -22,7 +23,7 @@ export const fetchUserByEmail = async (email: string) => {
   const { data } = await $host.get("api/user/getUserByEmail", {
     params: { email },
   });
-  console.log(data)
+  console.log(data);
   return data;
 };
 

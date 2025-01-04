@@ -50,6 +50,10 @@ export const fetchOneProduct = async (id: number) => {
   const { data } = await $host.get("api/product/" + id);
   return data;
 };
+export const deleteProduct = async (id: number) => {
+  const { data } = await $host.delete("api/product/" + id);
+  return data;
+};
 
 export const addProduct = async (product: Product) => {
   const { data } = await $host.post("api/product/", product);

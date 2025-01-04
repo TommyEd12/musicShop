@@ -12,7 +12,7 @@ interface ChangeProductModalProps {
   onAddProduct: (product: Product) => void;
   brands: Brand[];
   categories: Category[];
-  initialProduct?: Product; // Optional, for editing
+  initialProduct?: Product;
 }
 
 const ChangeProductModal: React.FC<ChangeProductModalProps> = observer(
@@ -71,6 +71,7 @@ const ChangeProductModal: React.FC<ChangeProductModalProps> = observer(
         if (e.target.files) {
           const files = Array.from(e.target.files);
           setSelectedFiles(files);
+
           const previewUrls = files.map((file) => URL.createObjectURL(file));
           setPreviewImages(previewUrls);
         }
@@ -92,14 +93,16 @@ const ChangeProductModal: React.FC<ChangeProductModalProps> = observer(
         });
 
         try {
-          const images = await Promise.all(imagePromises);
+          let images = await Promise.all(imagePromises);
+          if (initialProduct) {
+            images = initialProduct.images;
+          }
           const productToSubmit = { ...newProduct, images };
           onAddProduct(productToSubmit);
           if (!initialProduct) {
             await addProduct(productToSubmit);
-          }
-          else{
-            await changeProduct(initialProduct.id, productToSubmit)
+          } else {
+            await changeProduct(initialProduct.id, productToSubmit);
           }
         } catch (error) {
           console.error("Error during image processing:", error);

@@ -1,6 +1,5 @@
 
 .mt-5{
-    margin: 10rem auto;
     border-radius: 15px !important;
     width: 100%;
 
@@ -8,9 +7,40 @@
 
 .profileWrapper{
     display: flex;
+    flex-direction: column;
     align-items: center;
-    position:absolute;
+    padding: 5rem 0;
     width: 100%;
-    height: 100%;
+    height: auto;
     background-color: rgb(236, 236, 236);
+}
+.OrderCard{
+    width: 100%;
+}
+.profile{
+    padding: 5rem 0;
+    background-color: rgb(246, 246, 246);
+}
+.profile h2{
+    width: 100%;
+    text-align: center;
+}
+.profile .title{
+    color: white;
+    padding: 5px;
+    text-align: center;
+    border-radius: 7px;
+    margin-bottom: 2rem;
+    width: 100%;
+    background-color: rgb(65, 211, 65) !important;
+}
+.logoutButton{
+    width: 100%;
+    text-align: center;
+}
+.noOrders{
+    height: 90vh;
+    font-weight: 600;
+    text-align: center;
+    font-size: 2rem;
 }

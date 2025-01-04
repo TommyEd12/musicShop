@@ -10,162 +10,143 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Routes } from "../../utils/consts";
 import { User } from "../../types/user";
 import { user } from "../../store/userStore";
+import { fetchOrdersByUserId, fetchOrderProducts } from "../../http/orderAPI";
+import { Order } from "../../types/order";
+import { orderProduct } from "../../types/orderProduct";
+import { Product } from "../../types/product";
+import { fetchProducts } from "../../http/productAPI";
 
-interface OrderItem {
-  name: string;
-  quantity: number;
+interface OrderWithTotal extends Order {
+  totalPrice: number;
+  products: (orderProduct & { productDetails?: Product })[];
 }
-
-interface Order {
-  id: number;
-  totalRubles: number;
-  items: OrderItem[];
-  status: "Pending" | "Shipped" | "Delivered";
-}
-
 const ProfilePage: React.FC = observer(() => {
   const navigation = useNavigate();
   const [isRedirecting, setIsRedirecting] = useState(false);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string | null>(null);
+  const [orders, setOrders] = useState<OrderWithTotal[]>([]);
+  const [productsList, setProductsList] = useState<Product[]>([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await profile();
-        if (!response) {
+        if (!response || !response.data) {
           const errorData = await response;
-          const errorMessage = errorData?.message || response.statusText;
+          const errorMessage =
+            errorData?.message || response?.statusText || "Unknown error";
           console.error(
-            `Ошибка при загрузке данных: ${errorMessage}`,
+            `Ошибка при загрузке данных профиля: ${errorMessage}`,
             errorData
           );
           navigation(Routes.LOGIN_ROUTE);
-        } else {
-          const data = response.data;
-          setEmail(data);
+          return;
         }
+        setEmail(response.data);
       } catch (error) {
-        console.error("Произошла непредвиденная ошибка:", error);
+        console.error(
+          "Произошла непредвиденная ошибка при загрузке профиля:",
+          error
+        );
         navigation(Routes.LOGIN_ROUTE);
+        return;
       }
     };
     fetchData();
   }, [navigation]);
+
   useEffect(() => {
     const checkRole = async () => {
       if (email) {
-        const response = await fetchUserByEmail(email);
-        const curUser = response.data[0];
-        if (curUser.role === "admin") {
-          setIsRedirecting(true);
-          user.setUser(curUser);
-          navigation(Routes.ADMIN_ROUTE);
+        try {
+          const response = await fetchUserByEmail(email);
+
+          const curUser = response.data[0];
+          const usersOrders = await fetchOrdersByUserId(curUser.id);
+          const fetchedProducts = await fetchProducts();
+          setProductsList(fetchedProducts);
+
+          const ordersWithTotals = await Promise.all(
+            usersOrders.map(async (order) => {
+              const orderProducts = await fetchOrderProducts(order.orderId);
+              const productsWithDetails = orderProducts.map((item) => ({
+                ...item,
+                productDetails: fetchedProducts.find(
+                  (p) => p.id === item.productId
+                ),
+              }));
+              const totalPrice = productsWithDetails.reduce((sum, item) => {
+                const price = item?.productDetails?.price || 0;
+                return sum + price * item.quantity;
+              }, 0);
+
+              return { ...order, totalPrice, products: productsWithDetails };
+            })
+          );
+
+          setOrders(ordersWithTotals);
+
+          if (curUser.role === "admin") {
+            setIsRedirecting(true);
+            user.setUser(curUser);
+            navigation(Routes.ADMIN_ROUTE);
+          }
+        } catch (error) {
+          console.error("Failed to fetch user data:", error);
+          navigation(Routes.LOGIN_ROUTE);
         }
       }
     };
     checkRole();
-  }, [email]);
-
-  const [orders, setOrders] = useState<Order[]>([
-    {
-      id: 1,
-      totalRubles: 3750,
-      items: [
-        { name: "Smartphone", quantity: 1 },
-        { name: "Phone Case", quantity: 2 },
-      ],
-      status: "Delivered",
-    },
-    {
-      id: 2,
-      totalRubles: 5600,
-      items: [
-        { name: "Laptop", quantity: 1 },
-        { name: "Mouse", quantity: 1 },
-      ],
-      status: "Shipped",
-    },
-    {
-      id: 3,
-      totalRubles: 8900,
-      items: [
-        { name: "Headphones", quantity: 1 },
-        { name: "Keyboard", quantity: 1 },
-        { name: "Monitor", quantity: 1 },
-      ],
-      status: "Pending",
-    },
-  ]);
+  }, [email, navigation]);
 
   return (
-    <div className="profileWrapper">
-      <Container className="mt-5">
-        <Row>
-          <Col>
-            <Card>
-              <Card.Header
-                style={{ backgroundColor: "rgb(65, 211, 65)", color: "white" }}
-              >
-                <h2>Мой профиль</h2>
-                <h2>Почта: {email}</h2>
-              </Card.Header>
-              <Card.Body>
-                <h3>Заказы</h3>
-                <Table striped bordered hover responsive>
-                  <thead>
-                    <tr>
-                      <th>Номер заказа</th>
-                      <th>Сумма (₽)</th>
-                      <th>Товары</th>
-                      <th>Статус</th>
+    <Container className="profile">
+      <h2 className="my-4">Мои заказы</h2>
+      {orders.length === 0 ? (
+        <p className="noOrders">У вас пока нет заказов.</p>
+      ) : (
+        orders.map((order) => (
+          <Card key={order.id} className="orderCard mb-3">
+            <Card.Body>
+              <Card.Title className="title">Заказ № {order.orderId}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">
+                Статус: {order.status}
+              </Card.Subtitle>
+              <Card.Text>Итоговая сумма: {order.totalPrice}</Card.Text>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Название</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {order.products.map((item) => (
+                    <tr key={item.id}>
+                      <td>{item?.productDetails?.name}</td>
+                      <td>{item.quantity}</td>
+                      <td>{item?.productDetails?.price}</td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {orders.map((order) => (
-                      <tr key={order.id}>
-                        <td>{order.id}</td>
-                        <td>{order.totalRubles.toLocaleString()} ₽</td>
-                        <td>
-                          <ul className="list-unstyled mb-0">
-                            {order.items.map((item, index) => (
-                              <li key={index}>
-                                {item.name} (x{item.quantity})
-                              </li>
-                            ))}
-                          </ul>
-                        </td>
-                        <td>
-                          <span
-                            className={`badge ${
-                              order.status === "Delivered"
-                                ? "bg-success"
-                                : order.status === "Shipped"
-                                ? "bg-info"
-                                : "bg-warning"
-                            }`}
-                          >
-                            {order.status}
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </Table>
-                <Button
-                  variant="danger"
-                  onClick={(e: any) => {
-                    logout();
-                    navigation(Routes.LOGIN_ROUTE);
-                  }}
-                  className="mt-3"
-                >
-                  Выйти
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
-    </div>
+                  ))}
+                </tbody>
+              </Table>
+            </Card.Body>
+          </Card>
+        ))
+      )}
+      <Button
+        variant="danger"
+        onClick={(e: any) => {
+          logout();
+          navigation(Routes.LOGIN_ROUTE);
+        }}
+        className="mt-3 logoutButton"
+      >
+        Выйти
+      </Button>
+    </Container>
   );
 });
 
