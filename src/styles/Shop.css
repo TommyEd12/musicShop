@@ -7,10 +7,11 @@
   src: url("../public/fonts/static/Montserrat-SemiBold.ttf");
 }
 .ShopContainer {
+  border: 1px solid white;
 
   display: flex;
   flex-direction: column;
-  width: 100% !important;
+  width: 75% !important;
   height: 100% !important;
   overflow: visible;
   margin: 7rem 0;
