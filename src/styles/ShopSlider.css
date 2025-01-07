@@ -105,3 +105,18 @@
     height: 250px !important;
   }
 }
+@media only screen and (max-width: 480px) {
+  #CaptionText {
+    font-size: 0.5rem;
+  }
+  .SliderContainer {
+    height: 200px !important;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .SliderContainer{
+    height: 150px !important;
+  }
+
+
+}

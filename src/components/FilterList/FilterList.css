@@ -29,7 +29,7 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 input[type="checkbox"]:checked {
-  background-color: rgb(65, 211, 65);
+  background-color: rgb(32, 226, 32);
 }
 
 .BrandBox {

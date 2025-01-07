@@ -31,7 +31,7 @@
 }
 .StockFilter{
  display: flex;
- border: 1px solid rgb(65, 211, 65);
+ border: 1px solid rgb(32, 226, 32);
  border-radius: 5px;
  padding: 3px;
  color: black;
@@ -86,7 +86,7 @@
   justify-self: center;
 }
 .page-item .page-link{
-  background-color: rgb(65, 211, 65);
+  background-color: rgb(32, 226, 32);
   color: white;
   font-size: 1.5rem;
   width: 100%;

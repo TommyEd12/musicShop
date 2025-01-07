@@ -41,7 +41,7 @@ const Shop = observer(() => {
     <Container className="ShopContainer">
       <TypeBar></TypeBar>
       <div className="TextDiv">
-        <h2 className="Greetings">Добро пожаловать в MUS&CO!</h2>
+        <h2 className="Greetings" id="Greetings">Добро пожаловать в MUS&CO!</h2>
       </div>
       <ShopSlider></ShopSlider>
       <div className="Block">

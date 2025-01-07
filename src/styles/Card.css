@@ -31,7 +31,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
-  background-color: rgb(65, 211, 65);
+  background-color: rgb(32, 226, 32);
   color: white;
   height: auto;
   padding: 0.5rem;
@@ -40,7 +40,7 @@
 }
 
 .Price {
-  color: rgb(65, 211, 65);
+  color: rgb(32, 226, 32);
   font-size: 1.2rem;
 }
 
@@ -50,7 +50,7 @@
   align-items: center;
 }
 .CardFooter button {
-  background-color: rgb(65, 211, 65);
+  background-color: rgb(32, 226, 32);
   border: 1px solid rgba(189, 189, 189, 0.245);
 }
 .Prices {
@@ -93,5 +93,10 @@
 @media only screen and (max-width: 768px) {
   .ProductCard {
     width: 47%;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .ProductCard {
+    width: 100%;
   }
 }

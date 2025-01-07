@@ -14,7 +14,7 @@
 
 .FooterContainer{
     margin: auto;
-    margin-left: 4.5rem;
+    margin-left: 5rem;
 }
 .footer-list {
   list-style: none;
@@ -74,6 +74,12 @@
 .media-links img:hover {
   transform: scale(1.1);
 }
+@media (max-width: 1200px) {
+  .FooterContainer{
+    margin-left: 3rem;
+  }
+}
+
 
 @media (max-width: 767px) {
   .footer-wrapper {

@@ -41,8 +41,7 @@ const ShoppingCartPage: React.FC = () => {
 
   return (
     <div className="basketWrapper">
-      <Container className="mt-5">
-        <h1 className="mb-4">Корзина</h1>
+      <Container className="basketCont mt-5">
         {showNotification && (
           <div className="notification">{showNotification}</div>
         )}{" "}
@@ -112,7 +111,7 @@ const ShoppingCartPage: React.FC = () => {
               </ListGroup>
             </Col>
             <Col md={4}>
-              <Card>
+              <Card className="cardInfo">
                 <Card.Body>
                   <Card.Title>Итого</Card.Title>
                   <Card.Text className="fs-4">

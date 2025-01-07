@@ -1,12 +1,10 @@
 .BrandBarContainer {
-  border-top: 8px solid;
-  border-bottom: 8px solid;
-  border-color: rgb(65, 211, 65);
-  border-bottom-color: rgba(142,142,142, 0.785);
+  border-top: 8px solid rgb(32, 226, 32);
+  border-bottom: 8px solid rgba(142, 142, 142, 0.785);
   border-radius: 6px;
   width: 100%;
+  height: auto;
   overflow: hidden;
-  white-space: nowrap !important;
   position: relative;
 }
 
@@ -18,38 +16,73 @@
     transform: translateX(-100%);
   }
 }
-.BrandBarContainer:hover .BrandBarSlide {
-  animation-play-state: paused !important;
-}
 
 .BrandBarSlide {
-  display: inline-block;
-  width: 100%;
+  display: flex;
   animation: 30s slide infinite linear;
 }
 
-.BrandBarContainer:before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 250px;
-  height: 100%;
-  background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
-  content: "";
-  z-index: 2;
-}
-.BrandBarContainer:after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 250px;
-  height: 100%;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
-  content: "";
-  z-index: 2;
+.BrandBarContainer:hover .BrandBarSlide {
+  animation-play-state: paused;
 }
 
 .BrandLogo {
+  flex: 0 0 auto;
   width: 20%;
-  padding: 0 1rem;
+  max-width: 200px;
+  min-width: 100px;
+  padding: 1rem;
+}
+
+.BrandBarContainer::before,
+.BrandBarContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+}
+
+.BrandBarContainer::before {
+  left: 0;
+  background: linear-gradient(to right, white, rgba(255, 255, 255, 0));
+}
+
+.BrandBarContainer::after {
+  right: 0;
+  background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
+}
+
+@media (max-width: 1024px) {
+  .BrandLogo {
+    width: 25%;
+  }
+
+  .BrandBarContainer::before,
+  .BrandBarContainer::after {
+    width: 75px;
+  }
+}
+
+@media (max-width: 768px) {
+  .BrandLogo {
+    width: 33.33%;
+  }
+
+  .BrandBarContainer::before,
+  .BrandBarContainer::after {
+    width: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .BrandLogo {
+    width: 50%;
+  }
+
+  .BrandBarContainer::before,
+  .BrandBarContainer::after {
+    width: 25px;
+  }
 }
