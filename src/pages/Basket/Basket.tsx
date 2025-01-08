@@ -68,7 +68,7 @@ const ShoppingCartPage: React.FC = () => {
                           {item.name.slice(0, 12)}...
                         </h5>
                       </Col>
-                      <Col xs={3} md={2}>
+                      <Col lg={true} xs={3} md={2}>
                         <div className="d-flex align-items-center quantityDiv">
                           <Button
                             variant="outline-secondary"

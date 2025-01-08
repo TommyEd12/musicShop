@@ -35,7 +35,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results, onSelect }) => {
               style={{ width: "30px", height: "30px", objectFit: "cover" }}
             />
             
-            {product.name}
+            {product.name.length >22?product.name.slice(0,22)+"...":product.name}
           </div>
           <span>{product.price} ₽</span>
         </ListGroup.Item>

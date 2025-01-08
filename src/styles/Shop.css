@@ -199,7 +199,19 @@
     align-items: center;
     flex-direction: column;
   }
+  .AboutUsBlock{
+    display: flex !important;
+    padding: 0 !important;
+    align-items: center;
+    flex-direction: column !important;
+  }
+  .AboutUsBlock img{
+    width: 100%;
+    margin-left: 0 !important;
+  }
   .AboutUs {
+    width: 100%;
+    padding: 1rem;
     font-size: 1.1rem !important;
   }
   .RewiewsWrapper{
@@ -211,11 +223,15 @@
   .ShopContainer h2 {
     font-size: 0.8rem !important;
   }
+  .smile{
+    margin-left: 0  ;
+  }
   .AboutUs p {
     font-size: 0.7rem !important;
   }
   .ReviewsTitle{
     font-size: 1.2rem !important;
+    margin-left: 10px !important;
   }
   .NoteImage{
     width: 45px;
@@ -244,7 +260,7 @@
     font-size: 0.8rem !important;
   }
   .AboutUs p{
-    font-size: 0.6rem !important;
+    font-size: 0.8rem !important;
     text-wrap: wrap;
     text-wrap-style:pretty;
   }

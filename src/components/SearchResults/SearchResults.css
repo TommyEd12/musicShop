@@ -4,16 +4,25 @@
     position: absolute;
     border-top-left-radius: 0px !important;
     border-top-right-radius: 0px !important;
+    display: flex !important;
+    justify-items: space-between !important;
     overflow: visible;
     top:2.8rem !important;
     background-color: white !important;
     gap: 0.5rem;
 
 }
-
+.ResultList span{
+    justify-self: flex-end;
+}
 .ResultList .prod{
     font-size: 1.2rem;
     border: 10px;
+}
+@media only screen and (max-width: 1300px){
+    .ResultList .prod{
+        font-size: 0.8rem;
+    }
 }
 @media only screen and (max-width: 992px){
     .ResultList .prod{
