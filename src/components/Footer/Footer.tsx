@@ -34,7 +34,7 @@ export default function Footer() {
             <h6 className="footer-heading">Контакты</h6>
             <ul className="footer-list">
               <li>+7 (922) 330-20-04</li>
-              <li>ул. Революции, 22, Пермь</li>
+              <li>г. Пермь</li>
               <li>
                 <a href="mailto:musco.store@gmail.com">musco.store@gmail.com</a>
               </li>

@@ -152,7 +152,7 @@ h5 {
   margin-left: 0 !important;
   margin-right: 0 !important;
   padding: 0.4rem 0 !important;
-  width: 70% !important ;
+  width: 100% !important ;
   align-items: center !important;
   justify-content: space-evenly !important;
   overflow: visible;
@@ -180,7 +180,7 @@ h5 {
     font-size: 0.7rem;
   }
   .NavContent{
-    padding: 0.1rem 0 !important; 
+    padding: 0.1rem 0; 
   }
   .NavBarContent {
     font-size: 0.75rem !important;
@@ -283,7 +283,12 @@ h5 {
 }
 @media only screen and (max-width: 640px) {
   .navBarContainer{
-    gap:0.5rem
+    gap:0.5rem;
+   
+  }
+  .NavContent{
+    margin: 0.5rem;
+    width: 95% !important;
   }
   .navBarLogo{
     margin-left: 0.5rem;

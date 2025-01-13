@@ -11,7 +11,7 @@
 
   display: flex;
   flex-direction: column;
-  width: 70% !important;
+  width: 100% !important;
   height: 100% !important;
   overflow: visible;
   margin: 7rem 0;
@@ -128,6 +128,7 @@
   white-space: nowrap;
   margin-bottom: 10rem;
   width: 100%;
+  height: auto;
   border-top: 8px solid;
   border-bottom: 8px solid;
   border-radius: 6px;
@@ -149,7 +150,6 @@
   color: rgba(36, 36, 36, 0.903);
 }
 .ReviewBlock h2 {
-  
   font-size: 2.3rem;
   margin: 0;
   color: rgba(36, 36, 36, 0.903);
@@ -173,9 +173,8 @@
   h2 {
     font-size: 1.7rem !important;
   }
-  .RewiewsWrapper{
+  .RewiewsWrapper {
     width: 40% !important;
-    
   }
   .AboutUs {
     font-size: 1.5rem !important;
@@ -194,18 +193,18 @@
   h2 {
     font-size: 1.3rem !important;
   }
-  .Widgets{
+  .Widgets {
     display: flex;
     align-items: center;
     flex-direction: column;
   }
-  .AboutUsBlock{
+  .AboutUsBlock {
     display: flex !important;
     padding: 0 !important;
     align-items: center;
     flex-direction: column !important;
   }
-  .AboutUsBlock img{
+  .AboutUsBlock img {
     width: 100%;
     margin-left: 0 !important;
   }
@@ -214,7 +213,7 @@
     padding: 1rem;
     font-size: 1.1rem !important;
   }
-  .RewiewsWrapper{
+  .RewiewsWrapper {
     width: 100% !important;
   }
 }
@@ -223,34 +222,33 @@
   .ShopContainer h2 {
     font-size: 0.8rem !important;
   }
-  .smile{
-    margin-left: 0  ;
+  .smile {
+    margin-left: 0;
   }
   .AboutUs p {
     font-size: 0.7rem !important;
   }
-  .ReviewsTitle{
+  .ReviewsTitle {
     font-size: 1.2rem !important;
     margin-left: 10px !important;
   }
-  .NoteImage{
+  .NoteImage {
     width: 45px;
     height: 45px;
   }
-  .FireImage{
+  .FireImage {
     width: 45px;
     height: 45px;
   }
-  .GuitarImage{
+  .GuitarImage {
     width: 45px;
     height: 45px;
   }
-  .ReviewBlock img{
+  .ReviewBlock img {
     margin-right: 0px;
     width: 45px;
     height: 45px;
   }
-
 }
 @media only screen and (max-width: 540px) {
   h2 {
@@ -259,21 +257,17 @@
   .AboutUs {
     font-size: 0.8rem !important;
   }
-  .AboutUs p{
+  .AboutUs p {
     font-size: 0.8rem !important;
     text-wrap: wrap;
-    text-wrap-style:pretty;
+    text-wrap-style: pretty;
   }
-
-
 }
 @media only screen and (max-width: 400px) {
   .ShopContainer h2 {
     font-size: 0.9rem !important;
   }
-  #Greetings{
+  #Greetings {
     font-size: 0.65rem !important;
   }
-
-
 }

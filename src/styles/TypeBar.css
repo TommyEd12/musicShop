@@ -42,17 +42,22 @@
 }
 @media only screen and (max-width: 992px) {
   .ProductType{
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 }
 
 @media only screen and (max-width: 764px) {
   .ProductType{
-    font-size: 0.68rem;
+    font-size: 1rem;
   }
 }
 @media only screen and (max-width: 640px) {
   .ProductType{
-    font-size: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .ProductType{
+    font-size: 0.65rem;
   }
 }

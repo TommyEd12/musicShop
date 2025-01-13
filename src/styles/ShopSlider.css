@@ -102,7 +102,7 @@
     font-size: 0.8rem;
   }
   .SliderContainer {
-    height: 250px !important;
+    height: 300px !important;
   }
 }
 @media only screen and (max-width: 480px) {
@@ -110,12 +110,12 @@
     font-size: 0.5rem;
   }
   .SliderContainer {
-    height: 200px !important;
+    height: 250px !important;
   }
 }
 @media only screen and (max-width: 400px) {
   .SliderContainer{
-    height: 160px !important;
+    height: 220px !important;
   }
 
 
