@@ -40,8 +40,10 @@ h5 {
 
 .navbar-toggler {
   margin-right: 1rem !important;
-  width: 25px;
+  height: auto;
+  width: 20px !important;
   padding: 0 3px !important;
+  padding-right: 4px;
   background-color: white !important;
 }
 .navbar-toggler-icon {
@@ -49,6 +51,8 @@ h5 {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 1px;
+  margin-left: 0px;
   aspect-ratio: 1/1 !important;
   width: 100% !important;
 }
@@ -172,7 +176,11 @@ h5 {
 @media only screen and (max-width: 640px) {
   .navBarContainer {
     max-width: 640px;
+
     font-size: 0.7rem;
+  }
+  .NavContent{
+    padding: 0.1rem 0 !important; 
   }
   .NavBarContent {
     font-size: 0.75rem !important;

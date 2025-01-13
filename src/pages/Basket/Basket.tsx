@@ -50,25 +50,25 @@ const ShoppingCartPage: React.FC = () => {
             Здесь пока пусто, выберите товары из нашего каталога
           </div>
         ) : (
-          <Row>
-            <Col md={8}>
-              <ListGroup>
+          <div className="bask">
+            <section className="sectionOne">
+              <ListGroup className="lst">
                 {cartItems.map((item) => (
                   <ListGroup.Item key={item.id} className="mb-3 itemCont">
-                    <Row className="align-items-center">
-                      <Col xs={2} md={2}>
+                    <div className="Row">
+                      <div>
                         <img
                           src={item.images[0]}
                           alt={item.name}
-                          className="img-fluid rounded"
+                          className="baskImg"
                         />
-                      </Col>
-                      <Col xs={3} md={3}>
+                      </div>
+                      <div className="baskTitleDiv">
                         <h5 className="ItemTitle">
                           {item.name.slice(0, 12)}...
                         </h5>
-                      </Col>
-                      <Col lg={true} xs={3} md={2}>
+                      </div>
+                      <div>
                         <div className="d-flex align-items-center quantityDiv">
                           <Button
                             variant="outline-secondary"
@@ -86,13 +86,13 @@ const ShoppingCartPage: React.FC = () => {
                             +
                           </Button>
                         </div>
-                      </Col>
-                      <Col xs={2} md={2} className="text-end">
+                      </div>
+                      <div className="text-end">
                         <p className="mb-0 ItemPrice">
                           {item.price * item.count} ₽
                         </p>
-                      </Col>
-                      <Col xs={2} md={3} className="text-end">
+                      </div>
+                      <div className="remBtn text-end">
                         <Button
                           variant="outline-danger"
                           className="removeButton"
@@ -104,13 +104,13 @@ const ShoppingCartPage: React.FC = () => {
                         >
                           Удалить
                         </Button>
-                      </Col>
-                    </Row>
+                      </div>
+                    </div>
                   </ListGroup.Item>
                 ))}
               </ListGroup>
-            </Col>
-            <Col md={4}>
+            </section>
+            <div>
               <Card className="cardInfo">
                 <Card.Body>
                   <Card.Title>Итого</Card.Title>
@@ -130,8 +130,8 @@ const ShoppingCartPage: React.FC = () => {
                   </Card.Text>
                 </Card.Body>
               </Card>
-            </Col>
-          </Row>
+            </div>
+          </div>
         )}
       </Container>
     </div>

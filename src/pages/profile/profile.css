@@ -1,7 +1,7 @@
 
 .mt-5{
     border-radius: 15px !important;
-    width: 100%;
+    width: 70%;
 
 }
 
@@ -10,14 +10,16 @@
     flex-direction: column;
     align-items: center;
     padding: 5rem 0;
-    width: 100%;
+    width: 70%;
     height: auto;
     background-color: rgb(236, 236, 236);
 }
+
 .OrderCard{
     width: 100%;
 }
 .profile{
+    width: 70%;
     padding: 5rem 0;
     background-color: rgb(246, 246, 246);
 }

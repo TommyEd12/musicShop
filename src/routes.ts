@@ -8,6 +8,8 @@ import AboutUs from "./pages/AboutUs";
 import Catalog from "./pages/Catalog/Catalog";
 import ProfilePage from "./pages/profile/profile";
 import OrderCreationPage from "./pages/orderCreatingPage/orderCreatingPage";
+import AgreementPage from "./pages/Agreement/Agreement";
+import PaymentAndDeliveryPage from "./pages/Delivery/Delivery";
 
 export interface IRoute {
   path: string;
@@ -45,6 +47,14 @@ export const publicRoutes: IRoute[] = [
   {
     path: Routes.LOGIN_ROUTE,
     Element: Auth,
+  },
+  {
+    path: Routes.AGREEMENT_ROUTE,
+    Element: AgreementPage,
+  },
+  {
+    path: Routes.DELIVERY_ROUTE,
+    Element: PaymentAndDeliveryPage,
   },
   {
     path: Routes.PRODUCT_ROUTE + "/:id",

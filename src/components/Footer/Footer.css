@@ -23,6 +23,7 @@
 }
 
 .footer-list li {
+  cursor: pointer;
   margin-bottom: 0.5rem;
 }
 

@@ -111,14 +111,14 @@ const Catalog = observer(() => {
           <FilterList />
         </div>
         <div className="filtColumn">
-          <div className="StockFilter">
-            <input
-              type="checkbox"
-              checked={showOnlyInStock}
-              onChange={handleStockChange}
-            />
-            <label>Только в наличии</label>
-          </div>
+          <DropdownButton className="StockFilter" title={"Наличие"}>
+            <Dropdown.Item onClick={() => handleStockChange()}>
+              Есть в наличии
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => setShowOnlyInStock(false)}>
+              Все товары
+            </Dropdown.Item>
+          </DropdownButton>
           <DropdownButton
             className="Dropdown"
             title={
@@ -136,7 +136,7 @@ const Catalog = observer(() => {
             <Dropdown.Item onClick={() => handleSort("price_desc")}>
               По цене(убывание)
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSort(null)}>
+            <Dropdown.Item onClick={() => handleSort("")}>
               По умолчанию
             </Dropdown.Item>
           </DropdownButton>

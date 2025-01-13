@@ -1,0 +1,53 @@
+.agreement-container {
+  padding: 20px;
+  margin-top: 5rem;
+  width: 70%;
+  background-color: #f8f9fa; /* Светлый фон */
+}
+
+.agreement-card {
+  margin: auto;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.agreement-card h5{
+    margin-right: 0;
+}
+
+.agreement-card h1,
+.agreement-card h4,
+.agreement-card h5,
+.agreement-card h6 {
+  color: rgb(32, 226, 32); /* Цвет заголовков */
+}
+
+.agreement-card p,
+.agreement-card ul {
+  text-align: justify;
+}
+
+.agreement-card ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+@media only screen and (max-width: 992px) {
+}
+@media only screen and (max-width: 640px) {
+    .agreement-card h2{
+        white-space: wrap !important;
+    }
+    .agreement-card h3{
+        white-space: wrap !important;
+    }
+    .agreement-card h4{
+        white-space: wrap !important;
+    }
+    .agreement-card h5{
+        white-space: wrap !important;
+    }
+  .agreement-card h1{
+    white-space: wrap !important;
+    font-size: 1rem !important;
+  }
+}

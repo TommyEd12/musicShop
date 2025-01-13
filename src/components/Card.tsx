@@ -43,8 +43,8 @@ export const CardItem = observer(({ product }: Props) => {
         />
         <Card.Body>
           <div className="Prices">
-            <div className="Price">{product.discountPrice} ₽</div>
-            <div className="Pr">{product.price}</div>
+            <div className="Price">{product.price} ₽</div>
+            <div className="Pr">{product.discountPrice}</div>
           </div>
           <Card.Title
             onClick={() => {

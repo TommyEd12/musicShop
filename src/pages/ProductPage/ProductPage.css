@@ -27,6 +27,7 @@
   margin-left: auto !important;
   margin-right: auto;
   margin-top: 5rem !important;
+  margin-bottom: 5rem !important;
   justify-self: center;
   display: flex !important;
   border-radius: 10px;
@@ -232,8 +233,8 @@
   .PreviewImages {
     gap: 0rem;
   }
-  .Contact p{
-    text-wrap-style:balance !important;
+  .Contact p {
+    text-wrap-style: balance !important;
     font-size: 0.8rem !important;
   }
   .Contact {
@@ -312,7 +313,7 @@
 }
 
 @media (min-width: 992px) {
-  .goodInfo{
+  .goodInfo {
     flex-wrap: nowrap;
   }
   .ProductInfo h2 {
@@ -359,8 +360,8 @@
     font-size: 1.4rem;
     margin-left: 0.1rem;
   }
-  .Contact p{
-    text-wrap-style:balance !important;
+  .Contact p {
+    text-wrap-style: balance !important;
     font-size: 1rem !important;
   }
   .BrandImage {
@@ -384,7 +385,7 @@
     font-size: 1rem;
     text-wrap: balance !important;
   }
-  .ItemCont{
+  .ItemCont {
     padding-left: 1.5rem;
   }
 }

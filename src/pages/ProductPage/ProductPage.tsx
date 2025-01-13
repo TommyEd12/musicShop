@@ -116,7 +116,7 @@ const ProductPage: React.FC = () => {
   }
 
   const discount = (
-    ((product.price - product.discountPrice) / product.price) *
+    ((product.discountPrice - product.price) / product.discountPrice) *
     100
   ).toFixed(0);
 
@@ -167,8 +167,8 @@ const ProductPage: React.FC = () => {
         <Col className="ProductInfo" md={6}>
           <h1>{product.name}</h1>
           <div className="goodInfo">
-            <h2>{product.discountPrice} ₽</h2>
-            {product.price && <h3>{product.price}₽</h3>}
+            <h2>{product.price} ₽</h2>
+            {product.discountPrice && <h3>{product.discountPrice}₽</h3>}
             <h2 className="Discount">{discount}%</h2>
             <Button className="AddToCartt" onClick={handleAddToCart}>
               В корзину

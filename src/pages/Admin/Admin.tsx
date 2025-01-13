@@ -180,7 +180,7 @@ const AdminPage: React.FC = observer(() => {
             <th>ID</th>
             <th>Название</th>
             <th>Цена</th>
-            <th>Цена со скидкой</th>
+            <th>Цена до скидки</th>
             <th>Количество</th>
             <th>Категория</th>
             <th>Бренд</th>

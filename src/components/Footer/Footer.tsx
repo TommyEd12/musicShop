@@ -6,8 +6,12 @@ import mastercardLogo from "../../assets/mastercard.svg";
 import mirLogo from "../../assets/mir.svg";
 import vkLogo from "../../assets/vk-logo.svg";
 import youtubeLogo from "../../assets/youtube.svg";
+import ozon from "../../assets/ozon.svg";
+import { useNavigate } from "react-router-dom";
+import { Routes } from "../../utils/consts";
 
 export default function Footer() {
+  const navigation = useNavigate();
   return (
     <footer id="bottom" className="footer-wrapper">
       <Container>
@@ -39,22 +43,57 @@ export default function Footer() {
           <Col xs={12} md={6} lg={3} className="mb-4">
             <h6 className="footer-heading">Доставка и оплата</h6>
             <ul className="footer-list">
-              <li>Доставка по России</li>
-              <li>Доставка по Перми</li>
-              <li>Оплата</li>
+              <li
+                onClick={() => {
+                  navigation(Routes.AGREEMENT_ROUTE);
+                }}
+              >
+                Соглашение
+              </li>
+              <li
+                onClick={() => {
+                  navigation(Routes.DELIVERY_ROUTE);
+                }}
+              >
+                Доставка
+              </li>
+              <li
+                onClick={() => {
+                  navigation(Routes.DELIVERY_ROUTE);
+                }}
+              >
+                Оплата
+              </li>
             </ul>
           </Col>
           <Col xs={12} md={6} lg={3} className="mb-4 media">
-            <h6 className="footer-heading">Мы в соцсетях</h6>
+            <h6 className="footer-heading">Другие ресурсы</h6>
             <ul className="media-links">
               <li>
-                <a href="https://vk.com/musnco_ru" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://vk.com/musnco_ru"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img src={vkLogo} alt="VK" />
                 </a>
               </li>
               <li>
-                <a href="https://www.youtube.com/@mus_co" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.youtube.com/@mus_co"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img src={youtubeLogo} alt="YouTube" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.ozon.ru/seller/mus-co-kibermarket-muzykalnyh-instrumentov-1835622/hobbi-i-tvorchestvo-13500/?miniapp=seller_1835622"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src={ozon} alt="Ozon" />
                 </a>
               </li>
             </ul>
@@ -69,4 +108,3 @@ export default function Footer() {
     </footer>
   );
 }
-

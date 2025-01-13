@@ -1,0 +1,39 @@
+.payment-delivery-container {
+  width: 70%;
+  margin-top: 5rem;
+  padding: 20px;
+  background-color: #f8f9fa; /* Светлый фон */
+}
+
+.payment-delivery-card {
+  margin: auto;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.payment-delivery-card h1,
+.payment-delivery-card h5 {
+  margin-right: 0;
+  color: rgb(32, 226, 32); /* Цвет заголовков */
+}
+
+.payment-delivery-card p,
+.payment-delivery-card ul {
+  text-align: justify;
+}
+
+.payment-delivery-card ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+@media only screen and (max-width: 640px) {
+    .payment-delivery-card h1{
+        white-space: wrap;
+        font-size: 1rem;
+    }
+    .payment-delivery-card h5{
+        white-space: wrap;
+        font-size: 1rem;
+    }
+}

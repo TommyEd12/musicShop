@@ -5,6 +5,7 @@ import { Order } from "../../types/order";
 import { products } from "../../store/productStore";
 import { useNavigate } from "react-router-dom";
 import { Routes } from "../../utils/consts";
+import "./orderCreatingPage.css"
 import {
   createOrder,
   createOrderProduct,
@@ -137,7 +138,7 @@ const OrderCreationPage: React.FC = () => {
   );
 
   return (
-    <Container className="mt-5">
+    <Container className="mt-5 ordCont">
       <h1 className="mb-4">Создание заказа</h1>
       {success && <Alert variant="success">Заказ успешно создан!</Alert>}
 
@@ -171,7 +172,7 @@ const OrderCreationPage: React.FC = () => {
         {cartItems.length > 0 ? (
           <ListGroup>
             {cartItems.map((item) => (
-              <ListGroup.Item key={item.id}>
+              <ListGroup.Item className="productRow" key={item.id}>
                 {item.name} x {item.count} ={" "}
                 {(item.price * item.count).toLocaleString()} ₽
               </ListGroup.Item>

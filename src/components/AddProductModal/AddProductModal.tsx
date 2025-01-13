@@ -57,7 +57,7 @@ const ChangeProductModal: React.FC<ChangeProductModalProps> = observer(
           HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
         >
       ) => {
-        const { name, value } = e.target;
+        let { name, value } = e.target;
         setNewProduct((prev) => ({
           ...prev,
           [name]: Number.isNaN(Number(value)) ? value : Number(value),
@@ -148,7 +148,7 @@ const ChangeProductModal: React.FC<ChangeProductModalProps> = observer(
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Цена со скидкой</Form.Label>
+              <Form.Label>Цена до скидки</Form.Label>
               <Form.Control
                 type="number"
                 name="discountPrice"

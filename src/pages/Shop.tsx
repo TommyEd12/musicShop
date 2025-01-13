@@ -18,16 +18,17 @@ import ProductStore, { products } from "../store/productStore";
 import { observer } from "mobx-react-lite";
 import { SliderContent } from "../types/sliderContent";
 import { fetchSliderContent } from "../http/sliderContent";
+import mast from "../assets/mast.jpg";
+import screwdriver from "../assets/screwdriver.svg";
+
 
 const Shop = observer(() => {
   const product = products;
- 
 
   try {
     useEffect(() => {
       const fetchData = async () => {
         await fetchProducts().then((data) => product.setProducts(data));
-       
       };
       fetchData();
     }, [product]);
@@ -41,7 +42,9 @@ const Shop = observer(() => {
     <Container className="ShopContainer">
       <TypeBar></TypeBar>
       <div className="TextDiv">
-        <h2 className="Greetings" id="Greetings">Добро пожаловать в MUS&CO!</h2>
+        <h2 className="Greetings" id="Greetings">
+          Добро пожаловать в MUS&CO!
+        </h2>
       </div>
       <ShopSlider></ShopSlider>
       <div className="Block">
@@ -71,8 +74,7 @@ const Shop = observer(() => {
         <div className="AboutUs">
           <p>
             Мы - небольшая команда <strong> MUS&CO </strong>, основанная в 2020
-            году и расположенная в городе <strong>Пермь</strong>, по адресу
-            Революции 22.
+            году и расположенная в городе <strong>Пермь</strong>.
           </p>
           <p>
             В магазине представлены товары мировых брендов для новичков и
@@ -84,6 +86,24 @@ const Shop = observer(() => {
           </p>
         </div>
         <img className="MusImage" src={MusImage}></img>
+      </Container>
+      <div id="AboutUs" className="Block">
+        <h2 className="NewItems">Гитарная мастерская</h2>
+        <img className="NoteImage" src={screwdriver}></img>
+      </div>
+      <Container className="AboutUsBlock">
+        <div className="AboutUs">
+          <p>
+            Если ваша гитара сломалась и ей нужна срочная музыкальная помощь,
+            тогда приносите её на бесплатную диагностику в гитарную мастерскую
+            <strong> MUS&CO</strong>. Мы отремонтируем вашу гитару и она будет,
+            радовать вас и ваших близких своим звучанием. Наша мастерская
+            находится по адресу ул. Рабоче-Крестьянская 17. Звоните по вопросам
+            ремонта музыкальных инструментов по тел.{" "}
+            <strong>+79223302004</strong>.
+          </p>
+        </div>
+        <img className="MusImage" src={mast}></img>
       </Container>
       <div className="ReviewBlock">
         <h2 className="ReviewsTitle">

@@ -4,8 +4,9 @@
 }
 .CatalogContainer {
   margin-top: 7rem;
+  width: 70%;
 }
-.CardsWrapper{
+.CardsWrapper {
   width: 100%;
 }
 .Goods {
@@ -29,16 +30,15 @@
   border-radius: 10px;
   margin-bottom: 2rem;
 }
-.StockFilter{
- display: flex;
- border: 1px solid rgb(32, 226, 32);
- border-radius: 5px;
- padding: 3px;
- color: black;
- align-items: center;
- gap: 0.5rem;
+.StockFilter {
+  display: flex;
+  border-radius: 5px;
+  padding: 3px;
+  color: black;
+  align-items: center;
+  gap: 0.5rem;
 }
-.filtColumn{
+.filtColumn {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -46,8 +46,8 @@
 
 .CategoryWrapper h3 {
   position: absolute;
-  margin-left: 1rem;
   bottom: 2%;
+  left: 2%;
   z-index: 10;
   color: white;
   font-size: 4rem;
@@ -70,7 +70,11 @@
   color: black !important;
   background-color: rgb(255, 255, 255) !important;
 }
-.Reset{
+.StockFilter button {
+  color: black !important;
+  background-color: rgb(255, 255, 255) !important;
+}
+.Reset {
   color: black !important;
   background-color: rgb(255, 255, 255) !important;
   margin-top: 1rem;
@@ -79,13 +83,13 @@
   display: flex;
   gap: 0.2rem;
   justify-content: center;
-  margin:  1rem auto !important;
+  margin: 1rem auto !important;
   font-family: Montserrat;
   font-size: 1.5rem;
   position: relative;
   justify-self: center;
 }
-.page-item .page-link{
+.page-item .page-link {
   background-color: rgb(32, 226, 32);
   color: white;
   font-size: 1.5rem;
@@ -94,10 +98,6 @@
   border: 0px;
   font-size: 1.3rem !important;
 }
-
-
-
-
 
 .CardsWrapper .card {
   margin-top: 1rem;
@@ -120,23 +120,69 @@
   }
 }
 @media only screen and (max-width: 1024px) {
-  .CategoryWrapper h3{
+  .CategoryWrapper h3 {
     font-size: 3rem;
-
   }
 }
 @media only screen and (max-width: 767px) {
-  .CategoryWrapper h3{
+  .CategoryWrapper h3 {
     font-size: 3rem;
-    margin-bottom: 2rem
   }
-
+  .CategoryWrapper {
+    height: 150px;
+  }
+  .DropDownWrapper button{
+    font-size: 0.8rem;
+  }
 }
 
 @media only screen and (max-width: 640px) {
-  .CategoryWrapper h3{
+  .CategoryWrapper h3 {
     font-size: 2rem;
-    margin-bottom: 5rem
+  }
+  .DropDownWrapper {
+    flex-wrap: wrap;
+  
   }
 
+  .Group {
+    width: 100% !important;
+    margin-bottom: 1rem;
+  }
+  .DropDownWrapper button {
+    text-align: left;
+    width: 100% !important;
+  }
+  .FilterList{
+    width: 100% !important;
+  }
+  .filtColumn{
+    width: 100%;
+  }
+  .filtColumn .dropdown{
+    padding: 0;
+  }
+  .CategoryWrapper {
+    height: 120px;
+  }
+  .DropDownWrapper button {
+    font-size: 0.8rem;
+    padding: 2px 3px;
+  }
+  .DropDownWrapper .StockFilter {
+    font-size: 0.8rem;
+  }
+  .StockFilter input {
+    width: 15px !important;
+    height: 15px !important;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .CategoryWrapper h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+  .CategoryWrapper {
+    height: 120px;
+  }
 }
