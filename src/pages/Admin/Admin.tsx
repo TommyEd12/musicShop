@@ -59,7 +59,7 @@ const AdminPage: React.FC = observer(() => {
           );
           navigation(Routes.LOGIN_ROUTE);
         } else {
-          if (response[1] != "admin"){
+          if (response.data[1] != "admin"){
             navigation(Routes.LOGIN_ROUTE);
           }
           const data = response.data;
