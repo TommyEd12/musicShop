@@ -42,7 +42,7 @@ const ProfilePage: React.FC = observer(() => {
           navigation(Routes.LOGIN_ROUTE);
           return;
         }
-        setEmail(response.data);
+        setEmail(response.data[0]);
       } catch (error) {
         console.error(
           "Произошла непредвиденная ошибка при загрузке профиля:",
