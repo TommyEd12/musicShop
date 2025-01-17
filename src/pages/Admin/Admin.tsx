@@ -59,8 +59,11 @@ const AdminPage: React.FC = observer(() => {
           );
           navigation(Routes.LOGIN_ROUTE);
         } else {
+          if (response[1] != "admin"){
+            navigation(Routes.LOGIN_ROUTE);
+          }
           const data = response.data;
-          setEmail(data);
+          setEmail(data[0]);
         }
       } catch (error) {
         console.error("Произошла непредвиденная ошибка:", error);
