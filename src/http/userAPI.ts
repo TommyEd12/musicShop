@@ -6,7 +6,6 @@ export const registration = async (email: string, password: string) => {
   const { data } = await $host.post("api/user/signUp", {
     email,
     password,
-    role: "admin",
   });
   // localStorage.setItem('token', data.data.jar.auth.value)
 };
