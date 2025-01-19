@@ -14,6 +14,7 @@ import {
 } from "../../http/orderAPI";
 import { jwtDecode } from "jwt-decode";
 import { fetchUserByEmail, profile } from "../../http/userAPI";
+import { debounce } from "../../utils/debounce";
 
 const OrderCreationPage: React.FC = () => {
   const [address, setAddress] = useState("");
@@ -46,8 +47,10 @@ const OrderCreationPage: React.FC = () => {
           navigation(Routes.LOGIN_ROUTE);
           return;
         }
-        const fetchedEmail = profileResponse.data[0];
-        setEmail(fetchedEmail);
+        debounce(() => {
+          const fetchedEmail = profileResponse.data[0];
+          setEmail(fetchedEmail);
+        }, 300);
 
         if (email) {
           const userResponse = await fetchUserByEmail(email);
