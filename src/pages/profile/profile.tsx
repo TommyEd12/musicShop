@@ -28,77 +28,87 @@ const ProfilePage: React.FC = observer(() => {
   const [productsList, setProductsList] = useState<Product[]>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchDataAndUser = async () => {
       try {
-        const response = await profile();
-        if (!response || !response.data) {
-          const errorData = await response;
+        // 1. Получаем данные профиля и устанавливаем email
+        const profileResponse = await profile();
+        if (
+          !profileResponse ||
+          !profileResponse.data ||
+          profileResponse.data.length === 0
+        ) {
           const errorMessage =
-            errorData?.message || response?.statusText || "Unknown error";
+            profileResponse?.message ||
+            profileResponse?.statusText ||
+            "Unknown error";
           console.error(
             `Ошибка при загрузке данных профиля: ${errorMessage}`,
-            errorData
+            profileResponse
           );
           navigation(Routes.LOGIN_ROUTE);
           return;
         }
-        setEmail(response.data[0]);
+        const fetchedEmail = profileResponse.data[0];
+        setEmail(fetchedEmail);
+
+        // 2. Получаем данные пользователя и заказы, если email получен успешно
+        if (fetchedEmail) {
+          const userResponse = await fetchUserByEmail(fetchedEmail);
+          if (
+            userResponse &&
+            userResponse.data &&
+            userResponse.data.length > 0
+          ) {
+            const curUser = userResponse.data[0];
+            const usersOrders = await fetchOrdersByUserId(curUser.id);
+            const fetchedProducts = await fetchProducts();
+            setProductsList(fetchedProducts);
+
+            const ordersWithTotals = await Promise.all(
+              usersOrders.map(async (order) => {
+                const orderProducts = await fetchOrderProducts(order.orderId);
+                const productsWithDetails = orderProducts.map((item) => ({
+                  ...item,
+                  productDetails: fetchedProducts.find(
+                    (p) => p.id === item.productId
+                  ),
+                }));
+                const totalPrice = productsWithDetails.reduce((sum, item) => {
+                  const price = item?.productDetails?.price || 0;
+                  return sum + price * item.quantity;
+                }, 0);
+
+                return { ...order, totalPrice, products: productsWithDetails };
+              })
+            );
+
+            setOrders(ordersWithTotals);
+
+            if (curUser.role === "admin") {
+              setIsRedirecting(true);
+              user.setUser(curUser);
+              navigation(Routes.ADMIN_ROUTE);
+            }
+          } else {
+            console.error(
+              "Не удалось получить данные пользователя по email.",
+              userResponse
+            );
+          }
+        } else {
+          console.warn("Email не получен из профиля.");
+        }
       } catch (error) {
         console.error(
-          "Произошла непредвиденная ошибка при загрузке профиля:",
+          "Произошла непредвиденная ошибка при загрузке профиля или пользователя:",
           error
         );
         navigation(Routes.LOGIN_ROUTE);
-        return;
       }
     };
-    fetchData();
-  }, [navigation]);
 
-  useEffect(() => {
-    const checkRole = async () => {
-      if (email) {
-        try {
-          const response = await fetchUserByEmail(email);
-          const curUser =  await response.data[0];
-          console.log(curUser);
-          const usersOrders = await fetchOrdersByUserId(curUser.id);
-          const fetchedProducts = await fetchProducts();
-          setProductsList(fetchedProducts);
-
-          const ordersWithTotals = await Promise.all(
-            usersOrders.map(async (order) => {
-              const orderProducts = await fetchOrderProducts(order.orderId);
-              const productsWithDetails = orderProducts.map((item) => ({
-                ...item,
-                productDetails: fetchedProducts.find(
-                  (p) => p.id === item.productId
-                ),
-              }));
-              const totalPrice = productsWithDetails.reduce((sum, item) => {
-                const price = item?.productDetails?.price || 0;
-                return sum + price * item.quantity;
-              }, 0);
-
-              return { ...order, totalPrice, products: productsWithDetails };
-            })
-          );
-
-          setOrders(ordersWithTotals);
-
-          if (curUser.role === "admin") {
-            setIsRedirecting(true);
-            user.setUser(curUser);
-            navigation(Routes.ADMIN_ROUTE);
-          }
-        } catch (error) {
-          console.error("Failed to fetch user data:", error);
-          navigation(Routes.LOGIN_ROUTE);
-        }
-      }
-    };
-    checkRole();
-  }, [email, navigation]);
+    fetchDataAndUser();
+  }, [navigation, user]);
 
   return (
     <Container className="profile">
