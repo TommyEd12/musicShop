@@ -46,7 +46,8 @@ const OrderCreationPage: React.FC = () => {
           navigation(Routes.LOGIN_ROUTE);
           return;
         }
-        setEmail(profileResponse.data[0]); 
+        const fetchedEmail = profileResponse.data[0];
+        setEmail(fetchedEmail);
 
         if (email) {
           const userResponse = await fetchUserByEmail(email);
