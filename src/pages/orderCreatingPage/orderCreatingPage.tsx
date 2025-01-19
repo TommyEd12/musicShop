@@ -27,24 +27,49 @@ const OrderCreationPage: React.FC = () => {
   const cartItems = products._selectedProducts;
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchDataAndUser = async () => {
       try {
-        const response = await profile();
-        if (!response || !response.data) {
-          const errorData = await response;
+        // 1. Получаем данные профиля и устанавливаем email
+        const profileResponse = await profile();
+        if (
+          !profileResponse ||
+          !profileResponse.data ||
+          profileResponse.data.length === 0
+        ) {
           const errorMessage =
-            errorData?.message || response?.statusText || "Unknown error";
+            profileResponse?.message ||
+            profileResponse?.statusText ||
+            "Unknown error";
           console.error(
             `Ошибка при загрузке данных профиля: ${errorMessage}`,
-            errorData
+            profileResponse
           );
           navigation(Routes.LOGIN_ROUTE);
           return;
         }
-        setEmail(response.data[0]);
+        setEmail(profileResponse.data[0]); 
+
+        const email = profileResponse.data[0].email;
+        if (email) {
+          const userResponse = await fetchUserByEmail(email);
+          if (
+            userResponse &&
+            userResponse.data &&
+            userResponse.data.length > 0
+          ) {
+            setUserId(userResponse.data[0].id);
+          } else {
+            console.error(
+              "Не удалось получить данные пользователя по email.",
+              userResponse
+            );
+          }
+        } else {
+          console.warn("Email не получен из профиля.");
+        }
       } catch (error) {
         console.error(
-          "Произошла непредвиденная ошибка при загрузке профиля:",
+          "Произошла непредвиденная ошибка при загрузке профиля или пользователя:",
           error
         );
         navigation(Routes.LOGIN_ROUTE);
@@ -52,33 +77,25 @@ const OrderCreationPage: React.FC = () => {
       }
     };
 
-    const fetchUserData = async () => {
-      if (!email) {
-        console.warn("Email не получен");
-        return;
-      }
+    const fetchOrderData = async () => {
       try {
-        const data = await fetchUserByEmail(email);
-        setUserId(data.data[0].id);
+        const orderData = await fetchOrders();
+        setOrderId(orderData?.length ? orderData.length + 1 : 1);
       } catch (error) {
         console.error(
-          "Произошла непредвиденная ошибка при загрузке данных пользователя:",
+          "Произошла непредвиденная ошибка при загрузке id заказа:",
           error
         );
       }
     };
-    const fetchOrderId = async () => {
-      const orderIdData = await fetchOrders();
-      console.log(orderIdData);
-      setOrderId(orderIdData.length + 1);
-    };
 
     const combinedFetch = async () => {
-      await fetchData().then(()=>fetchUserData());
-      await fetchOrderId();
+      await fetchDataAndUser();
+      await fetchOrderData();
     };
+
     combinedFetch();
-  }, []);
+  }, [navigation]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
