@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const $host = axios.create({
-    baseURL: 'https://musandco.ru',
+    baseURL: 'http://localhost:3049',
     withCredentials: true
 
 })
