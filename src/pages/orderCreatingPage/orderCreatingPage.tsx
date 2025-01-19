@@ -74,8 +74,7 @@ const OrderCreationPage: React.FC = () => {
     };
 
     const combinedFetch = async () => {
-      await fetchData();
-      await fetchUserData();
+      await fetchData().then(()=>fetchUserData());
       await fetchOrderId();
     };
     combinedFetch();
