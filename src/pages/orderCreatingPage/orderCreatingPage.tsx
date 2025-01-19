@@ -29,7 +29,6 @@ const OrderCreationPage: React.FC = () => {
   useEffect(() => {
     const fetchDataAndUser = async () => {
       try {
-        // 1. Получаем данные профиля и устанавливаем email
         const profileResponse = await profile();
         if (
           !profileResponse ||

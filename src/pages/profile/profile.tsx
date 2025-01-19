@@ -62,6 +62,7 @@ const ProfilePage: React.FC = observer(() => {
           const response = await fetchUserByEmail(email);
 
           const curUser = response.data[0];
+          console.log(curUser);
           const usersOrders = await fetchOrdersByUserId(curUser.id);
           const fetchedProducts = await fetchProducts();
           setProductsList(fetchedProducts);
