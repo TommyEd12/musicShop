@@ -103,7 +103,7 @@
 .ProductInfo h2 {
   color: rgb(32, 226, 32);
   text-wrap: nowrap;
-  font-size: 1rem !important;
+  font-size: 1.2rem !important;
   font-weight: 400 !important;
   margin: 0.5rem 0;
   margin-left: 0.5rem;
@@ -113,14 +113,14 @@
   color: black;
   text-decoration: line-through;
   font-weight: 200 !important;
-  font-size: 0.8rem !important;
+  font-size: 1rem !important;
   margin: 0;
   margin-left: 0.5rem;
 }
 
 .ProductInfo button {
   display: flex;
-  font-size: 0.8rem !important;
+  font-size: 1rem !important;
   margin: 0.5rem 0;
   margin-left: auto !important;
   margin-right: 0.5rem;
@@ -179,11 +179,11 @@
 
 @media only screen and (max-width: 480px) {
   .ProductInfo h3 {
-    font-size: 0.8rem;
+    font-size: 1.15rem !important;
     margin-left: 0.1rem;
   }
   .ProductInfo h2 {
-    font-size: 0.9rem !important;
+    font-size: 1.2rem !important;
     font-weight: 400 !important;
     margin: 0.5rem 0;
     margin-left: 0.5rem;
@@ -207,12 +207,12 @@
     margin-left: 0.1rem;
   }
   .ProductInfo h1 {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .ProductInfo button {
     display: flex;
-    font-size: 0.5rem !important;
+    font-size: 1.2rem !important;
     margin: 0.5rem 0;
     padding: 1px;
     margin-left: auto !important;
@@ -275,7 +275,7 @@
     margin-left: 0.1rem;
   }
   .ProductInfo button {
-    font-size: 1rem !important;
+    font-size: 1.5rem !important;
     white-space: nowrap;
     padding: 2px;
     width: 100%;

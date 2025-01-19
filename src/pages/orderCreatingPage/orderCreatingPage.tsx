@@ -79,7 +79,7 @@ const OrderCreationPage: React.FC = () => {
       await fetchOrderId();
     };
     combinedFetch();
-  }, [navigation, email]);
+  }, [navigation]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -4,7 +4,7 @@
 .basketWrapper {
   display: flex;
   align-items: flex-start;
-  width: 75%;
+  width: 100%;
   margin: auto;
   height: 100vh !important;
   margin-bottom: 10rem;
@@ -128,21 +128,35 @@
   
 }
 @media only screen and (max-width: 640px) {
+  .itemCont{
+    margin-top: 5rem;
+  }
+  .removeButton{
+    font-size: 0.7rem !important;
+    padding: 3px;
+  }
   .ItemTitle{
-    font-size: 0.7rem;
+    font-size: 1rem;
     margin-right: 0;
   }
   .baskImg{
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
   }
   .ItemPrice{
-    font-size: 0.7rem !important;
+    font-size: 1rem !important;
   }
   .quantityDiv{
-    font-size: 0.7rem !important;
+    font-size: 1rem !important;
   }
   .quantityDiv Button{
    padding: 2px;
+  }
+  .cardInfo p{
+    font-size: 1rem !important;
+  }
+  .cardInfo button{
+    font-size: 0.8rem !important;
+    padding: 3px;
   }
 }
