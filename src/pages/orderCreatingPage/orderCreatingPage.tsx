@@ -5,7 +5,7 @@ import { Order } from "../../types/order";
 import { products } from "../../store/productStore";
 import { useNavigate } from "react-router-dom";
 import { Routes } from "../../utils/consts";
-import "./orderCreatingPage.css"
+import "./orderCreatingPage.css";
 import {
   createOrder,
   createOrderProduct,
@@ -41,7 +41,7 @@ const OrderCreationPage: React.FC = () => {
           navigation(Routes.LOGIN_ROUTE);
           return;
         }
-        setEmail(response.data);
+        setEmail(response.data[0]);
       } catch (error) {
         console.error(
           "Произошла непредвиденная ошибка при загрузке профиля:",
@@ -79,7 +79,7 @@ const OrderCreationPage: React.FC = () => {
       await fetchOrderId();
     };
     combinedFetch();
-  }, [navigation]);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
