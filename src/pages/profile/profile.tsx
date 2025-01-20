@@ -23,7 +23,7 @@ interface OrderWithTotal extends Order {
 const ProfilePage: React.FC = observer(() => {
   const navigation = useNavigate();
   const [isRedirecting, setIsRedirecting] = useState(false);
-  const [email, setEmail] = useState<string | null>(null);
+  const [email, setEmail] = useState<string | null>("");
   const [orders, setOrders] = useState<OrderWithTotal[]>([]);
   const [productsList, setProductsList] = useState<Product[]>([]);
 
@@ -48,7 +48,8 @@ const ProfilePage: React.FC = observer(() => {
           navigation(Routes.LOGIN_ROUTE);
           return;
         }
-        const fetchedEmail = profileResponse.data[0];
+        const fetchedEmail = await profileResponse.data[0];
+        console.log(fetchedEmail);
         setEmail(fetchedEmail);
       } catch (error) {
         console.error(
