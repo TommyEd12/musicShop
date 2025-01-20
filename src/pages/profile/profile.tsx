@@ -61,6 +61,13 @@ const ProfilePage: React.FC = observer(() => {
 
       // 2. Получаем данные пользователя и заказы, если email получен успешно
     };
+    const Fetch = async () => {
+      await fetchDataAndUser();
+    };
+    Fetch();
+  }, [navigation]);
+
+  useEffect(() => {
     const FetchUserAndOrders = async () => {
       if (email) {
         const userResponse = await fetchUserByEmail(email);
@@ -105,11 +112,11 @@ const ProfilePage: React.FC = observer(() => {
         console.warn("Email не получен из профиля.");
       }
     };
-    const combinedFetch = async () => {
-      await fetchDataAndUser().then(() => FetchUserAndOrders());
+    const Fetch = async () => {
+      await FetchUserAndOrders();
     };
-    combinedFetch();
-  }, [navigation]);
+    Fetch();
+  }, []);
 
   return (
     <Container className="profile">
