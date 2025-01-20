@@ -22,8 +22,7 @@ export const fetchUserByEmail = async (email: string): Promise<User> => {
   const { data } = await $host.get("api/user/getUserByEmail", {
     params: { email },
   });
-  console.log(data[0]);
-  return data[0];
+  return data.data[0];
 };
 
 export const profile = async () => {
