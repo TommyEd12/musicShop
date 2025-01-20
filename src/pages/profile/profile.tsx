@@ -54,46 +54,35 @@ const ProfilePage: React.FC = observer(() => {
         // 2. Получаем данные пользователя и заказы, если email получен успешно
         if (fetchedEmail) {
           const userResponse = await fetchUserByEmail(fetchedEmail);
-          if (
-            userResponse &&
-            userResponse.data &&
-            userResponse.data.length > 0
-          ) {
-            const curUser = userResponse.data[0];
-            const usersOrders = await fetchOrdersByUserId(curUser.id);
-            const fetchedProducts = await fetchProducts();
-            setProductsList(fetchedProducts);
+          const curUser = await userResponse.data[0];
+          const usersOrders = await fetchOrdersByUserId(curUser.id);
+          const fetchedProducts = await fetchProducts();
+          setProductsList(fetchedProducts);
 
-            const ordersWithTotals = await Promise.all(
-              usersOrders.map(async (order) => {
-                const orderProducts = await fetchOrderProducts(order.orderId);
-                const productsWithDetails = orderProducts.map((item) => ({
-                  ...item,
-                  productDetails: fetchedProducts.find(
-                    (p) => p.id === item.productId
-                  ),
-                }));
-                const totalPrice = productsWithDetails.reduce((sum, item) => {
-                  const price = item?.productDetails?.price || 0;
-                  return sum + price * item.quantity;
-                }, 0);
+          const ordersWithTotals = await Promise.all(
+            usersOrders.map(async (order) => {
+              const orderProducts = await fetchOrderProducts(order.orderId);
+              const productsWithDetails = orderProducts.map((item) => ({
+                ...item,
+                productDetails: fetchedProducts.find(
+                  (p) => p.id === item.productId
+                ),
+              }));
+              const totalPrice = productsWithDetails.reduce((sum, item) => {
+                const price = item?.productDetails?.price || 0;
+                return sum + price * item.quantity;
+              }, 0);
 
-                return { ...order, totalPrice, products: productsWithDetails };
-              })
-            );
+              return { ...order, totalPrice, products: productsWithDetails };
+            })
+          );
 
-            setOrders(ordersWithTotals);
+          setOrders(ordersWithTotals);
 
-            if (curUser.role === "admin") {
-              setIsRedirecting(true);
-              user.setUser(curUser);
-              navigation(Routes.ADMIN_ROUTE);
-            }
-          } else {
-            console.error(
-              "Не удалось получить данные пользователя по email.",
-              userResponse
-            );
+          if (curUser.role === "admin") {
+            setIsRedirecting(true);
+            user.setUser(curUser);
+            navigation(Routes.ADMIN_ROUTE);
           }
         } else {
           console.warn("Email не получен из профиля.");
