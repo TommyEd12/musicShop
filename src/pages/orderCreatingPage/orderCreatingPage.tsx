@@ -48,6 +48,7 @@ const OrderCreationPage: React.FC = () => {
           return;
         }
         const fetchedEmail = await profileResponse.data[0];
+        await setEmail(fetchedEmail);
 
         if (fetchedEmail) {
           const userResponse = await fetchUserByEmail(fetchedEmail);
