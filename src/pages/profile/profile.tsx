@@ -106,8 +106,7 @@ const ProfilePage: React.FC = observer(() => {
       }
     };
     const combinedFetch = async () => {
-      await fetchDataAndUser();
-      await FetchUserAndOrders();
+      await fetchDataAndUser().then(() => FetchUserAndOrders());
     };
     combinedFetch();
   }, [navigation]);
