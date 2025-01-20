@@ -54,6 +54,7 @@ const ProfilePage: React.FC = observer(() => {
         // 2. Получаем данные пользователя и заказы, если email получен успешно
         if (fetchedEmail) {
           const userResponse = await fetchUserByEmail(fetchedEmail);
+          console.log(userResponse);
           const usersOrders = await fetchOrdersByUserId(userResponse.id);
           const fetchedProducts = await fetchProducts();
           setProductsList(fetchedProducts);
