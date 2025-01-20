@@ -19,7 +19,7 @@ export const logout = async () => {
   return data;
 };
 export const fetchUserByEmail = async (email: string): Promise<User> => {
-  const { data } = await $host.get("api/user/getUserByEmail", {
+  const  data  = await $host.get("api/user/getUserByEmail", {
     params: { email },
   });
   return data.data[0];
