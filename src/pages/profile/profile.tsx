@@ -54,9 +54,7 @@ const ProfilePage: React.FC = observer(() => {
         // 2. Получаем данные пользователя и заказы, если email получен успешно
         if (fetchedEmail) {
           const userResponse = await fetchUserByEmail(fetchedEmail);
-          const curUser = await JSON.stringify(userResponse.data[0]);
-          console.log(curUser);
-          const usersOrders = await fetchOrdersByUserId(curUser.id);
+          const usersOrders = await fetchOrdersByUserId(userResponse.id);
           const fetchedProducts = await fetchProducts();
           setProductsList(fetchedProducts);
 
@@ -80,9 +78,9 @@ const ProfilePage: React.FC = observer(() => {
 
           setOrders(ordersWithTotals);
 
-          if (curUser.role === "admin") {
+          if (userResponse.role === "admin") {
             setIsRedirecting(true);
-            user.setUser(curUser);
+            user.setUser(userResponse);
             navigation(Routes.ADMIN_ROUTE);
           }
         } else {
