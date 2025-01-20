@@ -26,7 +26,6 @@ const OrderCreationPage: React.FC = () => {
   const [success, setSuccess] = useState(false);
   const [orderId, setOrderId] = useState(0);
   const cartItems = products._selectedProducts;
-  
 
   useEffect(() => {
     const fetchDataAndUser = async () => {
@@ -48,22 +47,11 @@ const OrderCreationPage: React.FC = () => {
           navigation(Routes.LOGIN_ROUTE);
           return;
         }
-        
+        const fetchedEmail = await profileResponse.data[0];
 
-        if (email) {
-          const userResponse = await fetchUserByEmail(email);
-          if (
-            userResponse &&
-            userResponse.data &&
-            userResponse.data.length > 0
-          ) {
-            setUserId(userResponse.data[0].id);
-          } else {
-            console.error(
-              "Не удалось получить данные пользователя по email.",
-              userResponse
-            );
-          }
+        if (fetchedEmail) {
+          const userResponse = await fetchUserByEmail(fetchedEmail);
+          setUserId(userResponse.id);
         } else {
           console.warn("Email не получен из профиля.");
         }
