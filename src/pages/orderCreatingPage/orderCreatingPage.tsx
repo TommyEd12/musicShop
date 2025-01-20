@@ -26,6 +26,7 @@ const OrderCreationPage: React.FC = () => {
   const [success, setSuccess] = useState(false);
   const [orderId, setOrderId] = useState(0);
   const cartItems = products._selectedProducts;
+  
 
   useEffect(() => {
     const fetchDataAndUser = async () => {
@@ -47,10 +48,7 @@ const OrderCreationPage: React.FC = () => {
           navigation(Routes.LOGIN_ROUTE);
           return;
         }
-        debounce(() => {
-          const fetchedEmail = profileResponse.data[0];
-          setEmail(fetchedEmail);
-        }, 300);
+        
 
         if (email) {
           const userResponse = await fetchUserByEmail(email);

@@ -50,54 +50,6 @@ const ProfilePage: React.FC = observer(() => {
         }
         const fetchedEmail = profileResponse.data[0];
         setEmail(fetchedEmail);
-
-        // 2. Получаем данные пользователя и заказы, если email получен успешно
-        if (fetchedEmail) {
-          const userResponse = await fetchUserByEmail(fetchedEmail);
-          if (
-            userResponse &&
-            userResponse.data &&
-            userResponse.data.length > 0
-          ) {
-            const curUser = userResponse.data[0];
-            const usersOrders = await fetchOrdersByUserId(curUser.id);
-            const fetchedProducts = await fetchProducts();
-            setProductsList(fetchedProducts);
-
-            const ordersWithTotals = await Promise.all(
-              usersOrders.map(async (order) => {
-                const orderProducts = await fetchOrderProducts(order.orderId);
-                const productsWithDetails = orderProducts.map((item) => ({
-                  ...item,
-                  productDetails: fetchedProducts.find(
-                    (p) => p.id === item.productId
-                  ),
-                }));
-                const totalPrice = productsWithDetails.reduce((sum, item) => {
-                  const price = item?.productDetails?.price || 0;
-                  return sum + price * item.quantity;
-                }, 0);
-
-                return { ...order, totalPrice, products: productsWithDetails };
-              })
-            );
-
-            setOrders(ordersWithTotals);
-
-            if (curUser.role === "admin") {
-              setIsRedirecting(true);
-              user.setUser(curUser);
-              navigation(Routes.ADMIN_ROUTE);
-            }
-          } else {
-            console.error(
-              "Не удалось получить данные пользователя по email.",
-              userResponse
-            );
-          }
-        } else {
-          console.warn("Email не получен из профиля.");
-        }
       } catch (error) {
         console.error(
           "Произошла непредвиденная ошибка при загрузке профиля или пользователя:",
@@ -105,10 +57,59 @@ const ProfilePage: React.FC = observer(() => {
         );
         navigation(Routes.LOGIN_ROUTE);
       }
-    };
 
-    fetchDataAndUser();
-  }, [navigation, user]);
+      // 2. Получаем данные пользователя и заказы, если email получен успешно
+    };
+    const FetchUserAndOrders = async () => {
+      if (email) {
+        const userResponse = await fetchUserByEmail(email);
+        if (userResponse && userResponse.data && userResponse.data.length > 0) {
+          const curUser = userResponse.data[0];
+          const usersOrders = await fetchOrdersByUserId(curUser.id);
+          const fetchedProducts = await fetchProducts();
+          setProductsList(fetchedProducts);
+
+          const ordersWithTotals = await Promise.all(
+            usersOrders.map(async (order) => {
+              const orderProducts = await fetchOrderProducts(order.orderId);
+              const productsWithDetails = orderProducts.map((item) => ({
+                ...item,
+                productDetails: fetchedProducts.find(
+                  (p) => p.id === item.productId
+                ),
+              }));
+              const totalPrice = productsWithDetails.reduce((sum, item) => {
+                const price = item?.productDetails?.price || 0;
+                return sum + price * item.quantity;
+              }, 0);
+
+              return { ...order, totalPrice, products: productsWithDetails };
+            })
+          );
+
+          setOrders(ordersWithTotals);
+
+          if (curUser.role === "admin") {
+            setIsRedirecting(true);
+            user.setUser(curUser);
+            navigation(Routes.ADMIN_ROUTE);
+          }
+        } else {
+          console.error(
+            "Не удалось получить данные пользователя по email.",
+            userResponse
+          );
+        }
+      } else {
+        console.warn("Email не получен из профиля.");
+      }
+    };
+    const combinedFetch = async () => {
+      await fetchDataAndUser();
+      await FetchUserAndOrders();
+    };
+    combinedFetch();
+  }, [navigation]);
 
   return (
     <Container className="profile">
