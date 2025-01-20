@@ -37,12 +37,13 @@
   background-color: rgb(32, 226, 32) !important;
 }
 .logoutButton {
-  width: 100%;
+  width: 97%;
   margin: 0 1rem !important;
   text-align: center;
 }
 .noOrders {
-  height: 90vh;
+  margin-top: 2rem;
+  height: 70vh;
   font-weight: 600;
   text-align: center;
   font-size: 2rem;
