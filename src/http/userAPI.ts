@@ -23,7 +23,7 @@ export const fetchUserByEmail = async (email: string): Promise<User> => {
     params: { email },
   });
   console.log(data);
-  return data.data[0];
+  return data.data.data[0];
 };
 
 export const profile = async () => {
