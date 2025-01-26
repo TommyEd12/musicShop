@@ -20,6 +20,23 @@ interface OrderWithTotal extends Order {
   totalPrice: number;
   products: (orderProduct & { productDetails?: Product })[];
 }
+export const translateStatus = (status: string): string => {
+  let res = "Нет статуса";
+  switch (status) {
+    case "Created":
+      res = "Создан";
+      break;
+    case "InProgress":
+      res = "Оплачен";
+      break;
+    case "Finished":
+      res = "Завершен";
+      break;
+    default:
+      break;
+  }
+  return res;
+};
 const ProfilePage: React.FC = observer(() => {
   const navigation = useNavigate();
   const [isRedirecting, setIsRedirecting] = useState(false);
@@ -110,7 +127,7 @@ const ProfilePage: React.FC = observer(() => {
             <Card.Body>
               <Card.Title className="title">Заказ № {order.orderId}</Card.Title>
               <Card.Subtitle className="mb-2 text-muted">
-                Статус: {order.status}
+                Статус: {translateStatus(order.status)}
               </Card.Subtitle>
               <Card.Text>Итоговая сумма: {order.totalPrice}</Card.Text>
               <Table striped bordered hover>

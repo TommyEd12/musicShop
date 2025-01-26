@@ -145,7 +145,7 @@ const OrderCreationPage: React.FC = () => {
   return (
     <Container className="mt-5 ordCont">
       <h1 className="mb-4">Создание заказа</h1>
-      {success && <Alert variant="success">Заказ успешно создан!</Alert>}
+      {success && <Alert className="successAlert" variant="success">Заказ успешно создан!</Alert>}
 
       <Form className="mt-4 contain" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formAddress">

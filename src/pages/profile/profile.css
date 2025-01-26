@@ -14,9 +14,9 @@
   background-color: rgb(255, 255, 255);
 }
 
-.OrderCard {
+.orderCard {
   margin: 0 1rem !important;
-  width: 100%;
+  width: calc(100% - 2rem);
 }
 .profile {
   position: relative;
