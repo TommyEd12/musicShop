@@ -1,10 +1,13 @@
-.ordCont{
-    width: 100%;
-    margin-bottom: 5rem;
-    margin-top: 1.5rem;
+.ordCont {
+  width: 100%;
+  margin-bottom: 5rem;
+  margin-top: 1.5rem;
+}
+.contain{
+    padding-top: 1rem;
 }
 @media only screen and (max-width: 640px) {
-    .productRow{
-        font-size: 0.8rem;
-    }
+  .productRow {
+    font-size: 0.8rem;
   }
+}
