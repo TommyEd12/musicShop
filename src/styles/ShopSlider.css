@@ -9,7 +9,7 @@
 }
 .SliderContainer {
   height: 450px;
-  width: 100%;;
+  width: 100%;
   margin: auto;
   background-color: rgba(197, 197, 197, 0.378);
   border-radius: 10px;
@@ -24,7 +24,6 @@
   width: 100%;
   height: 100%;
   justify-content: center;
-
 }
 .carousel-inner {
   height: 100% !important;
@@ -49,6 +48,7 @@
 #CaptionText {
   color: rgb(36, 36, 36);
   margin: 0;
+  margin-bottom: 0px !important;
   padding: 0.5rem !important;
   font-family: "Montserrat", sans-serif;
   font-size: 1.5rem;
@@ -96,6 +96,9 @@
   .SliderContainer {
     height: 270px !important;
   }
+  .Caption {
+    padding: 3px !important;
+  }
 }
 @media only screen and (max-width: 640px) {
   #CaptionText {
@@ -103,6 +106,9 @@
   }
   .SliderContainer {
     height: 300px !important;
+  }
+  .Caption {
+    padding: 3px !important;
   }
 }
 @media only screen and (max-width: 480px) {
@@ -114,9 +120,7 @@
   }
 }
 @media only screen and (max-width: 400px) {
-  .SliderContainer{
+  .SliderContainer {
     height: 220px !important;
   }
-
-
 }

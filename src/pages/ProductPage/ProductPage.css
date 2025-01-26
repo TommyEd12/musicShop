@@ -212,7 +212,7 @@
 
   .ProductInfo button {
     display: flex;
-    font-size: 1.2rem !important;
+    font-size: 1rem !important;
     margin: 0.5rem 0;
     padding: 1px;
     margin-left: auto !important;
